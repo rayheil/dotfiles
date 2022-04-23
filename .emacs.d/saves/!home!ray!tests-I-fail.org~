@@ -1,2 +1,0 @@
-* Missed it
-  Part 2 (Dale Chall): no spaces in words in easy-words (**) [expression: '(filter (section string-suffix? <> " ") easy-words)]

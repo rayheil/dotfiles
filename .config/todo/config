@@ -2,7 +2,7 @@
 
 # Your todo.txt directory (this should be an absolute path)
 #export TODO_DIR="/Users/gina/Documents/todo"
-export TODO_DIR=$(dirname "$0")
+export TODO_DIR=${HOME:-$USERPROFILE}/.todo
 
 # Your todo/done/report.txt locations
 export TODO_FILE="$TODO_DIR/todo.txt"
@@ -64,15 +64,15 @@ export REPORT_FILE="$TODO_DIR/report.txt"
 
 # There is highlighting for projects, contexts, dates, and item numbers.
 #
-# export COLOR_PROJECT=$RED
-# export COLOR_CONTEXT=$RED
-# export COLOR_DATE=$BLUE
-# export COLOR_NUMBER=$LIGHT_GRAY
+export COLOR_PROJECT=$RED
+export COLOR_CONTEXT=$RED
+export COLOR_DATE=$BLUE
+export COLOR_NUMBER=$LIGHT_GREY
 
 # There is highlighting for metadata key:value pairs e.g.
 # DUE:2006-08-01 or note:MYNOTE
 #
-# export COLOR_META=$CYAN
+export COLOR_META=$CYAN
 
 # === BEHAVIOR ===
 

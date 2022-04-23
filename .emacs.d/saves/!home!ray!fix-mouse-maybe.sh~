@@ -1,0 +1,5 @@
+#!/bin/bash
+
+rmmod psmouse
+sleep 1
+modprobe psmouse

@@ -1,0 +1,101 @@
+window:
+  dimensions:
+    # size of the window in columns.
+    # application restart required on change
+    columns: 80
+    lines: 24
+
+  padding:
+    # pixels of padding between window edge and text
+    x: 0
+    y: 0
+
+  # allow running functions to change window title
+  dynamic_title: true
+
+  # override current GTK theme and use this one
+  gtk_theme_variant: dark
+
+  # how many characters does a tab take up?
+  tabspaces: 4
+
+  decorations: full
+
+
+scrolling:
+  # number of lines that are stored
+  # and can be scrolled up to
+  history: 10000
+
+
+# opacity of the window
+background_opacity: 1
+
+
+# font family (names) and styles
+# (bold, italic, extralight, etc)
+font:
+  normal:
+    family: Source Code Pro
+    style: Normal
+  bold:
+    family: Source Code Pro
+    style: Bold
+  italic:
+    family: Source Code Pro
+    style: Regular Italic
+
+  # font size of the chosen font
+  size: 13
+
+# Colors (Gruvbox dark)
+colors:
+  # Default colors
+  primary:
+    # hard contrast: background = '0x1d2021'
+    background: '0x282828'
+    # soft contrast: background = '0x32302f'
+    foreground: '0xebdbb2'
+
+  # Normal colors
+  normal:
+    black:   '0x282828'
+    red:     '0xcc241d'
+    green:   '0x98971a'
+    yellow:  '0xd79921'
+    blue:    '0x458588'
+    magenta: '0xb16286'
+    cyan:    '0x689d6a'
+    white:   '0xa89984'
+
+  # Bright colors
+  bright:
+    black:   '0x928374'
+    red:     '0xfb4934'
+    green:   '0xb8bb26'
+    yellow:  '0xfabd2f'
+    blue:    '0x83a598'
+    magenta: '0xd3869b'
+    cyan:    '0x8ec07c'
+    white:   '0xebdbb2'
+
+draw_bold_text_with_bright_colors: true
+
+cursor:
+  style:
+    shape: Block
+    blinking: On
+
+  # (Windows, Linux, and BSD only)
+  #- { key: V,              mods: Control|Shift, mode: ~Vi,        action: Paste            }
+  #- { key: C,              mods: Control|Shift,                   action: Copy             }
+  #- { key: F,              mods: Control|Shift, mode: ~Search,    action: SearchForward    }
+  #- { key: B,              mods: Control|Shift, mode: ~Search,    action: SearchBackward   }
+  #- { key: C,              mods: Control|Shift, mode: Vi|~Search, action: ClearSelection   }
+  #- { key: Insert,         mods: Shift,                           action: PasteSelection   }
+  #- { key: Key0,           mods: Control,                         action: ResetFontSize    }
+  #- { key: Equals,         mods: Control,                         action: IncreaseFontSize }
+  #- { key: Plus,           mods: Control,                         action: IncreaseFontSize }
+  #- { key: NumpadAdd,      mods: Control,                         action: IncreaseFontSize }
+  #- { key: Minus,          mods: Control,                         action: DecreaseFontSize }
+  #- { key: NumpadSubtract, mods: Control,                         action: DecreaseFontSize }

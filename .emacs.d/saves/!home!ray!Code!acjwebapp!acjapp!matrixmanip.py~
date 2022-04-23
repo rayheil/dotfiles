@@ -1,0 +1,14 @@
+# /usr/bin/python3.8
+
+import pandas
+from math import nan
+
+as_dict = {1: {1: 1.0, 5: NaN, 6: NaN, 7: NaN, 8: 0.29649972666444047, 13: NaN},
+           5: {1: NaN, 5: 1.0, 6: NaN, 7: NaN, 8: NaN, 13: NaN},
+           6: {1: NaN, 5: NaN, 6: 1.0, 7: NaN, 8: NaN, 13: NaN},
+           7: {1: NaN, 5: NaN, 6: NaN, 7: 1.0, 8: NaN, 13: NaN},
+           8: {1: 0.29649972666444047, 5: NaN, 6: NaN, 7: NaN, 8: 1.0, 13: NaN},
+           13: {1: NaN, 5: NaN, 6: NaN, 7: NaN, 8: NaN, 13: 1.0}}
+
+df = pandas.DataFrame(data=as_dict)
+

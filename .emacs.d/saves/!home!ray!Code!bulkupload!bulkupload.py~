@@ -1,0 +1,42 @@
+#! /usr/bin/python
+# you'll need to customize your shebang: `which python3.8`
+
+import os
+import pandas
+
+def main(): # you're supposed to do something here but I can't remember what anymore
+    pass
+
+def script_go():
+    root = "/home"
+    directory = os.path.join(root, "ray/Code/bulkupload")
+    os.chdir(directory)
+    
+    csv = pandas.read_csv("test.csv")
+    aslist = csv["CDAT 2021 Student ID"].tolist() # should be able to use the df alone but it keeps breaking
+
+    # check which files in this directory have names that match the cdat list
+    in_csv = []
+    for file in os.listdir("."): # find the files in this dir that are in the csv file
+        filename = file.split('.', 1)[0]
+        try:
+            filename = int(filename)
+        except ValueError: # jank
+            pass
+        if filename in aslist: # replace the df here if possible
+            in_csv.append(filename)
+        
+
+            # check which files that match the cdat list are already in the database. can't do this on my compute
+    in_db = []
+    db_entries_pretend = [] # a list you'd define by a query somehow
+    for script in in_csv: # I don't have time to test on the db right now but it's prolly a query
+        if not script in db_entries_pretend:
+            # we need to add it to the database like the django site describes
+            #     from pairwise.???? import Script
+            #     new_script = Script(the, values, we, need, to, add)
+            #     new_script.save() # which just does a sql insert command
+            # however, we need to have the django database stuff running when this happens.
+            # there, I just redefined it so we can jankily run it from python manage.py shell
+            # that'll be by doing from bulkupload import *; script_go() because I can't think of a better title rn
+            pass

@@ -1,0 +1,20 @@
+&lt;div&gt;
+	&lt;p&gt;One of the coolest animals is the &lt;element id="bug" field="type"/&gt; &lt;element id="bug" field="name"/&gt;&lt;/p&gt;
+	&lt;p&gt;Another really cool animal is named &lt;element id="jackson" field="name"/&gt;, who is a &lt;element id="jackson" field="type"/&gt;&lt;/p&gt;
+	&lt;p&gt;Some really funny fantasy minerals (that &lt;strong&gt;totally&lt;/strong&gt; aren't randomly generated) include:&lt;/p&gt;
+	&lt;ul&gt;
+		&lt;li&gt;&lt;em&gt;&lt;random tag="rock" field="name"/&gt;&lt;/em&gt;, which grants the power of &lt;random class="mineral" field="power"/&gt;&lt;/li&gt;
+		&lt;li&gt;&lt;em&gt;&lt;random class="mineral" field="name"/&gt;&lt;/em&gt;, which grants the power of &lt;random class="mineral" field="power"/&gt;&lt;/li&gt;
+		&lt;li&gt;&lt;em&gt;&lt;random tag="rock" field="name"/&gt;&lt;/em&gt;, which grants the power of &lt;random class="mineral" field="power"/&gt;&lt;/li&gt;
+		&lt;li&gt;&lt;em&gt;&lt;random class="mineral" field="name"/&gt;&lt;/em&gt;, which grants the power of &lt;random class="mineral" field="power"/&gt;&lt;/li&gt;
+		&lt;li&gt;&lt;em&gt;&lt;random tag="rock"/&gt;&lt;/em&gt;, which has completely unknown powers.&lt;/li&gt;
+	&lt;/ul&gt;
+	&lt;p&gt;Also, I want to show that I can do random calls without fields.&lt;/p&gt;
+	&lt;p&gt;Elements without fields should work too, like &lt;element id="example"/&gt;&lt;/p&gt;
+	&lt;ul&gt;
+		&lt;li&gt;&lt;random tag="letter"/&gt;&lt;/li&gt;
+		&lt;li&gt;&lt;random tag="letter"/&gt;&lt;/li&gt;
+		&lt;li&gt;&lt;random tag="letter"/&gt;&lt;/li&gt;
+	&lt;/ul&gt;
+&lt;/div&gt;
+

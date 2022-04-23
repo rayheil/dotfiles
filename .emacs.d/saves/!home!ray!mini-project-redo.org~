@@ -1,0 +1,17 @@
+* TODO Things I need to do
+** TODO Make sure all my documentation is correct this time
+** TODO Make my dale-chall score bit less repetetive
+* Things I don't have
+** All procedures are documented correctly, including new helper procedures (***)
+** Avoids repeated computation in computing the Dale-Chall score (***)
+* The feedback they gave me
+  You did an amazing job with your test cases! Very thorough, and you
+  are close to an E.
+  
+  For an E: [ ] Fix up documentation of your procedures to be entirely
+  correct. Comments have been provided to help you locate issues!
+  
+  [ ] Reduce repeated computation in the computation of your
+  Dale-CHall score.
+  
+  Overall, you did a great job, and you are very very close to an E!

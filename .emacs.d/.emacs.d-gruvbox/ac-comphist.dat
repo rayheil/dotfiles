@@ -1,0 +1,44 @@
+((("infect_others" .
+   [1 0 0 0 0 0 0 0 0 0 0 0 0])
+  ("ChartModule" .
+   [0 0 0 0 0 0 1 0 0 0 0])
+  ("modules" .
+   [1 0 0 0 0 0 0])
+  ("model" .
+   [0 0 0 1 0])
+  ("visualization" .
+   [0 0 0 1 0 0 0 0 0 0 0 0 0])
+  ("collect" .
+   [1 0 0 0 0 0 0])
+  ("datacollector" .
+   [1 0 0 0 0 0 0 0 0 0 0 0 0])
+  ("DataCollector" .
+   [0 1 0 0 1 0 0 0 0 0 0 0 0])
+  ("datacollection" .
+   [0 0 0 0 0 0 0 0 1 0 0 0 0 0])
+  ("mesa" .
+   [2 0 0 0])
+  ("i" .
+   [2])
+  ("infect_neighbors" .
+   [1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1])
+  ("r" .
+   [1])
+  ("running" .
+   [1 0 0 0 0 0 0])
+  ("infected_chart" .
+   [1 0 0 0 0 0 0 0 0 1 0 0 0 0])
+  ("infected" .
+   [6 0 0 0 0 0 0 1])
+  ("direct_contact_step2" .
+   [1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0])
+  ("direct_contact_step1" .
+   [0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0])
+  ("direct_contact_step3" .
+   [1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0])
+  ("lowest_age" .
+   [0 0 0 0 0 0 0 1 0 0])
+  ("highest_age" .
+   [0 0 0 0 0 0 0 0 0 0 1])
+  ("exit" .
+   [1 0 0 0])))

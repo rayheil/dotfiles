@@ -1,0 +1,2 @@
+/run/user/1000/gvfs/smb-share:server=storage,share=student/heilray/test.txt
+/run/user/1000/gvfs/smb-share:server=storage,share=student/heilray/#test.txt#

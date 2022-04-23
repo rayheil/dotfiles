@@ -1,0 +1,6 @@
+#! /bin/sh
+
+now=$(date)
+charge_full=$(cat /sys/class/power_supply_BAT0/charge_full)
+charge_now=$(cat /sys/class/power_supply_BAT0/charge_now)
+

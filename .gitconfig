@@ -1,0 +1,12 @@
+[user]
+	email = 68617358+raymondheil@users.noreply.github.com
+	name = Ray Heil
+[color]
+	ui = auto
+[init]
+	defaultBranch = main
+[filter "lfs"]
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true

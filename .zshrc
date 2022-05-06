@@ -60,7 +60,7 @@ zstyle ':omz:update' frequency 13
 # "mm/dd/yyyy"|"dd.mm.yyyy"|"yyyy-mm-dd"
 # or set a custom format using the strftime function format specifications,
 # see 'man strftime' for details.
-HIST_STAMPS="mm/dd/yyyy"
+HIST_STAMPS="yyyy-mm-dd"
 
 # Would you like to use another custom folder than $ZSH/custom?
 # ZSH_CUSTOM=/path/to/new-custom-folder
@@ -89,6 +89,9 @@ else
   export VISUAL='emacs'
 fi
 
+# Add some random crap to PATH
+export PATH="/home/ray/.bin:$PATH"
+
 # Compilation flags
 # export ARCHFLAGS="-arch x86_64"
 
@@ -104,7 +107,4 @@ alias ll="ls -lh"
 alias lt="ls -lht"
 alias t="todo.sh"
 alias config='/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
-
-# startscreen garbage I don't need
-# fortune
-# ~/.bin/asciilotl.sh
+alias please='sudo'

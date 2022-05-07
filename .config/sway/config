@@ -30,6 +30,7 @@ exec_always export SSH_AUTH_SOCK
 
 # Default wallpaper (more resolutions are available in /usr/share/backgrounds/sway/)
 output * bg /home/ray/Pictures/Wallpapers/andrew-mcintosh-jellies.jpg fill
+
 #
 # Example configuration:
 #

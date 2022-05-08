@@ -90,7 +90,7 @@ else
 fi
 
 # Add some random crap to PATH
-export PATH="/home/ray/.bin:$PATH"
+export PATH="/home/ray/.local/bin:/home/ray/.bin:$PATH"
 
 # Compilation flags
 # export ARCHFLAGS="-arch x86_64"

@@ -1,6 +1,6 @@
 * {
     /* `otf-font-awesome` is required to be installed for icons */
-    font-family: FontAwesome, Roboto, Helvetica, Arial, sans-serif;
+    font-family: NotoSans Nerd Font, FontAwesome, Roboto, Helvetica, Arial, sans-serif;
     font-size: 13px;
 }
 
@@ -66,7 +66,6 @@ window#waybar.chromium {
 }
 
 #clock,
-#battery,
 #cpu,
 #memory,
 #disk,
@@ -81,6 +80,11 @@ window#waybar.chromium {
 #mpd {
     padding: 0 10px;
     color: #ffffff;
+}
+
+/* Hacky way to make battery display right (font issues I bet). 2022-05-07 */
+#battery {
+    padding: 0 15px 0 10px
 }
 
 #window,

@@ -16,19 +16,20 @@ set $right l
 
 set $term alacritty
 set $browser firefox
-set $editor emacs
-set $menu wofi --show=drun 
-set $lock swaylock -f -c 222222
+set $editor $term -e nvim
+set $menu ulauncher
+set $lock swaylock -f -c 444444
 
 ### Autostart programs
 
 exec_always dropbox start -i
 exec_always eval $(gnome-keyring-daemon --start)
 exec_always export SSH_AUTH_SOCK
+exec wl-paste -t text --watch clipman store --no-persist
 
 ### Output configuration
 
-# Default wallpaper (more resolutions are available in /usr/share/backgrounds/sway/)
+# Wallpaper
 output * bg /home/ray/Pictures/Wallpapers/andrew-mcintosh-jellies.jpg fill
 
 #
@@ -59,8 +60,8 @@ exec swayidle -w \
 ### Input configuration
 
 input "1267:12572:DELL097D:00_04F3:311C_Touchpad" {
-    dwt disabled # Video games! Either this or tap.
-    tap disabled # The palm rejection isn't good enough to justify it
+    dwt disabled 
+    tap disabled 
     natural_scroll enabled
     middle_emulation enabled
     click_method clickfinger
@@ -108,6 +109,8 @@ gaps outer 8
 
     # Lock the screen
     bindsym $mod+Shift+X exec $lock
+
+    for_window [app_id="ulauncher"] border none; floating enable
 #
 # Moving around:
 #
@@ -217,8 +220,28 @@ mode "resize" {
     # Return to default mode
     bindsym Return mode "default"
     bindsym Escape mode "default"
+    bindsym $mod+r mode "default"
 }
 bindsym $mod+r mode "resize"
+
+#
+# Screen capture
+#
+set $screenshot 1 selected, 2 whole, 3 selected clipboard, 4 whole clipboard, 5 swappy
+
+mode "$screenshot" {
+    bindsym 1 exec 'grim -g "$(slurp)" ~/Pictures/Screenshots/screenshot_$(date +"%Y%m%d%H%M%S").png', mode "default"
+    bindsym 2 exec 'grim ~/Pictures/Screenshots/screenshot_$(date +"%Y%m%d%H%M%S").png', mode "default"
+    bindsym 3 exec 'grim -g "$(slurp)" - | wl-copy', mode "default"
+    bindsym 4 exec 'grim - | wl-copy', mode "default"
+    bindsym 5 exec 'grim -g "$(slurp)" - | swappy -f - -o ~/Pictures/Screenshots/screensot_$(date +"%Y%m%d%H%M%S").png', mode "default"
+# back to normal: Enter or Escape
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+    bindsym $mod+Print mode "default"
+}
+bindsym $mod+Print mode "$screenshot"
+bindsym Print exec 'grim ~/Pictures/Screenshots/screenshot_$(date +"%Y%m%d%H%M%S").png'
 
 #
 # Media keys:

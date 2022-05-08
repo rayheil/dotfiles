@@ -111,7 +111,7 @@
         "format-alt": "{time} {icon}",
         // "format-good": "", // An empty format will hide the module
         // "format-full": "",
-        "format-icons": ["", "", "", "", ""]
+        "format-icons": [" ", " ", " ", " ", " "] // Evil temp fix since the font is too wide
     },
     "battery#bat2": {
         "bat": "BAT2"

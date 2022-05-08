@@ -74,17 +74,13 @@ window#waybar.chromium {
 #network,
 #pulseaudio,
 #custom-media,
+#battery,
 #tray,
 #mode,
 #idle_inhibitor,
 #mpd {
     padding: 0 10px;
     color: #ffffff;
-}
-
-/* Hacky way to make battery display right (font issues I bet). 2022-05-07 */
-#battery {
-    padding: 0 15px 0 10px
 }
 
 #window,

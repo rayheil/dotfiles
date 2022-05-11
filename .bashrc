@@ -25,14 +25,5 @@ function parse_git_branch {
 
 PS1="\$(parse_git_branch)[\u@\h \W] \$ "
 
-# alias to use todo.sh, because I like it
-alias t='todo.sh'
-
 # link to/load z for frecent (frequent and recent) cd functionality
 #. ~/.bin/z.sh # I can't make it work right now ughh
-
-# BEGIN_KITTY_SHELL_INTEGRATION
-if test -n "$KITTY_INSTALLATION_DIR" -a -e "$KITTY_INSTALLATION_DIR/shell-integration/bash/kitty.bash"; then source "$KITTY_INSTALLATION_DIR/shell-integration/bash/kitty.bash"; fi
-# END_KITTY_SHELL_INTEGRATION
-
-fortune

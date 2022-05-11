@@ -107,4 +107,3 @@ alias ll="ls -lh"
 alias lt="ls -lht"
 alias t="todo.sh"
 alias config='/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
-alias please='sudo'

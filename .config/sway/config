@@ -17,7 +17,7 @@ set $right l
 set $term alacritty
 set $browser firefox
 set $editor $term -e nvim
-set $menu ulauncher
+set $menu ulauncher-toggle
 set $lock swaylock -f -c 444444
 
 ### Autostart programs
@@ -26,6 +26,7 @@ exec_always dropbox start -i
 exec_always eval $(gnome-keyring-daemon --start)
 exec_always export SSH_AUTH_SOCK
 exec wl-paste -t text --watch clipman store --no-persist
+exec ulauncher --hide-window --no-window-shadow
 
 ### Output configuration
 
@@ -60,8 +61,8 @@ exec swayidle -w \
 ### Input configuration
 
 input "1267:12572:DELL097D:00_04F3:311C_Touchpad" {
-    dwt disabled 
-    tap disabled 
+    dwt disabled
+    tap disabled
     natural_scroll enabled
     middle_emulation enabled
     click_method clickfinger

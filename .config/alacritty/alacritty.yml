@@ -31,17 +31,17 @@ scrolling:
 # (bold, italic, extralight, etc)
 font:
   normal:
-    family: mononoki Nerd Font Mono
+    family: Hack Nerd Font Mono
     style: Normal
   bold:
-    family: mononoki Nerd Font Mono	
+    family: Hack Nerd Font Mono
     style: Bold
   italic:
-    family: mononoki Nerd Font Mono
+    family: Hack Nerd Font Mono
     style: Regular Italic
 
   # font size of the chosen font
-  size: 14
+  size: 12
 
 # Colors (Based on Tomorrow Night Bright)
 colors:
@@ -59,7 +59,7 @@ colors:
     blue:    '0x7aa6da'
     magenta: '0xc397d8'
     cyan:    '0x70c0b1'
-    white:   '0xc5c8c6'
+    white:   '0xffffff'
 
   # Bright colors
   bright:

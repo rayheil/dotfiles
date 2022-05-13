@@ -31,13 +31,13 @@ scrolling:
 # (bold, italic, extralight, etc)
 font:
   normal:
-    family: Hack Nerd Font Mono
+    family: Hack
     style: Normal
   bold:
-    family: Hack Nerd Font Mono
+    family: Hack
     style: Bold
   italic:
-    family: Hack Nerd Font Mono
+    family: Hack
     style: Regular Italic
 
   # font size of the chosen font

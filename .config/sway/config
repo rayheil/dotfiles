@@ -30,8 +30,12 @@ exec ulauncher --hide-window --no-window-shadow
 
 ### Output configuration
 
-# Wallpaper
+# Wallpapers I often use -- uncomment one
+
 output * bg /home/ray/Pictures/Wallpapers/andrew-mcintosh-jellies.jpg fill
+# output * bg /home/ray/Pictures/Wallpapers/calvin_hobbes_orange_tree.png fill
+# output * bg /home/ray/Pictures/Wallpapers/celeste-summit.png fill
+# output * bg /home/ray/Pictures/Wallpapers/tf2-blu-pyro.png fill
 
 #
 # Example configuration:
@@ -43,6 +47,7 @@ output * bg /home/ray/Pictures/Wallpapers/andrew-mcintosh-jellies.jpg fill
 ### Idle configuration
 
 exec swayidle -w \
+     timeout 410 'notify-send -u low "Locking soon..." "You might wanna move the mouse"' \
      timeout 420 '$lock' \
      timeout 900 'swaymsg "output * dpms off"' resume 'swaymsg "output * dpms on"' \
      before-sleep '$lock'
@@ -72,7 +77,7 @@ input "1267:12572:DELL097D:00_04F3:311C_Touchpad" {
 focus_follows_mouse no
 
 # Don't give windows a title in their border
-default_border pixel 2
+default_border pixel 4
 
 # Gaps because I'm a fancy boi
 gaps inner 8

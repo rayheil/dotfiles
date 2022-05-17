@@ -32,10 +32,10 @@ exec ulauncher --hide-window --no-window-shadow
 
 # Wallpapers I often use -- uncomment one
 
-output * bg /home/ray/Pictures/Wallpapers/andrew-mcintosh-jellies.jpg fill
+# output * bg /home/ray/Pictures/Wallpapers/andrew-mcintosh-jellies.jpg fill
 # output * bg /home/ray/Pictures/Wallpapers/calvin_hobbes_orange_tree.png fill
 # output * bg /home/ray/Pictures/Wallpapers/celeste-summit.png fill
-# output * bg /home/ray/Pictures/Wallpapers/tf2-blu-pyro.png fill
+output * bg /home/ray/Pictures/Wallpapers/tf2-blu-pyro.png fill
 
 #
 # Example configuration:

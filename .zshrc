@@ -89,7 +89,6 @@ if [[ -n $SSH_CONNECTION ]]; then
   export EDITOR='vi'
 else
   export EDITOR='nvim'
-  export VISUAL='emacs'
 fi
 
 # Add some random crap to PATH
@@ -106,7 +105,10 @@ export PATH="/home/ray/.local/bin:/home/ray/.bin:$PATH"
 # Pretty simple aliases
 alias ls="ls --color=auto"
 alias la="ls -a"
-alias ll="ls -lh"
+alias l="ls -lh"
 alias lt="ls -lht"
 alias t="todo.sh"
 alias config='/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
+
+# I use arch, btw
+neofetch

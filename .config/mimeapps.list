@@ -1,21 +1,5 @@
+
 [Default Applications]
-application/pdf=okularApplication_pdf.desktop
-x-scheme-handler/http=firefox.desktop
-text/html=firefox.desktop
-application/xhtml+xml=firefox.desktop
-x-scheme-handler/https=firefox.desktop
-image/jpeg=geeqie.desktop
-image/bmp=geeqie.desktop
-image/gif=geeqie.desktop
-image/jpg=geeqie.desktop
-image/pjpeg=geeqie.desktop
-image/png=geeqie.desktop
-image/tiff=geeqie.desktop
-image/x-bmp=geeqie.desktop
-image/x-gray=geeqie.desktop
-image/x-icb=geeqie.desktop
-image/x-ico=geeqie.desktop
-image/x-png=geeqie.desktop
-image/x-portable-anymap=geeqie.desktop
-image/x-portable-bitmap=geeqie.desktop
-text/plain=nvim.desktop;
+inode/directory=thunar.desktop
+application/x-gnome-saved-search=thunar.desktop
+text/plain=nvim.desktop

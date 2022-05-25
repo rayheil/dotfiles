@@ -8,6 +8,7 @@ endif
 
 call plug#begin("~/.config/nvim/plugged")
   Plug 'tpope/vim-sensible'
+  Plug 'tpope/vim-sleuth'
   Plug 'neoclide/coc.nvim', {'branch': 'release'}
 call plug#end()
 

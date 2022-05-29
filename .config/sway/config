@@ -17,8 +17,9 @@ set $right l
 set $term alacritty
 set $browser firefox
 set $editor $term -e nvim
-set $menu ulauncher-toggle
+set $menu rofi -show combi
 set $lock swaylock -f -c 444444
+set $clip clipman pick --tool=rofi
 
 ### Autostart programs
 
@@ -26,16 +27,15 @@ exec_always dropbox start -i
 exec_always eval $(gnome-keyring-daemon --start)
 exec_always export SSH_AUTH_SOCK
 exec wl-paste -t text --watch clipman store --no-persist
-exec ulauncher --hide-window --no-window-shadow
 
 ### Output configuration
 
 # Wallpapers I often use -- uncomment one
 
-# output * bg /home/ray/Pictures/Wallpapers/andrew-mcintosh-jellies.jpg fill
+output * bg /home/ray/Pictures/Wallpapers/andrew-mcintosh-jellies.jpg fill
 # output * bg /home/ray/Pictures/Wallpapers/calvin_hobbes_orange_tree.png fill
 # output * bg /home/ray/Pictures/Wallpapers/celeste-summit.png fill
-output * bg /home/ray/Pictures/Wallpapers/tf2-blu-pyro.png fill
+# output * bg /home/ray/Pictures/Wallpapers/tf2-blu-pyro.png fill
 
 #
 # Example configuration:
@@ -79,10 +79,6 @@ focus_follows_mouse no
 # Don't give windows a title in their border
 default_border pixel 4
 
-# Gaps because I'm a fancy boi
-gaps inner 8
-gaps outer 8
-
 ### Key bindings
 
 # Basics:
@@ -101,6 +97,9 @@ gaps outer 8
 
     # Start your launcher
     bindsym $mod+d exec $menu
+
+    # View and select clipboard
+    bindsym $mod+p exec $clip
 
     # Drag floating windows by holding down $mod and left mouse button.
     # Resize them with right mouse button + $mod.
@@ -195,6 +194,10 @@ gaps outer 8
 
     # Move focus to the parent container
     bindsym $mod+a focus parent
+
+    # fancy gaps for a fancy boii
+    gaps inner 5
+    gaps outer 5
 #
 # Scratchpad:
 #
@@ -236,7 +239,7 @@ bindsym $mod+r mode "resize"
 # Screen capture
 #
 set $screenshot 1 selected, 2 whole, 3 selected clipboard, 4 whole clipboard, 5 swappy
-set $save_location ~/Pictures/Screenshots/screenshot_$(date +'%Y%m%d%H%M%S').png
+set $save_location "~/Pictures/Screenshots/Screenshot $(date +'%Y-%m-%d %H-%M-%S').png"
 
 mode "$screenshot" {
     bindsym 1 exec 'grim -g "$(slurp)" $save_location', mode "default"
@@ -249,8 +252,7 @@ mode "$screenshot" {
     bindsym Escape mode "default"
     bindsym $mod+Print mode "default"
 }
-bindsym $mod+Print mode "$screenshot"
-bindsym Print exec 'grim $save_location'
+bindsym Print mode "$screenshot"
 
 #
 # Media keys:

@@ -79,7 +79,7 @@ source $ZSH/oh-my-zsh.sh
 # export MANPATH="/usr/local/man:$MANPATH"
 
 # use bat to display man pages because it's pretty!
-export MANPAGER="sh -c 'col -bx | bat -l man -p'"
+# export MANPAGER="sh -c 'col -bx | bat -l man -p'"
 
 # You may need to manually set your language environment
 # export LANG=en_US.UTF-8
@@ -107,8 +107,5 @@ alias ls="ls --color=auto"
 alias la="ls -a"
 alias l="ls -lh"
 alias lt="ls -lht"
-alias t="todo.sh"
+alias l.="ls -d .*"
 alias config='/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
-
-# I use arch, btw
-neofetch

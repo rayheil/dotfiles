@@ -5,7 +5,7 @@ I wouldn't reccommend you (the random human on the internet) use these, but if y
 To install these, I find it easiest to use an alias that points to the bare git repository.
 
 ```
-alias config='usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
+alias config='git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
 ```
 
 Then, it's simple enough to clone the repo (but not so simple that I trust myself to do it without pasting the command here).

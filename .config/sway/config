@@ -20,7 +20,6 @@ set $editor $term -e nvim
 set $menu rofi -show combi
 set $lock swaylock -f -c 444444
 set $clip clipman pick --tool=rofi
-set $wallpaper /home/ray/Pictures/Wallpapers/calvin_hobbes_orange_tree.png
 
 ### Autostart programs
 
@@ -31,7 +30,7 @@ exec wl-paste -t text --watch clipman store --no-persist
 
 ### Output configuration
 
-exec swaybg -m fill -i $wallpaper
+exec_always swaybg -m fill -i /home/ray/Pictures/Wallpapers/calvin_hobbes_orange_tree.png
 
 #
 # Example configuration:

@@ -30,7 +30,7 @@ exec wl-paste -t text --watch clipman store --no-persist
 
 ### Output configuration
 
-exec_always swaybg -m fill -i /home/ray/Pictures/Wallpapers/calvin_hobbes_orange_tree.png
+exec swaybg -m fill -i /home/ray/Pictures/Wallpapers/andrew-mcintosh-jellies.jpg
 
 #
 # Example configuration:

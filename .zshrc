@@ -110,3 +110,7 @@ alias l="ls -lh"
 alias lt="ls -lht"
 alias l.="ls -d .*"
 alias config='/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
+alias cstatus="config status -uno"
+
+source /usr/share/doc/pkgfile/command-not-found.zsh
+source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh

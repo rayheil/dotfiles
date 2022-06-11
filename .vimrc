@@ -9,7 +9,7 @@ call plug#end()
 let g:slime_target = "tmux"
 let g:slime_paste_file = tempname()
 let g:slime_default_config = {"socket_name": "default", "target_pane": "{last}"}
-" let g:slime_python_ipython = 1
+let g:slime_python_ipython = 1
 
 " Tell slime to send the whole python file C-c C-x
 :nnoremap C-c C-x :execute 'SlimeSend1 python' expand('%:p')<CR>

@@ -14,9 +14,6 @@ let g:slime_python_ipython = 1
 " Make slime send the entire file
 nmap <c-c><c-x> :%SlimeSend<cr>
 
-" Allow mouse interaction (whee!)
-set mouse=a
-
 " Enable line numbers
 set number
 

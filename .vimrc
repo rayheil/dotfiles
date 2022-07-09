@@ -5,6 +5,9 @@ call plug#begin()
   Plug 'jpalardy/vim-slime'
 call plug#end()
 
+" Syntax highlighting
+syntax enable
+
 " Vim slime settings (paste into tmux buffer)
 let g:slime_target = "tmux"
 let g:slime_paste_file = tempname()
@@ -25,5 +28,4 @@ set statusline="%f%m%r%h%w [%Y] [0x%02.2B]%< %F%=%4v,%4l %3p%% of %L"
 
 " By default, don't wrap lines
 set nowrap
-
 

@@ -16,7 +16,7 @@ Then, it's simple enough to clone the repo (but not so simple that I trust mysel
 git clone --bare https://github.com/raymondheil/dotfiles.git $HOME/.cfg
 ```
 
-If you use `config status` now iy will show you every file in your home directory, which isn't that great. Turn it off with this setting.
+If you use `config status` now it will show you every file in your home directory, which isn't that great. Turn it off with this setting.
 
 ```
 config config status.showUntrackedFiles no

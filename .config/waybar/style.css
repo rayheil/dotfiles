@@ -1,11 +1,11 @@
 * {
     /* `otf-font-awesome` is required to be installed for icons */
     font-family: NotoSans Nerd Font, FontAwesome, Roboto, Helvetica, Arial, sans-serif;
-    font-size: 13px;
+    font-size: 11pt;
 }
 
 window#waybar {
-    background-color: rgba(43, 48, 59, 0.7);
+    background-color: black;
     /* border-bottom: 3px solid rgba(100, 114, 125, 0.2); */
     color: #ffffff;
     transition-property: background-color;
@@ -14,24 +14,6 @@ window#waybar {
 
 window#waybar.hidden {
     opacity: 0;
-}
-
-/*
-window#waybar.empty {
-    background-color: transparent;
-}
-window#waybar.solo {
-    background-color: #FFFFFF;
-}
-*/
-
-window#waybar.termite {
-    background-color: #3F3F3F;
-}
-
-window#waybar.chromium {
-    background-color: #000000;
-    border: none;
 }
 
 #workspaces button {
@@ -66,28 +48,15 @@ window#waybar.chromium {
 }
 
 #clock,
-#cpu,
-#memory,
-#disk,
-#temperature,
-#backlight,
 #network,
 #pulseaudio,
 #custom-media,
 #battery,
 #tray,
 #mode,
-#idle_inhibitor,
-#mpd {
+#idle_inhibitor {
     padding: 0 10px;
-    color: #ffffff;
-}
-
-.custom-spotify {
-    padding: 0 10px;
-    margin : 0 4px;
-    background-color: #1DB954;
-    color: black;
+    color: white;
 }
 
 #window,
@@ -106,12 +75,12 @@ window#waybar.chromium {
 }
 
 #clock {
-    background-color: #2980b9;
+    background-color: #390099;
 }
 
 #battery {
-    background-color: #26a65b;
-    color: #ffffff;
+    background-color: #8AC926;
+    color: black
 }
 
 @keyframes blink {
@@ -122,8 +91,8 @@ window#waybar.chromium {
 }
 
 #battery.critical:not(.charging) {
-    background-color: #f53c3c;
-    color: #ffffff;
+    background-color: #D00000;
+    color: white;
     animation-name: blink;
     animation-duration: 0.5s;
     animation-timing-function: linear;
@@ -135,64 +104,42 @@ label:focus {
     background-color: #000000;
 }
 
-#cpu {
-    background-color: #2ecc71;
-    color: #000000;
-}
-
-#memory {
-    background-color: #9b59b6;
-}
-
-#disk {
-    background-color: #964B00;
-}
-
-#backlight {
-    background-color: #9b59b6;
-}
-
 #network {
-    background-color: #2980b9;
+    background-color: #1982C4;
 }
 
 #network.disconnected {
-    background-color: #f53c3c;
+    background-color: #D00000;
 }
 
 #pulseaudio {
-    background-color: #b05b00;
+    background-color: #FF0054;
 }
 
 #pulseaudio.muted {
     background-color: #90b1b1;
-    color: #2a5c45;
+    color: black;
 }
 
 #custom-media {
-    background-color: #66cc99;
-    color: #2a5c45;
-    min-width: 100px;
+    background-color: rgba(0, 0, 0, 0);
+    color: white;
+    min-width: 20px;
+    /*max-width: 20px;*/
 }
 
 #custom-media.custom-spotify {
-    background-color: #66cc99;
+    color: #8AC926;
+    background-color: rgba(0, 0, 0, 0);
 }
 
 #custom-media.custom-vlc {
-    background-color: #ffa000;
-}
-
-#temperature {
-    background-color: #f0932b;
-}
-
-#temperature.critical {
-    background-color: #eb4d4b;
+    color: #FB5607;
+    background-color: rgba(0, 0, 0, 0);
 }
 
 #tray {
-    background-color: #2d3436;
+    background-color: rgba(0, 0, 0, 0);
 }
 
 #tray > .passive {
@@ -205,7 +152,7 @@ label:focus {
 }
 
 #idle_inhibitor {
-    background-color: #2d3436;
+    background-color: rgba(0, 0, 0, 0);
 }
 
 #idle_inhibitor.activated {
@@ -213,43 +160,3 @@ label:focus {
     color: #2d3436;
 }
 
-#mpd {
-    background-color: #66cc99;
-    color: #2a5c45;
-}
-
-#mpd.disconnected {
-    background-color: #f53c3c;
-}
-
-#mpd.stopped {
-    background-color: #90b1b1;
-}
-
-#mpd.paused {
-    background-color: #51a37a;
-}
-
-#language {
-    background: #00b093;
-    color: #740864;
-    padding: 0 5px;
-    margin: 0 5px;
-    min-width: 16px;
-}
-
-#keyboard-state {
-    background: #97e1ad;
-    color: #000000;
-    padding: 0 0px;
-    margin: 0 5px;
-    min-width: 16px;
-}
-
-#keyboard-tate > label {
-    padding: 0 5px;
-}
-
-#keyboard-state > label.locked {
-    background: rgba(0, 0, 0, 0.2);
-}

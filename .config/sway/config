@@ -4,11 +4,13 @@
 #
 # Read `man 5 sway` for a complete reference.
 
-### Variables
+
 #
-# Logo key. Use Mod1 for Alt.
+# Variables and launchers
+#
+
 set $mod Mod4
-# Home row direction keys, like vim
+
 set $left h 
 set $down j
 set $up k
@@ -23,8 +25,9 @@ set $clip clipman pick --tool=rofi
 ### Autostart programs
 
 # Sync services -- dropbox and nextcloud
-exec_always dropbox start -i
-exec_always nextcloud --background
+# (they need a moment before starting to be reliable)
+exec sleep 3 && dropbox start -i
+exec sleep 3 && nextcloud --background
 
 # Gnome keyring daemon for ssh and gpg
 exec eval $(gnome-keyring-daemon --start)
@@ -38,16 +41,17 @@ exec wlsunset -l 35.7 -L -105.9
 # Night shift (Grinnell)
 # exec wlsunset -l 41.7 -L -92.7
 
-### Output configuration
+### Window display config
+
+# When you mouse over a window, do not focus it unless you click
+focus_follows_mouse no
+
+# Don't give windows a title in their border
+default_border pixel 4
+
+### Wallpaper
 
 exec swaybg -m fill -i /home/ray/Pictures/Wallpapers/andrew-mcintosh-jellies.jpg
-
-#
-# Example configuration:
-#
-#   output HDMI-A-1 resolution 1920x1080 position 1920,0
-#
-# You can get the names of your outputs by running: swaymsg -t get_outputs
 
 ### Idle configuration
 
@@ -56,17 +60,6 @@ exec swayidle -w \
      timeout 420 '$lock' \
      timeout 900 'swaymsg "output * dpms off"' resume 'swaymsg "output * dpms on"' \
      before-sleep '$lock'
-#
-# Example configuration:
-#
-# exec swayidle -w \
-#          timeout 300 'swaylock -f -c 000000' \
-#          timeout 600 'swaymsg "output * dpms off"' resume 'swaymsg "output * dpms on"' \
-#          before-sleep 'swaylock -f -c 000000'
-#
-# This will lock your screen after 300 seconds of inactivity, then turn off
-# your displays after another 300 seconds, and turn your screens back on when
-# resumed. It will also lock your screen before your computer goes to sleep.
 
 ### Input configuration
 
@@ -77,12 +70,6 @@ input "1267:12572:DELL097D:00_04F3:311C_Touchpad" {
     middle_emulation enabled
     click_method clickfinger
 }
-
-# When you mouse over a window, do not focus it unless you click
-focus_follows_mouse no
-
-# Don't give windows a title in their border
-default_border pixel 4
 
 ### Key bindings
 

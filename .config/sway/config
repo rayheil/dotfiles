@@ -9,24 +9,34 @@
 # Logo key. Use Mod1 for Alt.
 set $mod Mod4
 # Home row direction keys, like vim
-set $left h
+set $left h 
 set $down j
 set $up k
 set $right l
 
 set $term alacritty
 set $browser firefox
-set $editor $term -e nvim
-set $menu rofi -show combi
+set $menu j4-dmenu-desktop --dmenu='bemenu -i' --term='alacritty'
 set $lock swaylock -f -c 444444
 set $clip clipman pick --tool=rofi
 
 ### Autostart programs
 
+# Sync services -- dropbox and nextcloud
 exec_always dropbox start -i
-exec_always eval $(gnome-keyring-daemon --start)
-exec_always export SSH_AUTH_SOCK
-exec wl-paste -t text --watch clipman store --no-persist
+exec_always nextcloud --background
+
+# Gnome keyring daemon for ssh and gpg
+exec eval $(gnome-keyring-daemon --start)
+exec export SSH_AUTH_SOCK
+
+# Clipboard history
+exec wl-paste -t text --watch clipman store
+
+# Night shift (Santa Fe)
+exec wlsunset -l 35.7 -L -105.9
+# Night shift (Grinnell)
+# exec wlsunset -l 41.7 -L -92.7
 
 ### Output configuration
 
@@ -76,26 +86,24 @@ default_border pixel 4
 
 ### Key bindings
 
-# Basics:
 #
-    # Start a terminal
+# Launchers:
+#
+    # Terminal
     bindsym $mod+Return exec $term
 
-    # Start browser
+    # Web browser
     bindsym $mod+Tab exec $browser
 
-    # Start editor
-    bindsym $mod+Shift+Return exec $editor
-
-    # Kill focused window
-    bindsym $mod+Shift+q kill
-
-    # Start your launcher
+    # Launcherr
     bindsym $mod+d exec $menu
 
-    # View and select clipboard
+    # Clipboard selection
     bindsym $mod+p exec $clip
 
+#
+# Basics:
+#
     # Drag floating windows by holding down $mod and left mouse button.
     # Resize them with right mouse button + $mod.
     # Despite the name, also works for non-floating windows.
@@ -110,12 +118,16 @@ default_border pixel 4
     bindsym $mod+Shift+e exec swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway? This will end your Wayland session.' -b 'Yes, exit sway' 'swaymsg exit'
 
     # Lock the screen
-    bindsym $mod+Shift+X exec $lock
+    bindsym $mod+Shift+x exec $lock
 
-    for_window [app_id="ulauncher"] border none; floating enable
+    # Kill focused window
+    bindsym $mod+Shift+q kill
+
+
 #
 # Moving around:
 #
+
     # Move your focus around
     bindsym $mod+$left focus left
     bindsym $mod+$down focus down
@@ -137,9 +149,11 @@ default_border pixel 4
     bindsym $mod+Shift+Down move down
     bindsym $mod+Shift+Up move up
     bindsym $mod+Shift+Right move right
+
 #
 # Workspaces:
 #
+
     # Switch to workspace
     bindsym $mod+1 workspace number 1
     bindsym $mod+2 workspace number 2
@@ -151,6 +165,7 @@ default_border pixel 4
     bindsym $mod+8 workspace number 8
     bindsym $mod+9 workspace number 9
     bindsym $mod+0 workspace number 10
+
     # Move focused container to workspace
     bindsym $mod+Shift+1 move container to workspace number 1
     bindsym $mod+Shift+2 move container to workspace number 2
@@ -164,9 +179,11 @@ default_border pixel 4
     bindsym $mod+Shift+0 move container to workspace number 10
     # Note: workspaces can have any name you want, not just numbers.
     # We just use 1-10 as the default.
+
 #
 # Layout stuff:
 #
+
     # You can "split" the current object of your focus with
     # $mod+b or $mod+v, for horizontal and vertical splits
     # respectively.
@@ -193,9 +210,34 @@ default_border pixel 4
     # fancy gaps for a fancy boii
     gaps inner 5
     gaps outer 5
+
+#
+# Media keys:
+#
+
+    bindsym XF86AudioRaiseVolume exec pactl set-sink-volume @DEFAULT_SINK@ +5%
+    bindsym Shift+XF86AudioRaiseVolume exec pactl set-sink-volume @DEFAULT_SINK@ +1%
+    bindsym XF86AudioLowerVolume exec pactl set-sink-volume @DEFAULT_SINK@ -5%
+    bindsym Shift+XF86AudioLowerVolume exec pactl set-sink-volume @DEFAULT_SINK@ -1%
+
+    bindsym XF86AudioMute exec pactl set-sink-mute @DEFAULT_SINK@ toggle
+    bindsym XF86AudioMicMute exec pactl set-source-mute @DEFAULT_SOURCE@ toggle
+
+    bindsym XF86MonBrightnessDown exec brightnessctl set 5%-
+    bindsym Shift+XF86MonBrightnessDown exec brightnessctl set 1%-
+    bindsym XF86MonBrightnessUp exec brightnessctl set 5%+
+    bindsym Shift+XF86MonBrightnessUp exec brightnessctl set 1%+
+
+    bindsym XF86AudioPlay exec playerctl play-pause
+    bindsym XF86AudioNext exec playerctl next
+    bindsym XF86AudioPrev exec playerctl previous
+
+    bindsym XF86Search exec $menu
+
 #
 # Scratchpad:
 #
+
     # Sway has a "scratchpad", which is a bag of holding for windows.
     # You can send windows there and get them back later.
 
@@ -205,9 +247,11 @@ default_border pixel 4
     # Show the next scratchpad window or hide the focused scratchpad window.
     # If there are multiple scratchpad windows, this command cycles through them.
     bindsym $mod+minus scratchpad show
+
 #
-# Resizing containers:
+# Resizing windows:
 #
+
 mode "resize" {
     # left will shrink the containers width
     # right will grow the containers width
@@ -231,8 +275,9 @@ mode "resize" {
 bindsym $mod+r mode "resize"
 
 #
-# Screen capture
+# Screen capture:
 #
+
 set $screenshot 1 selected, 2 whole, 3 selected clipboard, 4 whole clipboard, 5 swappy
 set $save_location "~/Pictures/Screenshots/Screenshot from $(date +'%Y-%m-%d %H-%M-%S').png"
 
@@ -248,29 +293,6 @@ mode "$screenshot" {
     bindsym $mod+Print mode "default"
 }
 bindsym Print mode "$screenshot"
-
-#
-# Media keys:
-#
-
-bindsym XF86AudioRaiseVolume exec pactl set-sink-volume @DEFAULT_SINK@ +5%
-bindsym Shift+XF86AudioRaiseVolume exec pactl set-sink-volume @DEFAULT_SINK@ +1%
-bindsym XF86AudioLowerVolume exec pactl set-sink-volume @DEFAULT_SINK@ -5%
-bindsym Shift+XF86AudioLowerVolume exec pactl set-sink-volume @DEFAULT_SINK@ -1%
-
-bindsym XF86AudioMute exec pactl set-sink-mute @DEFAULT_SINK@ toggle
-bindsym XF86AudioMicMute exec pactl set-source-mute @DEFAULT_SOURCE@ toggle
-
-bindsym XF86MonBrightnessDown exec brightnessctl set 5%-
-bindsym Shift+XF86MonBrightnessDown exec brightnessctl set 1%-
-bindsym XF86MonBrightnessUp exec brightnessctl set 5%+
-bindsym Shift+XF86MonBrightnessUp exec brightnessctl set 1%+
-
-bindsym XF86AudioPlay exec playerctl play-pause
-bindsym XF86AudioNext exec playerctl next
-bindsym XF86AudioPrev exec playerctl previous
-
-bindsym XF86Search exec $menu
 
 #
 # Status Bar:

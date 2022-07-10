@@ -112,5 +112,5 @@ alias l.="ls -d .*"
 alias config='/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
 alias cstatus="config status -uno"
 
+# Ooo, syntax highlighting!
 source /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-. "$HOME/.cargo/env"

@@ -24,9 +24,8 @@
     },
     "clock": {
         "interval": 1,
-	"format": "{:%I:%M:%S}",
-        "tooltip-format": "<big>{:%B %e, %Y}</big>\n<tt><small>{calendar}</small></tt>",
-        "format-alt": "{:%Y-%m-%d}",
+	"format": "{:%a %b %e, %I:%M:%S}",
+	"tooltip-format": "<tt>{calendar}</tt>"
     },
     "battery": {
         "states": {

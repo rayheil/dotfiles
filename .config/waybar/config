@@ -78,9 +78,8 @@
             "default": "",
 	    "vlc": "",
         },
-	"on-click-right": "playerctl play-pause",
         "escape": true,
-        "exec": "mediaplayer.py 2> /dev/null", // Show all players
+        "exec": "/home/ray/.local/bin/mediaplayer.py 2> /dev/null", // Show all players
 	//"exec": "mediaplayer.py --player spotify 2> /dev/null", // Filter player based on name
     },
 }

@@ -71,15 +71,17 @@
         "on-click": "pavucontrol"
     },
     "custom/media": {
-        "format": "{icon} {}",
+	"format": "{icon} ...",
+        "format-alt": "{icon} {}",
         "return-type": "json",
         "format-icons": {
             "spotify": "",
-            "default": "",
+            "default": "",
+	    "vlc": "",
         },
+	"on-click-right": "playerctl play-pause",
         "escape": true,
-        "exec": "mediaplayer.py 2> /dev/null", // Script in resources folder
-	"on-click": "playerctl play-pause",
-        // "exec": "$HOME/.config/waybar/mediaplayer.py --player spotify 2> /dev/null", // Filter player based on name
+        "exec": "mediaplayer.py 2> /dev/null", // Show all players
+	//"exec": "mediaplayer.py --player spotify 2> /dev/null", // Filter player based on name
     },
 }

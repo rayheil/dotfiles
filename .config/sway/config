@@ -18,9 +18,10 @@ set $right l
 
 set $term alacritty
 set $browser firefox
-set $menu j4-dmenu-desktop --dmenu='bemenu -i' --term='alacritty'
+set $menu j4-dmenu-desktop --dmenu='bemenu -i'
+set $bin_menu 'bemenu-run'
 set $lock swaylock -f -c 444444
-set $clip clipman pick --tool=rofi
+set $clip clipman pick --tool=bemenu
 
 ### Autostart programs
 
@@ -84,6 +85,7 @@ input "1267:12572:DELL097D:00_04F3:311C_Touchpad" {
 
     # Launcherr
     bindsym $mod+d exec $menu
+    bindsym $mod+Shift+d exec $bin_menu
 
     # Clipboard selection
     bindsym $mod+p exec $clip
@@ -195,8 +197,8 @@ input "1267:12572:DELL097D:00_04F3:311C_Touchpad" {
     bindsym $mod+a focus parent
 
     # fancy gaps for a fancy boii
-    gaps inner 5
-    gaps outer 5
+    #gaps inner 5
+    #gaps outer 5
 
 #
 # Media keys:
@@ -266,18 +268,22 @@ bindsym $mod+r mode "resize"
 #
 
 set $screenshot 1 selected, 2 whole, 3 selected clipboard, 4 whole clipboard, 5 swappy
-set $save_location "~/Pictures/Screenshots/Screenshot from $(date +'%Y-%m-%d %H-%M-%S').png"
+set $ss_save_location "~/Pictures/Screenshots/Screenshot from $(date +'%Y-%m-%d %H-%M-%S').png"
 
 mode "$screenshot" {
-    bindsym 1 exec 'grim -g "$(slurp)" $save_location', mode "default"
-    bindsym 2 exec 'grim $save_location', mode "default"
+    # Options to take a screenshot
+    bindsym 1 exec 'grim -g "$(slurp)" $ss_save_location', mode "default"
+    bindsym 2 exec 'grim $ss_save_location', mode "default"
     bindsym 3 exec 'grim -g "$(slurp)" - | wl-copy', mode "default"
     bindsym 4 exec 'grim - | wl-copy', mode "default"
-    bindsym 5 exec 'grim -g "$(slurp)" - | swappy -f - -o $save_location', mode "default"
-    # back to normal: Enter or Escape
+    bindsym 5 exec 'grim -g "$(slurp)" - | swappy -f - -o $ss_save_location', mode "default"
+
+    # Press button again to take full screencap
+    bindsym Print exec 'grim $ss_save_location', mode "default"
+
+    # Get back to normal with enter or escape
     bindsym Return mode "default"
     bindsym Escape mode "default"
-    bindsym $mod+Print mode "default"
 }
 bindsym Print mode "$screenshot"
 

@@ -25,9 +25,7 @@ set $clip clipman pick --tool=bemenu
 
 ### Autostart programs
 
-# Sync services -- dropbox and nextcloud
-# (they need a moment before starting to be reliable)
-exec sleep 3 && dropbox start -i
+# Start up nextcloud (give it a second to start up)
 exec sleep 3 && nextcloud --background
 
 # Gnome keyring daemon for ssh and gpg

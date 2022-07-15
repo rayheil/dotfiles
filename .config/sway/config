@@ -18,10 +18,9 @@ set $right l
 
 set $term alacritty
 set $browser firefox
-set $menu j4-dmenu-desktop --dmenu='bemenu -i'
-set $bin_menu 'bemenu-run'
-set $lock swaylock -f -c 444444
-set $clip clipman pick --tool=bemenu
+set $menu rofi -combi-modi run#drun -show combi
+set $lock swaylock -f -c 282a36
+set $clip clipman pick --tool=rofi
 
 ### Autostart programs
 
@@ -81,9 +80,8 @@ input "1267:12572:DELL097D:00_04F3:311C_Touchpad" {
     # Web browser
     bindsym $mod+Tab exec $browser
 
-    # Launcherr
+    # Launcher
     bindsym $mod+d exec $menu
-    bindsym $mod+Shift+d exec $bin_menu
 
     # Clipboard selection
     bindsym $mod+p exec $clip
@@ -204,6 +202,7 @@ input "1267:12572:DELL097D:00_04F3:311C_Touchpad" {
 
 for_window {
     [app_id="com.nextcloud.desktopclient.nextcloud"] floating enable
+    [app_id="gcolor3"] floating enable
 }
 
 #
@@ -298,10 +297,24 @@ bindsym Print mode "$screenshot"
 #
 
 bar {
-     swaybar_command waybar
+    swaybar_command waybar
 }
+
+#
+# Colors
+#
+
+    # class                 border  bground text    indicator child_border
+    client.focused          #6272A4 #6272A4 #F8F8F2 #6272A4   #6272A4
+    client.focused_inactive #44475A #44475A #F8F8F2 #44475A   #44475A
+    client.unfocused        #282A36 #282A36 #BFBFBF #282A36   #282A36
+    client.urgent           #44475A #FF5555 #F8F8F2 #FF5555   #FF5555
+    client.placeholder      #282A36 #282A36 #F8F8F2 #282A36   #282A36
+
+    client.background       #F8F8F2
 
 # Read `man 5 sway-bar` for more information about this section.
 
 include /etc/sway/config.d/*
+
 

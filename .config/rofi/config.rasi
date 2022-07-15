@@ -1,0 +1,6 @@
+configuration {
+	modi: "run,drun,combi";
+	font: "Hack 12";
+	terminal: "alacritty";
+}
+@theme "dracula"

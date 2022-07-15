@@ -45,7 +45,7 @@ exec wlsunset -l 35.7 -L -105.9
 focus_follows_mouse no
 
 # Don't give windows a title in their border
-default_border pixel 4
+#default_border pixel 4
 
 ### Wallpaper
 

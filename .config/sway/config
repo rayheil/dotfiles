@@ -139,6 +139,8 @@ input "1267:12572:DELL097D:00_04F3:311C_Touchpad" {
 # Workspaces:
 #
 
+    workspace_layout tabbed
+
     # Switch to workspace
     bindsym $mod+1 workspace number 1
     bindsym $mod+2 workspace number 2
@@ -200,10 +202,10 @@ input "1267:12572:DELL097D:00_04F3:311C_Touchpad" {
 # Window layouts
 #
 
-for_window {
-    [app_id="com.nextcloud.desktopclient.nextcloud"] floating enable
-    [app_id="gcolor3"] floating enable
-}
+    for_window {
+        [app_id="com.nextcloud.desktopclient.nextcloud"] floating enable
+        [app_id="gcolor3"] floating enable
+    }
 
 #
 # Media keys:
@@ -273,24 +275,25 @@ bindsym $mod+r mode "resize"
 #
 
 set $screenshot 1 selected, 2 whole, 3 selected clipboard, 4 whole clipboard, 5 swappy
-set $ss_save_location "~/Pictures/Screenshots/Screenshot from $(date +'%Y-%m-%d %H-%M-%S').png"
 
 mode "$screenshot" {
-    # Options to take a screenshot
-    bindsym 1 exec 'grim -g "$(slurp)" $ss_save_location', mode "default"
-    bindsym 2 exec 'grim $ss_save_location', mode "default"
-    bindsym 3 exec 'grim -g "$(slurp)" - | wl-copy', mode "default"
-    bindsym 4 exec 'grim - | wl-copy', mode "default"
-    bindsym 5 exec 'grim -g "$(slurp)" - | swappy -f - -o $ss_save_location', mode "default"
 
-    # Press button again to take full screencap
-    bindsym Print exec 'grim $ss_save_location', mode "default"
+    # Options to take a screenshot
+    bindsym 1 exec 'grim -g "$(slurp -d)" "$(~/.config/sway/scripts/screenshot_name.sh)"', mode "default"
+    bindsym 2 exec 'grim "$(~/.config/sway/scripts/screenshot_name.sh)"', mode "default"
+    bindsym 3 exec 'grim -g "$(slurp -d)" - | wl-copy -t image/png', mode "default"
+    bindsym 4 exec 'grim - | wl-copy -t image/png', mode "default"
+    bindsym 5 exec 'grim -g "$(slurp -d)" - | swappy -f - -o "$(~/.config/sway/scripts/screenshot_name.sh)"', mode "default"
+
+    # Press button again to take fullscreen screenshot
+    bindsym Print exec 'grim "$(~/.config/sway/scripts/screenshot_name.sh)"', mode "default"
 
     # Get back to normal with enter or escape
     bindsym Return mode "default"
     bindsym Escape mode "default"
 }
 bindsym Print mode "$screenshot"
+#bindsym Print exec 'grim -g "$(slurp -d)" ~/tmp.png'
 
 #
 # Status Bar:

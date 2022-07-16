@@ -76,11 +76,11 @@
         "format-icons": {
             "spotify": "",
             "default": "",
-	    "vlc": "",
+	    "vlc": "",
         },
         "escape": true,
 	"on-click-right": "playerctl next",
-        "exec": "/home/ray/.local/bin/mediaplayer.py 2> /dev/null", // Show all players
-	//"exec": "mediaplayer.py --player spotify 2> /dev/null", // Filter player based on name
+        //"exec": "/home/ray/.local/bin/mediaplayer.py 2> /dev/null", // Show all players
+	"exec": "/home/ray/.local/bin/mediaplayer.py --player spotify 2> /dev/null", // Filter player based on name
     },
 }

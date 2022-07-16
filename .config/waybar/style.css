@@ -1,13 +1,21 @@
+/* Colors I wanna hold onto (from Dracula)
+ *
+ * Grey         #282A36
+ * Purple       #6272A4
+ * Pink         #FF87D7
+ * Blue         #87D7FF
+ * Green        #5FFF87
+ * Red          #D04C4E
+ */
+
 * {
-    /* `otf-font-awesome` is required to be installed for icons */
-    font-family: NotoSans Nerd Font, FontAwesome, Roboto, Helvetica, Arial, sans-serif;
-    font-size: 11pt;
+    font-family: Hack Nerd Font, FontAwesome, Roboto, monospace;
+    font-size: 12pt;
 }
 
 window#waybar {
     background-color: #282A36;
-    /* border-bottom: 3px solid rgba(100, 114, 125, 0.2); */
-    color: #ffffff;
+    color: white;
     transition-property: background-color;
     transition-duration: .5s;
 }
@@ -17,28 +25,24 @@ window#waybar.hidden {
 }
 
 #workspaces button {
-    padding: 0 5px;
     background-color: transparent;
-    color: #ffffff;
-    /* Use box-shadow instead of border so the text isn't offset */
+    color: white;
     box-shadow: inset 0 -3px transparent;
-    /* Avoid rounded borders under each workspace name */
     border: none;
     border-radius: 0;
 }
 
 #workspaces button.focused {
-    background-color: #64727D;
-    box-shadow: inset 0 -3px #ffffff;
+    background-color: #6272A4;
 }
 
 #workspaces button.urgent {
-    background-color: #eb4d4b;
+    background-color: #D04C4E;
+    color: #282A36;
 }
 
 #mode {
-    background-color: #64727D;
-    border-bottom: 3px solid #ffffff;
+    background-color: #6272A4;
 }
 
 #clock,
@@ -50,86 +54,65 @@ window#waybar.hidden {
 #mode,
 #idle_inhibitor {
     padding: 0 10px;
-    color: white;
 }
 
-#window,
-#workspaces {
-    margin: 0 4px;
-}
-
-/* If workspaces is the leftmost module, omit left margin */
-.modules-left > widget:first-child > #workspaces {
+/* Give worspaces special rules if it has nothing to either side */
+.modules-left > widget:first-child > workspaces {
     margin-left: 0;
 }
-
-/* If workspaces is the rightmost module, omit right margin */
-.modules-right > widget:last-child > #workspaces {
+.modules-right > widget:first-child > workspaces {
     margin-right: 0;
 }
 
 #clock {
-    background-color: #390099;
+    background-color: #6272A4;
+    color: white;
 }
 
 #battery {
-    background-color: #8AC926;
-    color: black
-}
-
-@keyframes blink {
-    to {
-        background-color: #ffffff;
-        color: #000000;
-    }
+    background-color: #5FFF87;
+    color: #282A36;
 }
 
 #battery.critical:not(.charging) {
-    background-color: #D00000;
-    color: white;
-    animation-name: blink;
-    animation-duration: 0.5s;
-    animation-timing-function: linear;
-    animation-iteration-count: infinite;
-    animation-direction: alternate;
+    background-color: #D04C4E;
 }
 
 label:focus {
-    background-color: #000000;
+    background-color: #282A36;
 }
 
 #network {
-    background-color: #1982C4;
+    padding: 0 20px 0 10px;
+    background-color: #87D7FF;
+    color: #282A36;
 }
 
 #network.disconnected {
-    background-color: #D00000;
+    background-color: #D04C4E;
 }
 
 #pulseaudio {
-    background-color: #FF0054;
+    background-color: #FF87D7;
+    color: #282A36;
 }
 
 #pulseaudio.muted {
     background-color: #90b1b1;
-    color: black;
 }
 
 #custom-media {
     background-color: rgba(0, 0, 0, 0);
     color: white;
     min-width: 20px;
-    /*max-width: 20px;*/
 }
 
 #custom-media.custom-spotify {
     color: #8AC926;
-    background-color: rgba(0, 0, 0, 0);
 }
 
 #custom-media.custom-vlc {
     color: #FB5607;
-    background-color: rgba(0, 0, 0, 0);
 }
 
 #tray {
@@ -142,15 +125,16 @@ label:focus {
 
 #tray > .needs-attention {
     -gtk-icon-effect: highlight;
-    background-color: #eb4d4b;
+    background-color: #90b1b1;
+    color: #282A36;
 }
 
 #idle_inhibitor {
     background-color: rgba(0, 0, 0, 0);
+    padding: 0 20px 0 10px;
 }
 
 #idle_inhibitor.activated {
-    background-color: #ecf0f1;
-    color: #2d3436;
+    background-color: #ECF0F1;
+    color: #282A36;
 }
-

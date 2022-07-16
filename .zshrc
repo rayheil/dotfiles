@@ -95,6 +95,9 @@ fi
 # Add some random crap to PATH
 export PATH="/home/ray/.local/bin:/home/ray/.bin:$PATH"
 
+# Make sure ranger only loads its config once (the one in my .config)
+export RANGER_LOAD_DEFAULT_RC="FALSE"
+
 # Compilation flags
 # export ARCHFLAGS="-arch x86_64"
 

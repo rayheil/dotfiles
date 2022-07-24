@@ -6,30 +6,29 @@ if [ -f /etc/bashrc ]; then
 fi
 
 # User specific environment
-if ! [[ "$PATH" =~ "$HOME/.bin:$HOME/.local/bin:$HOME/bin:" ]]
-then
-    PATH="$HOME/.bin:$HOME/.local/bin:$HOME/bin:$PATH"
+if ! [[ "$PATH" =~ "$HOME/.bin:$HOME/.local/bin:" ]]; then
+    PATH="$HOME/.bin:$HOME/.local/bin:$PATH"
 fi
 export PATH
 
-# ls aliases
+# Preferred editor for local and remove sessions
+if [[ -n $SSH_CONNECTION ]]; then
+    export EDITOR='vi'
+else
+    export EDITOR='vim'
+    export GPG_TTY=$(tty)
+fi
+
+# Make sure ranger loads the config in ~/.config/ranger
+export RANGER_LOAD_DEFAULT_RC=FALSE
+
+# Simple ls aliases
 alias ls='ls --color=auto'
-alias ll='ls -l'
 alias la='ls -a'
 alias lt='ls -lht'
-
-# config aliases
-alias config='git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
-
-# Show current git branch in prompt.
-function parse_git_branch {
-  git branch --no-color 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/(\1) /'
-}
-
-PS1="\$(parse_git_branch)[\u@\h \W] \$ "
-
-# link to/load z for frecent (frequent and recent) cd functionality
-#. ~/:.bin/z.sh # I can't make it work right now ughh
+alias ll='ls -lh'
+alias config='/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
+alias td='todo' # Follow tda, tde, tdd pattern to call devtodo
 
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!

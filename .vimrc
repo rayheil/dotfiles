@@ -3,6 +3,7 @@ call plug#begin()
   Plug 'tpope/vim-sensible'
   Plug 'tpope/vim-sleuth'
   Plug 'jpalardy/vim-slime'
+  Plug 'preservim/nerdcommenter'
 call plug#end()
 
 " Syntax highlighting
@@ -12,7 +13,7 @@ syntax enable
 let g:slime_target = "tmux"
 let g:slime_paste_file = tempname()
 let g:slime_default_config = {"socket_name": "default", "target_pane": "{last}"}
-" let g:slime_python_ipython = 1
+let g:slime_python_ipython = 1
 
 " Make slime send the entire file
 nmap <c-c><c-x> :%SlimeSend<cr>
@@ -21,7 +22,7 @@ nmap <c-c><c-x> :%SlimeSend<cr>
 set number
 
 " Detect filetypes
-filetype on
+filetype plugin on
 
 " Make statusline display some simple info
 set statusline="%f%m%r%h%w [%Y] [0x%02.2B]%< %F%=%4v,%4l %3p%% of %L"

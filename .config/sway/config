@@ -9,22 +9,38 @@
 # Variables and launchers
 #
 
-set $mod Mod4
+set {
+    $mod Mod4
 
-set $left h 
-set $down j
-set $up k
-set $right l
+    # Directional keys
+    $left  h
+    $down  j
+    $up    k
+    $right l
 
-set $term alacritty
-set $browser firefox
-set $menu rofi -combi-modi drun#run -show combi
-set $lock swaylock -f -c 282a36
-set $clip clipman pick --tool=rofi
+    # Modes
+    $screenshot_mode   "1 selected, 2 whole, 3 selected clipboard, 4 whole clipboard, 5 swappy"
+
+    # Theming
+    $font     pango:Hack Nerd Font, Source Code Pro, monospace 14
+    $big_font pango:Hack Nerd Font, Source Code Pro, monospace 16
+
+    # Apps
+    $launch rofi -combi-modi drun#run -show combi
+    $term alacritty
+    $lock swaylock -f -c 282a36
+    $clip clipman pick --tool=rofi
+    $editor_id emacs_float
+    $editor vim
+    $browser firefox
+}
 
 ### Autostart programs
 
-# Start up nextcloud (give it a second to start up)
+# Dunst (notification daemon)
+exec dunst
+
+# Nextcloud (give it a second to start up)
 exec sleep 3 && nextcloud --background
 
 # Gnome keyring daemon for ssh and gpg
@@ -32,7 +48,7 @@ exec eval $(gnome-keyring-daemon --start)
 exec export SSH_AUTH_SOCK
 
 # Clipboard history
-exec wl-paste -t text --watch clipman store
+exec wl-paste -t text --watch clipman store --no-persist
 
 # Night shift (Santa Fe)
 exec wlsunset -l 35.7 -L -105.9
@@ -43,9 +59,6 @@ exec wlsunset -l 35.7 -L -105.9
 
 # When you mouse over a window, do not focus it unless you click
 focus_follows_mouse no
-
-# Don't give windows a title in their border
-#default_border pixel 4
 
 ### Wallpaper
 
@@ -61,7 +74,7 @@ exec swayidle -w \
 
 ### Input configuration
 
-input "1267:12572:DELL097D:00_04F3:311C_Touchpad" {
+input type:touchpad {
     dwt disabled
     tap disabled
     natural_scroll enabled
@@ -71,178 +84,175 @@ input "1267:12572:DELL097D:00_04F3:311C_Touchpad" {
 
 ### Key bindings
 
-#
-# Launchers:
-#
-    # Terminal
-    bindsym $mod+Return exec $term
+# Terminal
+bindsym $mod+Return exec $term
 
-    # Web browser
-    bindsym $mod+Tab exec $browser
+# Web browser
+bindsym $mod+Tab exec $browser
 
-    # Launcher
-    bindsym $mod+d exec $menu
+# Launcher
+bindsym $mod+d exec $launch
 
-    # Clipboard selection
-    bindsym $mod+p exec $clip
+# Clipboard selection
+bindsym $mod+p exec $clip
 
 #
 # Basics:
 #
-    # Drag floating windows by holding down $mod and left mouse button.
-    # Resize them with right mouse button + $mod.
-    # Despite the name, also works for non-floating windows.
-    # Change normal to inverse to use left mouse button for resizing and right
-    # mouse button for dragging.
-    floating_modifier $mod normal
+# Drag floating windows by holding down $mod and left mouse button.
+# Resize them with right mouse button + $mod.
+# Despite the name, also works for non-floating windows.
+# Change normal to inverse to use left mouse button for resizing and right
+# mouse button for dragging.
+floating_modifier $mod normal
 
-    # Reload the configuration file
-    bindsym $mod+Shift+c reload
+# Reload the configuration file
+bindsym $mod+Shift+c reload
 
-    # Exit sway (logs you out of your Wayland session)
-    bindsym $mod+Shift+e exec swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway? This will end your Wayland session.' -b 'Yes, exit sway' 'swaymsg exit'
+# Exit sway (logs you out of your Wayland session)
+bindsym $mod+Shift+e exec swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway? This will end your Wayland session.' -b 'Yes, exit sway' 'swaymsg exit'
 
-    # Lock the screen
-    bindsym $mod+Shift+x exec $lock
+# Lock the screen
+bindsym $mod+Shift+x exec $lock
 
-    # Kill focused window
-    bindsym $mod+Shift+q kill
+# Kill focused window
+bindsym $mod+Shift+q kill
 
 
 #
 # Moving around:
 #
 
-    # Move your focus around
-    bindsym $mod+$left focus left
-    bindsym $mod+$down focus down
-    bindsym $mod+$up focus up
-    bindsym $mod+$right focus right
-    # Or use $mod+[up|down|left|right]
-    bindsym $mod+Left focus left
-    bindsym $mod+Down focus down
-    bindsym $mod+Up focus up
-    bindsym $mod+Right focus right
+# Move your focus around
+bindsym $mod+$left focus left
+bindsym $mod+$down focus down
+bindsym $mod+$up focus up
+bindsym $mod+$right focus right
+# Or use $mod+[up|down|left|right]
+bindsym $mod+Left focus left
+bindsym $mod+Down focus down
+bindsym $mod+Up focus up
+bindsym $mod+Right focus right
 
-    # Move the focused window with the same, but add Shift
-    bindsym $mod+Shift+$left move left
-    bindsym $mod+Shift+$down move down
-    bindsym $mod+Shift+$up move up
-    bindsym $mod+Shift+$right move right
-    # Ditto, with arrow keys
-    bindsym $mod+Shift+Left move left
-    bindsym $mod+Shift+Down move down
-    bindsym $mod+Shift+Up move up
-    bindsym $mod+Shift+Right move right
+# Move the focused window with the same, but add Shift
+bindsym $mod+Shift+$left move left
+bindsym $mod+Shift+$down move down
+bindsym $mod+Shift+$up move up
+bindsym $mod+Shift+$right move right
+# Ditto, with arrow keys
+bindsym $mod+Shift+Left move left
+bindsym $mod+Shift+Down move down
+bindsym $mod+Shift+Up move up
+bindsym $mod+Shift+Right move right
 
 #
 # Workspaces:
 #
 
-    workspace_layout tabbed
+# Switch to workspace
+bindsym $mod+1 workspace number 1
+bindsym $mod+2 workspace number 2
+bindsym $mod+3 workspace number 3
+bindsym $mod+4 workspace number 4
+bindsym $mod+5 workspace number 5
+bindsym $mod+6 workspace number 6
+bindsym $mod+7 workspace number 7
+bindsym $mod+8 workspace number 8
+bindsym $mod+9 workspace number 9
+bindsym $mod+0 workspace number 10
 
-    # Switch to workspace
-    bindsym $mod+1 workspace number 1
-    bindsym $mod+2 workspace number 2
-    bindsym $mod+3 workspace number 3
-    bindsym $mod+4 workspace number 4
-    bindsym $mod+5 workspace number 5
-    bindsym $mod+6 workspace number 6
-    bindsym $mod+7 workspace number 7
-    bindsym $mod+8 workspace number 8
-    bindsym $mod+9 workspace number 9
-    bindsym $mod+0 workspace number 10
-
-    # Move focused container to workspace
-    bindsym $mod+Shift+1 move container to workspace number 1
-    bindsym $mod+Shift+2 move container to workspace number 2
-    bindsym $mod+Shift+3 move container to workspace number 3
-    bindsym $mod+Shift+4 move container to workspace number 4
-    bindsym $mod+Shift+5 move container to workspace number 5
-    bindsym $mod+Shift+6 move container to workspace number 6
-    bindsym $mod+Shift+7 move container to workspace number 7
-    bindsym $mod+Shift+8 move container to workspace number 8
-    bindsym $mod+Shift+9 move container to workspace number 9
-    bindsym $mod+Shift+0 move container to workspace number 10
-    # Note: workspaces can have any name you want, not just numbers.
-    # We just use 1-10 as the default.
+# Move focused container to workspace
+bindsym $mod+Shift+1 move container to workspace number 1
+bindsym $mod+Shift+2 move container to workspace number 2
+bindsym $mod+Shift+3 move container to workspace number 3
+bindsym $mod+Shift+4 move container to workspace number 4
+bindsym $mod+Shift+5 move container to workspace number 5
+bindsym $mod+Shift+6 move container to workspace number 6
+bindsym $mod+Shift+7 move container to workspace number 7
+bindsym $mod+Shift+8 move container to workspace number 8
+bindsym $mod+Shift+9 move container to workspace number 9
+bindsym $mod+Shift+0 move container to workspace number 10
+# Note: workspaces can have any name you want, not just numbers.
+# We just use 1-10 as the default.
 
 #
 # Layout stuff:
 #
 
-    # You can "split" the current object of your focus with
-    # $mod+b or $mod+v, for horizontal and vertical splits
-    # respectively.
-    bindsym $mod+b splith
-    bindsym $mod+v splitv
+# You can "split" the current object of your focus with
+# $mod+b or $mod+v, for horizontal and vertical splits
+# respectively.
+bindsym $mod+b splith
+bindsym $mod+v splitv
 
-    # Switch the current container between different layout styles
-    bindsym $mod+s layout stacking
-    bindsym $mod+w layout tabbed
-    bindsym $mod+e layout toggle split
+# Switch the current container between different layout styles
+bindsym $mod+s layout stacking
+bindsym $mod+w layout tabbed
+bindsym $mod+e layout toggle split
 
-    # Make the current focus fullscreen
-    bindsym $mod+f fullscreen
+# Make the current focus fullscreen
+bindsym $mod+f fullscreen
 
-    # Toggle the current focus between tiling and floating mode
-    bindsym $mod+Shift+space floating toggle
+# Toggle the current focus between tiling and floating mode
+bindsym $mod+Shift+space floating toggle
 
-    # Swap focus between the tiling area and the floating area
-    bindsym $mod+space focus mode_toggle
+# Swap focus between the tiling area and the floating area
+bindsym $mod+space focus mode_toggle
 
-    # Move focus to the parent container
-    bindsym $mod+a focus parent
-
-    # fancy gaps for a fancy boii
-    #gaps inner 5
-    #gaps outer 5
+# Move focus to the parent container
+bindsym $mod+a focus parent
 
 #
 # Window layouts
 #
 
-    for_window {
-        [app_id="com.nextcloud.desktopclient.nextcloud"] floating enable
-        [app_id="gcolor3"] floating enable
-    }
+for_window {
+    [shell="xwayland"] title_format "%title [XWayland]"
+    [app_id="com.nextcloud.desktopclient.nextcloud"] floating enable
+    [class="Thunderbird"] move to scratchpad, scratchpad show 
+    [class="Zotero"] move to scratchpad, scratchpad show
+    [window_role="pop-up"] floating enable
+    [window_role="bubble"] floating enable
+    [window_role="dialog"] floating enable
+    [window_type="dialog"] floating enable
+}
 
 #
 # Media keys:
 #
 
-    bindsym XF86AudioRaiseVolume exec pactl set-sink-volume @DEFAULT_SINK@ +5%
-    bindsym Shift+XF86AudioRaiseVolume exec pactl set-sink-volume @DEFAULT_SINK@ +1%
-    bindsym XF86AudioLowerVolume exec pactl set-sink-volume @DEFAULT_SINK@ -5%
-    bindsym Shift+XF86AudioLowerVolume exec pactl set-sink-volume @DEFAULT_SINK@ -1%
+bindsym XF86AudioRaiseVolume exec pactl set-sink-volume @DEFAULT_SINK@ +5%
+bindsym Shift+XF86AudioRaiseVolume exec pactl set-sink-volume @DEFAULT_SINK@ +1%
+bindsym XF86AudioLowerVolume exec pactl set-sink-volume @DEFAULT_SINK@ -5%
+bindsym Shift+XF86AudioLowerVolume exec pactl set-sink-volume @DEFAULT_SINK@ -1%
 
-    bindsym XF86AudioMute exec pactl set-sink-mute @DEFAULT_SINK@ toggle
-    bindsym XF86AudioMicMute exec pactl set-source-mute @DEFAULT_SOURCE@ toggle
+bindsym XF86AudioMute exec pactl set-sink-mute @DEFAULT_SINK@ toggle
+bindsym XF86AudioMicMute exec pactl set-source-mute @DEFAULT_SOURCE@ toggle
 
-    bindsym XF86MonBrightnessDown exec brightnessctl set 5%-
-    bindsym Shift+XF86MonBrightnessDown exec brightnessctl set 1%-
-    bindsym XF86MonBrightnessUp exec brightnessctl set 5%+
-    bindsym Shift+XF86MonBrightnessUp exec brightnessctl set 1%+
+bindsym XF86MonBrightnessDown exec brightnessctl set 5%-
+bindsym Shift+XF86MonBrightnessDown exec brightnessctl set 1%-
+bindsym XF86MonBrightnessUp exec brightnessctl set 5%+
+bindsym Shift+XF86MonBrightnessUp exec brightnessctl set 1%+
 
-    bindsym XF86AudioPlay exec playerctl play-pause
-    bindsym XF86AudioNext exec playerctl next
-    bindsym XF86AudioPrev exec playerctl previous
+bindsym XF86AudioPlay exec playerctl play-pause
+bindsym XF86AudioNext exec playerctl next
+bindsym XF86AudioPrev exec playerctl previous
 
-    bindsym XF86Search exec $menu
+bindsym XF86Search exec $launch
 
 #
 # Scratchpad:
 #
 
-    # Sway has a "scratchpad", which is a bag of holding for windows.
-    # You can send windows there and get them back later.
+# Sway has a "scratchpad", which is a bag of holding for windows.
+# You can send windows there and get them back later.
 
-    # Move the currently focused window to the scratchpad
-    bindsym $mod+Shift+minus move scratchpad
+# Move the currently focused window to the scratchpad
+bindsym $mod+Shift+minus move scratchpad
 
-    # Show the next scratchpad window or hide the focused scratchpad window.
-    # If there are multiple scratchpad windows, this command cycles through them.
-    bindsym $mod+minus scratchpad show
+# Show the next scratchpad window or hide the focused scratchpad window.
+# If there are multiple scratchpad windows, this command cycles through them.
+bindsym $mod+minus scratchpad show
 
 #
 # Resizing windows:
@@ -272,12 +282,9 @@ bindsym $mod+r mode "resize"
 
 #
 # Screen capture:
-#
+# 
 
-set $screenshot 1 selected, 2 whole, 3 selected clipboard, 4 whole clipboard, 5 swappy
-
-mode "$screenshot" {
-
+mode $screenshot_mode {
     # Options to take a screenshot
     bindsym 1 exec 'grim -g "$(slurp -d)" "$(~/.config/sway/scripts/screenshot_name.sh)"', mode "default"
     bindsym 2 exec 'grim "$(~/.config/sway/scripts/screenshot_name.sh)"', mode "default"
@@ -292,8 +299,7 @@ mode "$screenshot" {
     bindsym Return mode "default"
     bindsym Escape mode "default"
 }
-bindsym Print mode "$screenshot"
-#bindsym Print exec 'grim -g "$(slurp -d)" ~/tmp.png'
+bindsym Print mode $screenshot_mode
 
 #
 # Status Bar:
@@ -307,17 +313,15 @@ bar {
 # Colors
 #
 
-    # class                 border  bground text    indicator child_border
-    client.focused          #6272A4 #6272A4 #F8F8F2 #6272A4   #6272A4
-    client.focused_inactive #44475A #44475A #F8F8F2 #44475A   #44475A
-    client.unfocused        #282A36 #282A36 #BFBFBF #282A36   #282A36
-    client.urgent           #44475A #FF5555 #F8F8F2 #FF5555   #FF5555
-    client.placeholder      #282A36 #282A36 #F8F8F2 #282A36   #282A36
+# class                 border  bground text    indicator child_border
+client.focused          #6272A4 #6272A4 #F8F8F2 #6272A4   #6272A4
+client.focused_inactive #44475A #44475A #F8F8F2 #44475A   #44475A
+client.unfocused        #282A36 #282A36 #BFBFBF #282A36   #282A36
+client.urgent           #44475A #FF5555 #F8F8F2 #FF5555   #FF5555
+client.placeholder      #282A36 #282A36 #F8F8F2 #282A36   #282A36
 
-    client.background       #F8F8F2
+client.background       #F8F8F2
 
 # Read `man 5 sway-bar` for more information about this section.
 
 include /etc/sway/config.d/*
-
-

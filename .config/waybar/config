@@ -70,8 +70,8 @@
         "on-click": "pavucontrol"
     },
     "custom/media": {
-	"format": "{icon} ...",
-        "format-alt": "{icon} {}",
+	"format": "{icon} {}",
+	"format-alt": "{icon}",
         "return-type": "json",
         "format-icons": {
             "spotify": "",

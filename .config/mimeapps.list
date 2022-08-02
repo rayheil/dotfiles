@@ -1,24 +1,31 @@
-[Default Applications]
-inode/directory=ranger.desktop
-text/plain=vim.desktop
-x-scheme-handler/http=firefox.desktop
-text/html=firefox.desktop
-x-scheme-handler/https=firefox.desktop
-application/xhtml+xml=firefox.desktop
-x-scheme-handler/chrome=firefox.desktop
-application/x-extension-htm=firefox.desktop
-application/x-extension-html=firefox.desktop
-application/x-extension-shtml=firefox.desktop
-application/x-extension-xhtml=firefox.desktop
-application/x-extension-xht=firefox.desktop
-
 [Added Associations]
-x-scheme-handler/chrome=firefox.desktop;
 application/x-extension-htm=firefox.desktop;
 application/x-extension-html=firefox.desktop;
 application/x-extension-shtml=firefox.desktop;
-application/x-extension-xhtml=firefox.desktop;
 application/x-extension-xht=firefox.desktop;
+application/x-extension-xhtml=firefox.desktop;
+inode/directory=ranger.desktop;
+x-scheme-handler/chrome=firefox.desktop;
+x-scheme-handler/geo=qwant-maps-geo-handler.desktop;
+x-scheme-handler/http=firefox.desktop;
+x-scheme-handler/https=firefox.desktop;
+x-scheme-handler/mailto=mozilla-thunderbird.desktop;
+
+[Default Applications]
+application/x-extension-htm=firefox.desktop
+application/x-extension-html=firefox.desktop
+application/x-extension-shtml=firefox.desktop
+application/x-extension-xht=firefox.desktop
+application/x-extension-xhtml=firefox.desktop
+application/xhtml+xml=firefox.desktop
+inode/directory=ranger.desktop;
+text/html=firefox.desktop
+text/plain=vim.desktop
+x-scheme-handler/chrome=firefox.desktop
+x-scheme-handler/geo=qwant-maps-geo-handler.desktop;
+x-scheme-handler/http=firefox.desktop;
+x-scheme-handler/https=firefox.desktop;
+x-scheme-handler/mailto=mozilla-thunderbird.desktop;
 
 [Removed Associations]
 text/plain=org.zotero.Zotero.desktop;

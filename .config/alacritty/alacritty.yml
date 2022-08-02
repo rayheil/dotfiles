@@ -1,5 +1,5 @@
 import:
-  - /home/ray/.config/alacritty/dracula.yml
+  - /home/ray/.config/alacritty/gruvbox.yml
 
 window:
   dimensions:

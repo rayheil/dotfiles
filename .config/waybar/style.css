@@ -1,12 +1,16 @@
-/* Colors I wanna hold onto (from Dracula)
- *
- * Grey         #282A36
- * Purple       #6272A4
- * Pink         #FF87D7
- * Blue         #87D7FF
- * Green        #5FFF87
- * Red          #D04C4E
- */
+@define-color bg #282828;
+@define-color fg #ebdbb2;
+@define-color red #cc241d;
+@define-color orange #d65d0e;
+@define-color lightorange #fe8018;
+@define-color green #98971a;
+@define-color lightgreen #b8bb26;
+@define-color yellow #d79921;
+@define-color blue #458588;
+@define-color purple #b16286;
+@define-color aqua #698d6a;
+@define-color gray #928374;
+@define-color clear rgba(0, 0, 0, 0);
 
 * {
     font-family: Hack Nerd Font, FontAwesome, Roboto, monospace;
@@ -14,8 +18,8 @@
 }
 
 window#waybar {
-    background-color: #282A36;
-    color: white;
+    background-color: @bg;
+    color: @fg;
     transition-property: background-color;
     transition-duration: .5s;
 }
@@ -26,23 +30,25 @@ window#waybar.hidden {
 
 #workspaces button {
     background-color: transparent;
-    color: white;
+    color: @yellow;
     box-shadow: inset 0 -3px transparent;
     border: none;
     border-radius: 0;
 }
 
 #workspaces button.focused {
-    background-color: #6272A4;
+    background-color: @yellow;
+    color: @bg;
 }
 
 #workspaces button.urgent {
-    background-color: #D04C4E;
-    color: #282A36;
+    background-color: @red;
+    color: @bg;
 }
 
 #mode {
-    background-color: #6272A4;
+    background-color: @gray;
+    color: @bg;
 }
 
 #clock,
@@ -54,6 +60,7 @@ window#waybar.hidden {
 #mode,
 #idle_inhibitor {
     padding: 0 10px;
+    background-color: @bg;
 }
 
 /* Give worspaces special rules if it has nothing to either side */
@@ -65,58 +72,38 @@ window#waybar.hidden {
 }
 
 #clock {
-    background-color: #6272A4;
-    color: white;
+    color: @lightorange;
 }
 
 #battery {
-    background-color: #5FFF87;
-    color: #282A36;
+    color: @lightgreen;
 }
 
 #battery.critical:not(.charging) {
-    background-color: #D04C4E;
-}
-
-label:focus {
-    background-color: #282A36;
+    background-color: @red;
 }
 
 #network {
     padding: 0 20px 0 10px;
-    background-color: #87D7FF;
-    color: #282A36;
+    color: @blue;
 }
 
 #network.disconnected {
-    background-color: #D04C4E;
+    background-color: @red;
+    color: @fg;
 }
 
 #pulseaudio {
-    background-color: #FF87D7;
-    color: #282A36;
+    color: @purple;
 }
 
 #pulseaudio.muted {
-    background-color: #90b1b1;
+    color: @gray;
 }
 
-#custom-media {
-    background-color: rgba(0, 0, 0, 0);
-    color: white;
+#custom-spotify {
     min-width: 20px;
-}
-
-#custom-media.custom-spotify {
-    color: #8AC926;
-}
-
-#custom-media.custom-vlc {
-    color: #FB5607;
-}
-
-#tray {
-    background-color: rgba(0, 0, 0, 0);
+    color: @lightgreen;
 }
 
 #tray > .passive {
@@ -125,16 +112,14 @@ label:focus {
 
 #tray > .needs-attention {
     -gtk-icon-effect: highlight;
-    background-color: #90b1b1;
-    color: #282A36;
+    background-color: @red;
+    color: @fg;
 }
 
 #idle_inhibitor {
-    background-color: rgba(0, 0, 0, 0);
     padding: 0 16px 0 10px;
 }
 
 #idle_inhibitor.activated {
-    background-color: #ECF0F1;
-    color: #282A36;
+    color: @orange
 }

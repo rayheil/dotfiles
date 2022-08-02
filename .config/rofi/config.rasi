@@ -3,4 +3,6 @@ configuration {
 	font: "Hack 12";
 	terminal: "alacritty";
 }
-@theme "dracula"
+//@theme "dracula"
+//@theme "/usr/share/rofi/themes/gruvbox-dark.rasi"
+@theme "/usr/share/rofi/themes/gruvbox-dark-hard.rasi"

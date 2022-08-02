@@ -4,6 +4,37 @@
 #
 # Read `man 5 sway` for a complete reference.
 
+#
+# Theming!
+#
+
+set {
+    $bg		    #282828
+    $fg		    #ebdbb2
+    $lightbg	    #32302f
+    $lightfg	    #fbf1c7
+    
+    $red	    #cc241d
+    $orange	    #d65d0e
+    $green	    #98971a
+    $yellow	    #d79921
+    $blue	    #458588
+    $purple	    #b16286
+    $aqua           #698d6a
+    $gray           #928374
+
+    $lightred       #fb4934
+    $lightorange    #fe8019
+    $lightgreen     #b8bb26
+    $lightyellow    #fabd2f
+    $lightblue	    #83a598
+    $lightpurple    #d3869b
+    $lightaqua      #8ec07c
+    $lightgray	    #a89984
+
+    $font	    pango:Hack Nerd Font, Source Code Pro, monospace 14
+    $big_font	    pango:Hack Nerd Font, Source Code Pro, monospace 16
+}
 
 #
 # Variables and launchers
@@ -21,16 +52,11 @@ set {
     # Modes
     $screenshot_mode   "1 selected, 2 whole, 3 selected clipboard, 4 whole clipboard, 5 swappy"
 
-    # Theming
-    $font     pango:Hack Nerd Font, Source Code Pro, monospace 14
-    $big_font pango:Hack Nerd Font, Source Code Pro, monospace 16
-
     # Apps
     $launch rofi -combi-modi drun#run -show combi
     $term alacritty
-    $lock swaylock -f -c 282a36
+    $lock swaylock -f -c 282828
     $clip clipman pick --tool=rofi
-    $editor_id emacs_float
     $editor vim
     $browser firefox
 }
@@ -55,14 +81,17 @@ exec wlsunset -l 35.7 -L -105.9
 # Night shift (Grinnell)
 # exec wlsunset -l 41.7 -L -92.7
 
+# sworkstyle (icons on your workspaces)
+exec sworkstyle
+
 ### Window display config
 
 # When you mouse over a window, do not focus it unless you click
 focus_follows_mouse no
 
-### Wallpaper
+### Background / Wallpaper
 
-exec swaybg -m fill -i /home/ray/Pictures/Wallpapers/andrew-mcintosh-jellies.jpg
+exec swaybg -m fill -i /home/ray/Pictures/Wallpapers/gruvbox-sway.png
 
 ### Idle configuration
 
@@ -197,7 +226,7 @@ workspace_layout tabbed
 bindsym $mod+f fullscreen
 
 # Toggle the current focus between tiling and floating mode
-bindsym $mod+Shift+space floating toggle
+bindsym Mod1+Shift+space floating toggle
 
 # Swap focus between the tiling area and the floating area
 bindsym $mod+space focus mode_toggle
@@ -317,13 +346,13 @@ bar {
 #
 
 # class                 border  bground text    indicator child_border
-client.focused          #6272A4 #6272A4 #F8F8F2 #6272A4   #6272A4
-client.focused_inactive #44475A #44475A #F8F8F2 #44475A   #44475A
-client.unfocused        #282A36 #282A36 #BFBFBF #282A36   #282A36
-client.urgent           #44475A #FF5555 #F8F8F2 #FF5555   #FF5555
-client.placeholder      #282A36 #282A36 #F8F8F2 #282A36   #282A36
+client.focused          $blue   $blue   $fg     $blue     $blue
+client.focused_inactive $bg     $bg     $yellow $bg       $bg
+client.unfocused        $bg     $bg     $fg     $bg       $bg
+client.urgent           $fg	$red	$fg	$red      $red
+client.placeholder      $bg	$bg	$fg	$bg	  $bg
 
-client.background       #F8F8F2
+client.background       $bg
 
 # Read `man 5 sway-bar` for more information about this section.
 

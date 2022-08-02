@@ -6,8 +6,8 @@ if [ -f /etc/bashrc ]; then
 fi
 
 # User specific environment
-if ! [[ "$PATH" =~ "$HOME/.bin:$HOME/.local/bin:" ]]; then
-    PATH="$HOME/.bin:$HOME/.local/bin:$PATH"
+if ! [[ "$PATH" =~ "$HOME/.bin:$HOME/.local/bin:$HOME/.cargo/bin" ]]; then
+    PATH="$HOME/.bin:$HOME/.local/bin:$HOME/.cargo/bin:$PATH"
 fi
 export PATH
 
@@ -21,6 +21,9 @@ fi
 
 # Make sure ranger loads the config in ~/.config/ranger
 export RANGER_LOAD_DEFAULT_RC=FALSE
+
+# Set config dir
+export XDG_CONFIG_HOME="$HOME/.config"
 
 # Simple ls aliases
 alias ls='ls --color=auto'

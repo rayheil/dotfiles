@@ -48,7 +48,7 @@ window#waybar.hidden {
 
 #mode {
     background-color: @gray;
-    color: @bg;
+    color: @fg;
 }
 
 #clock,

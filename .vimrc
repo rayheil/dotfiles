@@ -34,4 +34,4 @@ set nowrap
 " Gruvbox themes (and all the stuff to make it work properly)
 autocmd vimenter * ++nested colorscheme gruvbox
 set bg=dark
-let g:gruvbox_contrast_dark = 'hard'
+let g:gruvbox_contrast_dark = 'medium'

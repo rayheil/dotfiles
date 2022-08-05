@@ -6,8 +6,8 @@
     "spacing": 4, // Gaps between modules (4px)
     // Choose the order of the modules
     "modules-left": ["clock", "sway/workspaces", "sway/mode",],
-    "modules-center": [],
-    "modules-right": ["custom/spotify", "idle_inhibitor", "battery", "network", "pulseaudio", "tray"],
+    "modules-center": ["custom/spotify"],
+    "modules-right": ["idle_inhibitor", "battery", "network", "pulseaudio", "tray"],
     "sway/mode": {
         "format": "<span style=\"italic\">{}</span>",
     },
@@ -70,8 +70,8 @@
         "on-click": "pavucontrol"
     },
     "custom/spotify": {
-	"format": "",
-	"format-alt": " {}",
+	"format": " {}",
+	"format-alt": "",
         "return-type": "json",
         "escape": true,
 	"on-click-right": "playerctl next",

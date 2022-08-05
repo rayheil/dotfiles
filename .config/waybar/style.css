@@ -10,7 +10,6 @@
 @define-color purple #b16286;
 @define-color aqua #698d6a;
 @define-color gray #928374;
-@define-color clear rgba(0, 0, 0, 0);
 
 * {
     font-family: Hack Nerd Font, FontAwesome, Roboto, monospace;
@@ -72,7 +71,9 @@ window#waybar.hidden {
 }
 
 #clock {
-    color: @lightorange;
+    background-color: @blue;
+    color: @fg;
+    margin: 0 10px 0 0;
 }
 
 #battery {
@@ -85,7 +86,7 @@ window#waybar.hidden {
 
 #network {
     padding: 0 20px 0 10px;
-    color: @blue;
+    color: @lightorange;
 }
 
 #network.disconnected {
@@ -114,10 +115,6 @@ window#waybar.hidden {
     -gtk-icon-effect: highlight;
     background-color: @red;
     color: @fg;
-}
-
-#idle_inhibitor {
-    padding: 0 16px 0 10px;
 }
 
 #idle_inhibitor.activated {

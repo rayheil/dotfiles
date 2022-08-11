@@ -81,9 +81,6 @@ exec wlsunset -l 35.7 -L -105.9
 # Night shift (Grinnell)
 # exec wlsunset -l 41.7 -L -92.7
 
-# sworkstyle (icons on your workspaces)
-exec sworkstyle
-
 ### Window display config
 
 # When you mouse over a window, do not focus it unless you click
@@ -226,7 +223,7 @@ workspace_layout tabbed
 bindsym $mod+f fullscreen
 
 # Toggle the current focus between tiling and floating mode
-bindsym Mod1+Shift+space floating toggle
+bindsym $mod+Shift+space floating toggle
 
 # Swap focus between the tiling area and the floating area
 bindsym $mod+space focus mode_toggle
@@ -239,14 +236,22 @@ bindsym $mod+a focus parent
 #
 
 for_window {
+    # Give XWayland apps a different title so I know
     [shell="xwayland"] title_format "%title [XWayland]"
+
+    # Stop Nextcloud's status from trying to fullscreen
     [app_id="com.nextcloud.desktopclient.nextcloud"] floating enable
-    [class="Thunderbird"] move to scratchpad, scratchpad show 
-    [class="Zotero"] move to scratchpad, scratchpad show
+
+    # If window_role is set properly, allow popups etc to float
     [window_role="pop-up"] floating enable
     [window_role="bubble"] floating enable
     [window_role="dialog"] floating enable
     [window_type="dialog"] floating enable
+
+    # Start some apps to the scratchpad instead of running normally
+    [class="Zotero"] move to scratchpad, scratchpad show
+    [class="Spotify"] move to scratchpad, scratchpad show
+    [class="Thunderbird"] move to scratchpad, scratchpad show
 }
 
 #

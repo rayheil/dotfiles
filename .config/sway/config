@@ -54,7 +54,7 @@ set {
 
     # Apps
     $launch rofi -combi-modi drun#run -show combi
-    $term alacritty
+    $term foot
     $lock swaylock -f -c 282828
     $clip clipman pick --tool=rofi
     $editor vim

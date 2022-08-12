@@ -23,7 +23,6 @@ source $ZSH/oh-my-zsh.sh
 #
 
 # Defaults for various terminal settings
-#export MANPAGER="sh -c 'col -bx | bat -l man -p'" # bat as manpager (pretty!)
 export EDITOR='vim'
 export PATH="/home/ray/.local/bin:/home/ray/.bin:$PATH"
 export RANGER_LOAD_DEFAULT_RC="FALSE" # Load my ranger rc, not the default
@@ -34,6 +33,7 @@ alias la="ls -a"
 alias ll="ls -lh"
 alias l="ll"
 alias lt="ls -lht"
+alias sl="sl -Fl" # hehe sl
 
 # I use this to manage my dotfiles in a bare directory
 alias config='/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME'

@@ -38,5 +38,10 @@ alias sl="sl -Fl" # hehe sl
 # I use this to manage my dotfiles in a bare directory
 alias config='/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
 
+# Run tmux if it's installed and we're in an interactive shell
+if command -v tmux &> /dev/null && [ -n "$PS1" ] && [[ ! "$TERM" =~ screen ]] && [[ ! "$TERM" =~ tmux ]] && [ -z "$TMUX" ]; then
+    exec tmux
+fi
+
 # Syntax highlighting for more pretty colors
 source /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh

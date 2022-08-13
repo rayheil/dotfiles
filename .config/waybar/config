@@ -7,7 +7,7 @@
     // Choose the order of the modules
     "modules-left": ["clock", "sway/workspaces", "sway/mode",],
     "modules-center": ["custom/spotify"],
-    "modules-right": ["idle_inhibitor", "battery", "network", "pulseaudio", "tray"],
+    "modules-right": ["idle_inhibitor", "battery", "network", "pulseaudio", "custom/scratchpad", "tray"],
     "sway/mode": {
         "format": "<span style=\"italic\">{}</span>",
     },
@@ -75,6 +75,22 @@
         "return-type": "json",
         "escape": true,
 	"on-click-right": "playerctl next",
-	"exec": "/home/ray/.local/bin/mediaplayer.py --player spotify 2> /dev/null",
+	"exec": "~/.config/waybar/modules/mediaplayer.py --player spotify 2> /dev/null",
+    },
+    "custom/scratchpad": {
+        "interval": 1,
+	"return-type": "json",
+	"format": "{icon}",
+	"format-icons": {
+            "none": "",
+       	    "one": "",
+	    "many": "",
+	    "unknown": ""
+	},
+	"exec": "~/.config/waybar/modules/scratchpad.sh",
+	"exec-if": "exit 0",
+	"on-click": "swaymsg scratchpad show",
+	"on-click-right": "swaymsg move window to scratchpad",
+	"tooltip": "false"
     },
 }

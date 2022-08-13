@@ -7,9 +7,9 @@
     // Choose the order of the modules
     "modules-left": ["clock", "sway/workspaces", "sway/mode",],
     "modules-center": ["custom/spotify"],
-    "modules-right": ["idle_inhibitor", "battery", "network", "pulseaudio", "custom/scratchpad", "tray"],
+    "modules-right": ["idle_inhibitor", "custom/scratchpad-indicator", "battery", "network", "pulseaudio", "tray"],
     "sway/mode": {
-        "format": "<span style=\"italic\">{}</span>",
+        "format": "{}",
     },
     "idle_inhibitor": {
         "format": "{icon}",
@@ -77,20 +77,13 @@
 	"on-click-right": "playerctl next",
 	"exec": "~/.config/waybar/modules/mediaplayer.py --player spotify 2> /dev/null",
     },
-    "custom/scratchpad": {
+    "custom/scratchpad-indicator": {
         "interval": 1,
 	"return-type": "json",
-	"format": "{icon}",
-	"format-icons": {
-            "none": "",
-       	    "one": "",
-	    "many": "",
-	    "unknown": ""
-	},
-	"exec": "~/.config/waybar/modules/scratchpad.sh",
-	"exec-if": "exit 0",
+	"exec": "swaymsg -t get_tree | jq --unbuffered --compact-output '(recurse(.nodes[]) | select(.name == \"__i3_scratch\") | .focus) as $scratch_ids | [.. | (.nodes? + .floating_nodes?) // empty | .[] | select(.id|IN($scratch_ids[]))] as $scratch_nodes | if ($scratch_nodes|length) > 0 then { text: \"\\($scratch_nodes|length)\", tooltip: $scratch_nodes|map(.name)|join(\"\\n\") } else empty end'",
+	"format": "{} ",
 	"on-click": "swaymsg scratchpad show",
 	"on-click-right": "swaymsg move window to scratchpad",
-	"tooltip": "false"
+	"tooltip": "true"
     },
 }

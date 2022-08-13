@@ -107,14 +107,10 @@ window#waybar.hidden {
     color: @lightgreen;
 }
 
-#custom-scratchpad {
-    padding: 0 10px 0 10px;
+#custom-scratchpad-indicator {
+    padding: 0 10px 0 5px;
+    color: @blue; 
 }
-
-#custom-scratchpad.many {
-    color: @yellow;
-}
-
 
 #tray > .passive {
     -gtk-icon-effect: dim;

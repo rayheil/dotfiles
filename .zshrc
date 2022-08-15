@@ -44,10 +44,8 @@ alias t="todo.sh"
 # I use this to manage my dotfiles in a bare directory
 alias config='/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
 
-# Neofetch with pretty colors!
-if (( $(tput cols) > 78 )); then
-	neofetch
-fi
+# how pretty! Even if it's a bit slow
+neofetch
 
 # Syntax highlighting for more pretty colors
 source /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh

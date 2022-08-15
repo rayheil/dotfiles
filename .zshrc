@@ -45,7 +45,9 @@ alias t="todo.sh"
 alias config='/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
 
 # Neofetch with pretty colors!
-neofetch
+if (( $(tput cols) > 78 )); then
+	neofetch
+fi
 
 # Syntax highlighting for more pretty colors
 source /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh

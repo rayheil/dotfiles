@@ -53,7 +53,7 @@ set {
     $screenshot_mode   "1 selected, 2 whole, 3 selected clipboard, 4 whole clipboard, 5 swappy"
 
     # Apps
-    $launch rofi -combi-modi window#drun#run -show combi
+    $launch rofi -combi-modi drun#run -show combi
     $term foot
     $lock swaylock -f -c 282828
     $clip clipman pick --tool=rofi
@@ -246,9 +246,9 @@ for_window {
     [window_type="dialog"] floating enable
 
     # Start some apps to the scratchpad instead of running normally
-    [class="Zotero"] move to scratchpad, scratchpad show, move position center, resize set 80ppt 80ppt
-    [class="Spotify"] move to scratchpad, scratchpad show, move position center, resize set 80ppt 80ppt
-    [class="Thunderbird"] move to scratchpad, scratchpad show, move position center, resize set 80ppt 80ppt
+    [class="Zotero"] move to scratchpad, scratchpad show, move position center, resize set 80ppt 80pt
+    [class="Spotify"] move to scratchpad, scratchpad show, move position center, resize set 60ppt 80ppt
+    [class="Thunderbird"] move to scratchpad, scratchpad show, move position center, resize set 80ppt 90ppt, scratchpad show
 }
 
 #

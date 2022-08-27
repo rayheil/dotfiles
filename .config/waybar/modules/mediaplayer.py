@@ -39,10 +39,18 @@ def on_metadata(player, metadata, manager):
         track_info = '{artist} - {title}'.format(artist=player.get_artist(),
                                                  title=player.get_title())
     else:
-        track_info = player.get_title()
+        # Shorten the title if we recognize certain patterns
+        whole_title = player.get_title()
+        if ": " in whole_title:
+            track_info = player.get_title().split(": ")[0]
+        elif " - " in whole_title:
+            track_info = player.get_title().split(" - ")[0]
+        else:
+            track_info = whole_title
 
-    if player.props.status != 'Playing' and track_info:
-        track_info = ' ' + track_info
+    # Don't show if the track is paused
+    #if player.props.status != 'Playing' and track_info:
+    #    track_info = ' ' + track_info
     write_output(track_info, player)
 
 

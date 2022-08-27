@@ -5,9 +5,9 @@
     // "width": 1280, // Waybar width
     "spacing": 4, // Gaps between modules (4px)
     // Choose the order of the modules
-    "modules-left": ["clock", "sway/workspaces", "sway/mode",],
-    "modules-center": ["custom/spotify"],
-    "modules-right": ["idle_inhibitor", "custom/scratchpad-indicator", "battery", "network", "pulseaudio", "tray"],
+    "modules-left": ["sway/workspaces", "sway/mode",],
+    "modules-center": ["idle_inhibitor", "clock", "custom/spotify"],
+    "modules-right": ["custom/scratchpad-indicator", "battery", "network", "pulseaudio", "tray"],
     "sway/mode": {
         "format": "{}",
     },
@@ -71,11 +71,11 @@
     },
     "custom/spotify": {
 	"format": " {}",
-	"format-alt": "",
         "return-type": "json",
         "escape": true,
-	"on-click-right": "playerctl next",
+	"on-click-right": "playerctl play-pause",
 	"exec": "~/.config/waybar/modules/mediaplayer.py --player spotify 2> /dev/null",
+	"tooltip": "true",
     },
     "custom/scratchpad-indicator": {
         "interval": 1,

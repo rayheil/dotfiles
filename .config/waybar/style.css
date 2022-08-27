@@ -71,9 +71,7 @@ window#waybar.hidden {
 }
 
 #clock {
-    background-color: @blue;
-    color: @fg;
-    margin: 0 10px 0 0;
+    color: @yellow;
 }
 
 #battery {
@@ -103,8 +101,8 @@ window#waybar.hidden {
 }
 
 #custom-spotify {
-    min-width: 20px;
     color: @lightgreen;
+    min-width: 18px;
 }
 
 #custom-scratchpad-indicator {

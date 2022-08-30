@@ -4,7 +4,8 @@ call plug#begin()
   Plug 'tpope/vim-sleuth'
   Plug 'jpalardy/vim-slime'
   Plug 'preservim/nerdcommenter'
-  Plug 'morhetz/gruvbox'
+  " Plug 'morhetz/gruvbox'
+  Plug 'joshdick/onedark.vim'
 call plug#end()
 
 " Syntax highlighting
@@ -31,7 +32,25 @@ set statusline="%f%m%r%h%w [%Y] [0x%02.2B]%< %F%=%4v,%4l %3p%% of %L"
 " By default, don't wrap lines
 set nowrap
 
-" Gruvbox themes (and all the stuff to make it work properly)
-autocmd vimenter * ++nested colorscheme gruvbox
-set bg=dark
-let g:gruvbox_contrast_dark = 'medium'
+" Mouse mode
+set mouse=a
+
+" Theme (everything else must be loaded already)
+"" Turns on syntax highlighting
+syntax on
+
+if has('termguicolors')
+    "" Turns on true terminal colors
+    let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
+    let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
+
+    "" Turns on 24-bit RGB color support
+    set termguicolors
+
+    "" Defines how many colors should be used. (maximum: 256, minimum: 0)
+    set t_Co=256
+endif
+
+set background=dark
+colorscheme onedark
+

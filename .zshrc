@@ -5,9 +5,6 @@
 # Path to oh-my-zsh installation
 export ZSH="$HOME/.oh-my-zsh"
 
-# Pretend that we're xterm because ssh seems to dislike foot
-export TERM="xterm"
-
 # Oh my zsh theme
 ZSH_THEME="simple"
 
@@ -27,19 +24,20 @@ source $ZSH/oh-my-zsh.sh
 
 # Defaults for various terminal settings
 export EDITOR='vim'
-export PATH="/home/ray/.local/bin:/home/ray/.bin:$PATH"
+export PATH="/home/ray/.emacs.d/bin:/home/ray/.local/bin:/home/ray/.bin:$PATH"
 export RANGER_LOAD_DEFAULT_RC="FALSE" # Load my ranger rc, not the default
 
 # ls aliases because I'm lazy
 alias ls="ls --color=auto"
 alias la="ls -a"
 alias ll="ls -lh"
-alias l="ll"
 alias lt="ls -lht"
 alias sl="sl -Fl" # hehe sl
+unalias l
 
-# todo.sh from https://github.com/todotxt/todo.txt-cli
-alias t="todo.sh"
+# Todo aliases
+alias t="todo.sh" # https://github.com/todotxt/todo.txt-cli
+alias today="$EDITOR ~/Todo/today.txt"
 
 # I use this to manage my dotfiles in a bare directory
 alias config='/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
@@ -48,4 +46,4 @@ alias config='/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
 neofetch
 
 # Syntax highlighting for more pretty colors
-source /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+#source /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh

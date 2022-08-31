@@ -4,8 +4,7 @@ call plug#begin()
   Plug 'tpope/vim-sleuth'
   Plug 'jpalardy/vim-slime'
   Plug 'preservim/nerdcommenter'
-  " Plug 'morhetz/gruvbox'
-  Plug 'joshdick/onedark.vim'
+  Plug 'chriskempson/base16-vim'
 call plug#end()
 
 " Syntax highlighting
@@ -35,6 +34,9 @@ set nowrap
 " Mouse mode
 set mouse=a
 
+" Copy to wl-clipboard from visual mode with C-@
+xnoremap <silent> <C-@> :w !wl-copy<CR><CR>
+
 " Theme (everything else must be loaded already)
 "" Turns on syntax highlighting
 syntax on
@@ -52,5 +54,5 @@ if has('termguicolors')
 endif
 
 set background=dark
-colorscheme onedark
+colorscheme base16-default-dark
 

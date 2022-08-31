@@ -1,0 +1,88 @@
+# Window settings
+window:
+  # Window dimensions (changes require restart)
+  dimensions:
+    columns: 150
+    lines: 40
+
+  # Padding on the sides of the window (in pixels)
+  padding:
+    x: 5
+    y: 0
+
+  # Spread additional padding evenly around the terminal content
+  dynamic_padding: true
+
+  # Window decorations
+  #
+  # Values for 'decorations':
+  #   - full: Borders and title bar
+  #   - none: Neither borders nor title bar
+  decorations: none
+
+  # Startup mode (requires restart)
+  # Can be:
+  #   - Windowed
+  #   - Maximized
+  #   - Fullscreen
+  startup_mode: Windowed
+
+
+# Fonts, whee!
+font:
+  normal:
+    family: Hack Nerd Font
+    style: Regular
+  bold:
+    family: Hack Nerd Font
+    style: Bold
+  italic:
+    Family: Hack Nerd Font
+    style: Italic
+  bold_italic:
+    Family: Hack Nerd Font
+    style: Bold Italic
+  
+  size: 14
+
+scrolling:
+  # Max lines in the scrollback buffer
+  history: 10000
+
+  # Number of lines to move the viewport for every line scrolled
+  multiplier: 3
+
+# Colors (Tomorrow Night)
+colors:
+  # Default colors
+  primary:
+    background: '#1d1f21'
+    foreground: '#c5c8c6'
+
+  # Colors the cursor will be if 'custom_cursor_colors' is true
+  cursor:
+    text: '#1d1f21'
+    cursor: '#ffffff'
+
+  # Normal colors
+  normal:
+    black:   '#1d1f21'
+    red:     '#cc6666'
+    green:   '#b5bd68'
+    yellow:  '#e6c547'
+    blue:    '#81a2be'
+    magenta: '#b294bb'
+    cyan:    '#70c0ba'
+    white:   '#373b41'
+
+  # Bright colors
+  bright:
+    black:   '#666666'
+    red:     '#ff3334'
+    green:   '#9ec400'
+    yellow:  '#f0c674'
+    blue:    '#81a2be'
+    magenta: '#b77ee0'
+    cyan:    '#54ced6'
+    white:   '#282a2e'
+

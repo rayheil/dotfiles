@@ -1,36 +1,49 @@
-# My very own dotfiles
+# My very own dotfiles!
 
-I wouldn't reccommend you (the random human on the internet) use these, but if you're going to there's no reason I would stop you. Please be aware that my solutions are hacky and there are many who make things work better than these configs do.
+Hello there, random internet person! These are the configuration files I use on my laptop, at least the useful ones I want to keep.
 
-To install these, I find it easiest to use an alias that points to the bare git repository.
+I wouldn't reccommend anyone besides me use them, but if you're going to there's no reason I should stop you. Beware, for here be (messy) code dragons! 
 
-```
-alias config='git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
-```
+# Installation
 
-Then, it's simple enough to clone the repo (but not so simple that I trust myself to do it without pasting the command here).
+I keep this section here so I know what to do when I put everything on a new computer. Otherwise, I'm going to forget it all.
 
-(FYI, you can also use the SSH link GitHub provides. It can make it easier to push.)
+I have everything set up to work through a bare git repo. You can create one like this.
+
+*(Future Ray, you can also use the SSH link instead, and it'll use your keys.)*
 
 ```
 git clone --bare https://github.com/raymondheil/dotfiles.git $HOME/.cfg
 ```
 
-If you use `config status` now it will show you every file in your home directory, which isn't that great. Turn it off with this setting.
+Then, I think it's useful to alias everything so it's easier to work with the files. I call my alias `config`.
+
+Of course, it's also nice to put this in the relevant \*.rc file in your home directory.
+
+```
+alias config='git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
+```
+
+It's also really nice to have `config status` only show you explicitly tracked files, because otherwise it'll show your *entire* home profile
+as untracked, making the output almost useless.
+
+This will also mean you can't see new files unless you add them by name, but it's a decent tradeoff in my opinion.
 
 ```
 config config status.showUntrackedFiles no
 ```
 
-This will also mean you can't see new files unless you add them by name, but it's a decent tradeoff in my opinion.
+To get the actual files, you then need to check out. 
 
-To get the actual files, you then need to check out. It might tell you that a file cannot be overridden. I usually just delete these, but if you have changes you care about you can always `mv` the old file to make a temporary backup.
+Odds are you'll get warning message that some file cannot be overridden. In this case, you need to get rid of it (deleting it, renaming it, etc.)
+before continuing.
 
 ```
 config checkout
 ```
 
-Yay! When you first make changes on a new machine (if you're me, of course), you need to set the origin as well. How stable and safe!
+Then, everything should be set up! If you're me and have push access to the repo, you also should probably change the repo origin
+to your local branch if you plan to update things from this computer.
 
 ```
 config push -u origin main

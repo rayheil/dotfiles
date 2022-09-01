@@ -42,8 +42,9 @@ alias today="$EDITOR ~/Todo/today.txt"
 # I use this to manage my dotfiles in a bare directory
 alias config='/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
 
-# how pretty! Even if it's a bit slow
-neofetch
-
-# Syntax highlighting for more pretty colors
-#source /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+# If we're not running tmux or screen and have tmux installed,
+# print out whether any sessions are running right now.
+if command -v tmux > /dev/null
+then
+	[[ ! $TERM =~ screen ]] && [ -z $TMUX ] && tmux-status
+fi

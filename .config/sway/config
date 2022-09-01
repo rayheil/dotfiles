@@ -9,29 +9,22 @@
 #
 
 set {
-    $bg		    #282828
-    $fg		    #ebdbb2
-    $lightbg	    #32302f
-    $lightfg	    #fbf1c7
-    
-    $red	    #cc241d
-    $orange	    #d65d0e
-    $green	    #98971a
-    $yellow	    #d79921
-    $blue	    #458588
-    $purple	    #b16286
-    $aqua           #698d6a
-    $gray           #928374
-
-    $lightred       #fb4934
-    $lightorange    #fe8019
-    $lightgreen     #b8bb26
-    $lightyellow    #fabd2f
-    $lightblue	    #83a598
-    $lightpurple    #d3869b
-    $lightaqua      #8ec07c
-    $lightgray	    #a89984
-
+    $bg		    #1d1f21
+    $fg		    #c5c8c6
+    $red	    #a54242
+    $green	    #8c9440
+    $yellow	    #de935f
+    $blue	    #5f819d
+    $purple	    #85678f
+    $aqua           #5e8d87
+    $gray           #707880
+    $lightred       #cc6666
+    $lightgreen     #b5bd68
+    $lightyellow    #f0c674
+    $lightblue	    #81a2be
+    $lightpurple    #b294bb
+    $lightaqua      #8abeb7
+    $lightgray	    #c5c8c6
     $font	    pango:Hack Nerd Font, Source Code Pro, monospace 14
     $big_font	    pango:Hack Nerd Font, Source Code Pro, monospace 16
 }
@@ -50,14 +43,14 @@ set {
     $right l
 
     # Modes
-    $screenshot_mode   "1 selected, 2 whole, 3 selected clipboard, 4 whole clipboard, 5 swappy"
+    $screenshot_mode "Screenshot: [1 clip,] 2 disk, 3 whole, 4 swappy"
+    $resize_mode "Resize: Arrow keys or hjkl to resize window"
 
     # Apps
     $launch rofi -combi-modi drun#run -show combi
-    $term foot
-    $lock swaylock -f -c 282828
+    $term alacritty
+    $lock swaylock -f -c #282a2e 
     $clip clipman pick --tool=rofi
-    $editor vim
     $browser firefox
 }
 
@@ -77,9 +70,9 @@ exec export SSH_AUTH_SOCK
 exec wl-paste -t text --watch clipman store --no-persist
 
 # Night shift (Santa Fe)
-exec wlsunset -l 35.7 -L -105.9
+# exec wlsunset -l 35.7 -L -105.9
 # Night shift (Grinnell)
-# exec wlsunset -l 41.7 -L -92.7
+exec wlsunset -l 41.7 -L -92.7
 
 ### Window display config
 
@@ -88,14 +81,13 @@ focus_follows_mouse no
 
 ### Background / Wallpaper
 
-exec swaybg -m fill -i /home/ray/Pictures/Wallpapers/gruvbox-sway.png
+exec swaybg -m fill -i /home/ray/Pictures/Wallpapers/andrew-mcintosh-jellies.jpg
 
 ### Idle configuration
 
 exec swayidle -w \
-     timeout 410 'notify-send -u low "Locking soon..." "You might wanna move the mouse"' \
-     timeout 420 '$lock' \
-     timeout 900 'swaymsg "output * dpms off"' resume 'swaymsg "output * dpms on"' \
+     timeout 420 'swaymsg "output * dpms off"' resume 'swaymsg "output * dpms on"' \
+     timeout 450 '$lock' \
      before-sleep '$lock'
 
 ### Input configuration
@@ -112,6 +104,9 @@ input type:touchpad {
 
 # Terminal
 bindsym $mod+Return exec $term
+
+# Editor
+bindsym $mod+Shift+Return exec $editor
 
 # Web browser
 bindsym $mod+Tab exec $browser
@@ -154,7 +149,7 @@ bindsym $mod+$left focus left
 bindsym $mod+$down focus down
 bindsym $mod+$up focus up
 bindsym $mod+$right focus right
-# Or use $mod+[up|down|left|right]
+# Or use $mod+[up|dow]
 bindsym $mod+Left focus left
 bindsym $mod+Down focus down
 bindsym $mod+Up focus up
@@ -246,9 +241,11 @@ for_window {
     [window_type="dialog"] floating enable
 
     # Start some apps to the scratchpad instead of running normally
-    [class="Zotero"] move to scratchpad, scratchpad show, move position center, resize set 80ppt 80pt
-    [class="Spotify"] move to scratchpad, scratchpad show, move position center, resize set 60ppt 80ppt
-    [class="Thunderbird"] move to scratchpad, scratchpad show, move position center, resize set 80ppt 90ppt, scratchpad show
+    [class="Zotero"] move to scratchpad, scratchpad show, resize set 80ppt 80ppt
+    [class="Spotify"] move to scratchpad, scratchpad show, resize set 60ppt 80ppt
+
+    # Hide thunderbird again once it opens, bootleg way of 
+    [class="Thunderbird"] move to scratchpad, scratchpad show, resize set 80ppt 90ppt, scratchpad show 
 }
 
 #
@@ -292,7 +289,7 @@ bindsym $mod+minus scratchpad show
 # Resizing windows:
 #
 
-mode "resize" {
+mode $resize_mode {
     # left will shrink the containers width
     # right will grow the containers width
     # up will grow the containers height
@@ -312,7 +309,7 @@ mode "resize" {
     bindsym Escape mode "default"
     bindsym $mod+r mode "default"
 }
-bindsym $mod+r mode "resize"
+bindsym $mod+r mode $resize_mode
 
 #
 # Screen capture:
@@ -320,14 +317,17 @@ bindsym $mod+r mode "resize"
 
 mode $screenshot_mode {
     # Options to take a screenshot
-    bindsym 1 exec 'grim -g "$(slurp -d)" "$(~/.config/sway/scripts/screenshot_name.sh)"', mode "default"
-    bindsym 2 exec 'grim "$(~/.config/sway/scripts/screenshot_name.sh)"', mode "default"
-    bindsym 3 exec 'grim -g "$(slurp -d)" - | wl-copy -t image/png', mode "default"
-    bindsym 4 exec 'grim - | wl-copy -t image/png', mode "default"
-    bindsym 5 exec 'grim -g "$(slurp -d)" - | swappy -f - -o "$(~/.config/sway/scripts/screenshot_name.sh)"', mode "default"
-
-    # Press button again to take fullscreen screenshot
-    bindsym Print exec 'grim "$(~/.config/sway/scripts/screenshot_name.sh)"', mode "default"
+    ## Select an area and copy it to clipboard
+    bindsym 1 exec 'grim -g "$(slurp -d)" - | wl-copy -t image/png', mode default"
+    ## Select an area and save it to disk
+    bindsym 2 exec 'grim -g "$(slurp -d)" "$(~/.config/sway/scripts/screenshot_name.sh)"', mode "default"
+    ## Save the entire screen to disk
+    bindsym 3 exec 'grim "$(~/.config/sway/scripts/screenshot_name.sh)"', mode "default"
+    ## Select an area and draw on it. I don't know how to change the save location yet.
+    bindsym 4 exec 'grim -g "$(slurp -d)" - | swappy -f - -o "$(~/.config/sway/scripts/screenshot_name.sh)"', mode "default"
+    
+    # Default action (press screenshot again) to select an area and copy to clipboard
+    bindsym Print exec 'grim -g "$(slurp -d)" - | wl-copy -t image/png', mode default"
 
     # Get back to normal with enter or escape
     bindsym Return mode "default"

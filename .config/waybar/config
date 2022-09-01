@@ -3,10 +3,10 @@
     // "position": "bottom", // Waybar position (top|bottom|left|right)
     "height": 30, // Waybar height (to be removed for auto height)
     // "width": 1280, // Waybar width
-    "spacing": 4, // Gaps between modules (4px)
+    //"spacing": 4, // Gaps between modules (4px)
     // Choose the order of the modules
-    "modules-left": ["sway/workspaces", "sway/mode",],
-    "modules-center": ["idle_inhibitor", "clock", "custom/spotify"],
+    "modules-left": ["sway/workspaces", "custom/spotify", "sway/mode",],
+    "modules-center": ["clock", "idle_inhibitor"],
     "modules-right": ["custom/scratchpad-indicator", "battery", "network", "pulseaudio", "tray"],
     "sway/mode": {
         "format": "{}",
@@ -14,8 +14,8 @@
     "idle_inhibitor": {
         "format": "{icon}",
         "format-icons": {
-            "activated": "",
-            "deactivated": ""
+            "activated": " ",
+            "deactivated": " "
         },
     },
     "tray": {
@@ -24,7 +24,7 @@
     },
     "clock": {
         "interval": 1,
-	"format": "{:%a %b %e, %I:%M:%S}",
+	"format": "<b>{:%a %b %e, %I:%M:%S}</b>",
 	"tooltip-format": "<tt>{calendar}</tt>"
     },
     "battery": {
@@ -81,7 +81,7 @@
         "interval": 1,
 	"return-type": "json",
 	"exec": "swaymsg -t get_tree | jq --unbuffered --compact-output '(recurse(.nodes[]) | select(.name == \"__i3_scratch\") | .focus) as $scratch_ids | [.. | (.nodes? + .floating_nodes?) // empty | .[] | select(.id|IN($scratch_ids[]))] as $scratch_nodes | if ($scratch_nodes|length) > 0 then { text: \"\\($scratch_nodes|length)\", tooltip: $scratch_nodes|map(.name)|join(\"\\n\") } else empty end'",
-	"format": "{} ",
+	"format": "{}  ",
 	"on-click": "swaymsg scratchpad show",
 	"on-click-right": "swaymsg move window to scratchpad",
 	"tooltip": "true"

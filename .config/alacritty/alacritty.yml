@@ -18,7 +18,7 @@ window:
   # Values for 'decorations':
   #   - full: Borders and title bar
   #   - none: Neither borders nor title bar
-  decorations: none
+  decorations: full
 
   # Startup mode (requires restart)
   # Can be:
@@ -67,22 +67,22 @@ colors:
   # Normal colors
   normal:
     black:   '#1d1f21'
-    red:     '#cc6666'
-    green:   '#b5bd68'
-    yellow:  '#e6c547'
-    blue:    '#81a2be'
-    magenta: '#b294bb'
-    cyan:    '#70c0ba'
-    white:   '#373b41'
-
-  # Bright colors
-  bright:
-    black:   '#666666'
     red:     '#ff3334'
     green:   '#9ec400'
-    yellow:  '#f0c674'
+    yellow:  '#e6c547'
     blue:    '#81a2be'
     magenta: '#b77ee0'
     cyan:    '#54ced6'
-    white:   '#282a2e'
+    white:   '#aaaaaa'
+
+  # Bright colors
+  bright:
+    black:   '#1d1f21'
+    red:     '#ff3334'
+    green:   '#9ec400'
+    yellow:  '#e6c547'
+    blue:    '#81a2be'
+    magenta: '#b77ee0'
+    cyan:    '#54ced6'
+    white:   '#aaaaaa'
 

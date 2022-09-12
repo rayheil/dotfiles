@@ -32,21 +32,36 @@ window#waybar.hidden {
 }
 
 #workspaces button {
-    background-color: transparent;
-    color: @lightblue;
+    color: @blue;
+    padding: 0 8pt;
+    border: none;
+    border-radius: 0;
+    /* Use box-shadow instead of border so the text isn't offset */
     box-shadow: inset 0 -3px transparent;
+    /* Avoid rounded borders under each workspace name */
     border: none;
     border-radius: 0;
 }
 
+/* https://github.com/Alexays/Waybar/wiki/FAQ#the-workspace-buttons-have-a-strange-hover-effect */
+#workspaces button:hover {
+    background: rgba(0, 0, 0, 0.2);
+    box-shadow: inset 0 -3px #ffffff;
+}
+
 #workspaces button.focused {
-    background-color: @lightblue;
+    background-color: @blue;
     color: @bg;
 }
 
 #workspaces button.urgent {
     background-color: @red;
     color: @bg;
+}
+
+#workspaces button:hover {
+    box-shadow: inherit;
+    text-shadow: inherit;
 }
 
 #mode {
@@ -61,10 +76,9 @@ window#waybar.hidden {
 #battery,
 #tray,
 #mode,
-#custom-spotify
 #idle_inhibitor {
     padding: 0 10px;
-    background-color: @bg;
+    background-color: transparent;
     color: @fg;
 }
 
@@ -78,11 +92,11 @@ window#waybar.hidden {
 
 #clock {
     color: @bg;
-    background-color: @blue;
+    background-color: @purple;
 }
 
 #battery {
-    color: @green;
+    color: @lightgreen;
 }
 
 #battery.critical:not(.charging) {
@@ -106,13 +120,17 @@ window#waybar.hidden {
     color: @gray;
 }
 
-#custom-spotify {
-    color: @green;
+#custom-media {
+    color: @lightyellow;
     padding-left: 10px;
 }
 
+#custom-media.custom-spotify {
+    color: @lightgreen;
+}
+
 #custom-scratchpad-indicator {
-    color: @aqua; 
+    color: @lightaqua; 
 }
 
 #tray > .passive {
@@ -126,8 +144,8 @@ window#waybar.hidden {
 }
 
 #idle_inhibitor {
-    background-color: @blue;
-    color: @bg;
+    padding-left: 10px;
+    color: @purple;
 }
 
 #idle_inhibitor.activated {

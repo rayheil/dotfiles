@@ -1,7 +1,3 @@
-#
-# Oh My Zsh Installation
-#
-
 # Path to oh-my-zsh installation
 export ZSH="$HOME/.oh-my-zsh"
 
@@ -13,34 +9,85 @@ zstyle ':omz:update' mode reminder
 zstyle ':omz:update' frequency 13
 
 # Oh my zsh plugins
-plugins=(git web-search z python)
+plugins=(z)
 
 # Source oh my zsh
 source $ZSH/oh-my-zsh.sh
 
-#
-# User configuration
-#
-
 # Defaults for various terminal settings
-export EDITOR='vim'
-export PATH="/home/ray/.emacs.d/bin:/home/ray/.local/bin:/home/ray/.bin:$PATH"
-export RANGER_LOAD_DEFAULT_RC="FALSE" # Load my ranger rc, not the default
+if command -v vim > /dev/null
+then
+	export EDITOR='vim'
+fi
 
-# ls aliases because I'm lazy
+# Check that our PATH has what we want in it
+if ! [[ "$PATH" =~ "$HOME/.bin:$HOME/.local/bin:$HOME/.cargo/bin" ]]
+then
+	export PATH="$HOME/.bin:$HOME/.local/bin:$HOME/.cargo/bin:$PATH"
+fi
+
+# Aliases I like with ls. They don't 100% make sense but I like them.
 alias ls="ls --color=auto"
 alias la="ls -a"
 alias ll="ls -lh"
 alias lt="ls -lht"
-alias sl="sl -Fl" # hehe sl
-unalias l
+unalias l # Disable Fedora default where it's ls -la
 
-# Todo aliases
-alias t="todo.sh" # https://github.com/todotxt/todo.txt-cli
-alias today="$EDITOR ~/Todo/today.txt"
+# Simple todo manager fom github todotxt/todo.txt-cli
+if command -v todo.sh > /dev/null
+then
+	alias t="todo.sh"
+fi
+
+# If we have a Todo directory, make some aliases to edit
+# predetermined files within it
+if [ -d "$HOME/Todo" ]
+then
+	alias todo="$EDITOR ~/Todo/manual.txt"
+	alias timecard="$EDITOR ~/Todo/timecard.txt"
+fi
 
 # I use this to manage my dotfiles in a bare directory
-alias config='/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
+if command -v git > /dev/null
+then
+	alias config='git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
+fi
+
+# Function to mkdir and cd into it all at once 
+mkcd ()
+{
+	mkdir -p -- "$1" &&
+           cd -P -- "$1"
+}
+
+# Make man display with bat if we have it installed 
+if command -v bat > /dev/null
+then
+	export MANPAGER="sh -c 'col -bx | bat -p -l man'"
+	man()
+	{
+		command man "$@" | eval ${MANPAGER}
+	}
+fi
+
+# sl is funny and I want to use it
+if command -v sl > /dev/null
+then
+	alias sl="sl -Fl"
+fi
+
+
+# It here, I like it.
+if command -v neofetch > /dev/null
+then
+	neofetch
+fi
+
+# Set up thefuck, which can correct commands
+if command -v thefuck > /dev/null
+then
+	eval $(thefuck --alias)
+fi
 
 # If we're not running tmux or screen and have tmux installed,
 # print out whether any sessions are running right now.

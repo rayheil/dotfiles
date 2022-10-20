@@ -1,10 +1,10 @@
 " Plugins (vim-plug because I'm wimpy)
 call plug#begin()
+  Plug 'joshdick/onedark.vim'
   Plug 'tpope/vim-sensible'
   Plug 'tpope/vim-sleuth'
   Plug 'jpalardy/vim-slime'
   Plug 'preservim/nerdcommenter'
-  Plug 'chriskempson/base16-vim'
 call plug#end()
 
 " Syntax highlighting
@@ -23,10 +23,20 @@ nmap <c-c><c-x> :%SlimeSend<cr>
 set number
 
 " Detect filetypes
+filetype on
 filetype plugin on
+filetype indent on
+
+" Show a line where our cursor is right now
+set cursorline
 
 " Make statusline display some simple info
 set statusline="%f%m%r%h%w [%Y] [0x%02.2B]%< %F%=%4v,%4l %3p%% of %L"
+
+" Set format options.
+" Automatically wrap text and comments if tw is set, but do not autowrap
+" comments when we press <Enter> or <o>
+set formatoptions=tc
 
 " By default, don't wrap lines
 set nowrap
@@ -37,9 +47,18 @@ set mouse=a
 " Copy to wl-clipboard from visual mode with C-@
 xnoremap <silent> <C-@> :w !wl-copy<CR><CR>
 
-" Theme (everything else must be loaded already)
-"" Turns on syntax highlighting
-syntax on
+" In *.txt files, set tw=80
+function SetPlaintextOptions()
+  setf txt
+  setlocal tw=80
+endfunction
+autocmd BufNewFile,BufRead *.txt call SetPlaintextOptions()
+
+" Highlight the text TODO in all files.
+augroup HiglightTODO
+    autocmd!
+    autocmd WinEnter,VimEnter * :silent! call matchadd('Todo', 'TODO', -1)
+augroup END
 
 if has('termguicolors')
     "" Turns on true terminal colors
@@ -53,5 +72,15 @@ if has('termguicolors')
     set t_Co=256
 endif
 
-colorscheme base16-tomorrow-night
+" Override onedark's default comment color to purple for visibility
+" The cterm and cterm16 don't match, I can't figure them out. They mean
+" purple.
+let g:onedark_color_overrides = {
+\ "comment_grey": {"gui": "#61afef", "cterm": "170", "cterm16": "5"},
+\}
 
+colorscheme onedark 
+set bg=dark
+
+" Syntax (everything else must be loaded already)
+syntax on

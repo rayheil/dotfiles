@@ -31,7 +31,6 @@ alias la='ls -a'
 alias lt='ls -lht'
 alias ll='ls -lh'
 alias config='/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
-alias td='todo' # Follow tda, tde, tdd pattern to call devtodo
 
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!

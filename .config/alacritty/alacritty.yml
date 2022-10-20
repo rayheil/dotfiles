@@ -2,12 +2,12 @@
 window:
   # Window dimensions (changes require restart)
   dimensions:
-    columns: 150
-    lines: 40
+    columns: 120
+    lines: 36
 
   # Padding on the sides of the window (in pixels)
   padding:
-    x: 5
+    x: 0
     y: 0
 
   # Spread additional padding evenly around the terminal content
@@ -18,7 +18,7 @@ window:
   # Values for 'decorations':
   #   - full: Borders and title bar
   #   - none: Neither borders nor title bar
-  decorations: full
+  decorations: none
 
   # Startup mode (requires restart)
   # Can be:
@@ -33,15 +33,6 @@ font:
   normal:
     family: Hack Nerd Font
     style: Regular
-  bold:
-    family: Hack Nerd Font
-    style: Bold
-  italic:
-    Family: Hack Nerd Font
-    style: Italic
-  bold_italic:
-    Family: Hack Nerd Font
-    style: Bold Italic
   
   size: 14
 
@@ -56,33 +47,33 @@ scrolling:
 colors:
   # Default colors
   primary:
-    background: '#1d1f21'
-    foreground: '#c5c8c6'
+    background: '#282c34'
+    foreground: '#abb2bf'
 
   # Colors the cursor will be if 'custom_cursor_colors' is true
   cursor:
-    text: '#1d1f21'
-    cursor: '#ffffff'
+    text: '#282c34'
+    cursor: '#abb2bf'
 
   # Normal colors
   normal:
-    black:   '#1d1f21'
-    red:     '#ff3334'
-    green:   '#9ec400'
-    yellow:  '#e6c547'
-    blue:    '#81a2be'
-    magenta: '#b77ee0'
-    cyan:    '#54ced6'
-    white:   '#aaaaaa'
+    black:   '#282c34'
+    red:     '#e06c75'
+    green:   '#98c379'
+    yellow:  '#e5c07b'
+    blue:    '#61afef'
+    magenta: '#c678dd'
+    cyan:    '#56b6c2'
+    white:   '#abb2bf'
 
   # Bright colors
   bright:
-    black:   '#1d1f21'
-    red:     '#ff3334'
-    green:   '#9ec400'
-    yellow:  '#e6c547'
-    blue:    '#81a2be'
-    magenta: '#b77ee0'
-    cyan:    '#54ced6'
-    white:   '#aaaaaa'
+    black:   '#282c34'
+    red:     '#e06c75'
+    green:   '#98c379'
+    yellow:  '#e5c07b'
+    blue:    '#61afef'
+    magenta: '#c678dd'
+    cyan:    '#56b6c2'
+    white:   '#abb2bf'
 

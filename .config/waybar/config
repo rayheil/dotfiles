@@ -1,20 +1,89 @@
 {
-    // "layer": "top", // Waybar at top layer
-    // "position": "bottom", // Waybar position (top|bottom|left|right)
-    "height": 30, // Waybar height (to be removed for auto height)
-    // "width": 1280, // Waybar width
-    "spacing": 4, // Gaps between modules (4px)
-    // Choose the order of the modules
-    "modules-left": ["sway/workspaces", "sway/mode", "custom/media"],
-    "modules-center": ["clock", "idle_inhibitor"],
-    "modules-right": ["custom/scratchpad-indicator", "battery", "network", "pulseaudio", "tray"],
-    "sway/workspaces": {
-    	"disable-scroll": true,
+    "modules-left": [
+    	"sway/workspaces", 
+	"sway/mode",
+    ],
+    "modules-center": [
+    	"clock",
+	"idle_inhibitor",
+    ],
+    "modules-right": [
+	"custom/scratchpad-indicator",
+    	"pulseaudio",
+	"backlight",
+	"network",
+	"battery",
+	"tray",
+     ],
+     "sway/workspaces": {
+     	"disable-scroll": true,
 	"all-outputs": true,
-	"format": "{name}",
+	"format": " {icon} ",
+	"persistent_workspaces": {
+	    "1": [],
+	    "2": [],
+	    "3": [],
+	    "4": [],
+	    "5": [],
+	    "6": []
+	},
+	"format-icons": {
+	    "1": " ",
+	    "2": " ",
+	    "3": " ",
+	    "4": " ",
+	    "5": " ",
+	    "6": " ",
+	    "7": "7",
+	    "8": "8",
+	    "9": "9",
+	    "10": "0",
+	    "urgent": " ",
+            "focused": " ",
+	"return-type": "json",
+            "default": " "
+	}
+    },
+    "sway/windows": {
+    	"max-length": 30
     },
     "sway/mode": {
         "format": "{}",
+    },
+    "custom/media": {
+    	"format": "{icon}",
+	"return-type": "json",
+	"max-length": 40,
+	"format-icons": {
+		"spotify": " ",
+		"default": " "
+	},
+	"escape": true,
+	"on-click": "playerctl play-pause",
+	"on-click-right": "playerctl next",
+	"exec": "~/.config/waybar/modules/mediaplayer.py 2> /dev/null",
+    },
+    "custom/do-not-disturb": {
+    	"format": "{icon}",
+	"format-icons": {
+	    "activated": "A",
+	    "deactivated": "D"
+	},
+	"escape:": true,
+	"return-type": "json",
+	"interval": 30,
+	"on-click": "~/.config/waybar/modules/mako_toggle_dnd",
+	"exec": "~/.config/waybar/modules/mako_status.py 2> /dev/null",
+	"exec-if": "pgrep mako"
+    },
+    "custom/scratchpad-indicator": {
+        "interval": 1,
+	"return-type": "json",
+	"exec": "swaymsg -t get_tree | jq --unbuffered --compact-output '(recurse(.nodes[]) | select(.name == \"__i3_scratch\") | .focus) as $scratch_ids | [.. | (.nodes? + .floating_nodes?) // empty | .[] | select(.id|IN($scratch_ids[]))] as $scratch_nodes | if ($scratch_nodes|length) > 0 then { text: \"\\($scratch_nodes|length)\", tooltip: $scratch_nodes|map(.name)|join(\"\\n\") } else empty end'",
+	"format": "{}   ",
+	"on-click": "swaymsg scratchpad show",
+	"on-click-right": "swaymsg move window to scratchpad",
+	"tooltip": "true"
     },
     "idle_inhibitor": {
         "format": "{icon}",
@@ -23,77 +92,52 @@
             "deactivated": " "
         },
     },
-    "tray": {
-        "icon-size": 20,
-        "spacing": 10,
-    },
-    "clock": {
-        "interval": 1,
-	"format": "<b>{:%a %b %e, %I:%M:%S}</b>",
-	"tooltip-format": "<tt>{calendar}</tt>"
-    },
-    "battery": {
-        "states": {
-            // "good": 95,
-            "warning": 30,
-            "critical": 15
-        },
-        "format": "{capacity}% {icon}",
-        "format-charging": "{capacity}% ", // ",
-        "format-plugged": "{capacity}% ",
-        "format-alt": "{time} {icon}",
-        // "format-good": "", // An empty format will hide the module
-        // "format-full": "",
-        "format-icons": [" ", " ", " ", " ", " "],
-    },
-    "network": {
-        // "interface": "wlp2*", // (Optional) To force the use of this interface
-        "format-wifi": "{essid} ({signalStrength}%) ",
-        "format-ethernet": "{ipaddr}/{cidr} ",
-        "tooltip-format": "{ifname} via {gwadr} ",
-        "format-linked": "{ifname} (No IP) ",
-        "format-disconnected": "Disconnected ⚠",
-        "format-alt": "{ifname}: {ipaddr}/{cidr}"
-    },
     "pulseaudio": {
-        // "scroll-step": 1, // %, can be a float
-        "format": "{volume}% {icon} {format_source}",
-        "format-bluetooth": "{volume}% {icon} {format_source}",
-        "format-bluetooth-muted": " {icon} {format_source}",
-        "format-muted": " {format_source}",
-        "format-source": "{volume}% ",
-        "format-source-muted": "",
+        "format": "{icon} {volume}%",
+        "format-bluetooth": " {format_source} {icon} {volume}%",
+        "format-bluetooth-muted": "{icon} muted",
+        "format-muted": "muted",
         "format-icons": {
-            "headphone": "",
-            "hands-free": "",
-            "headset": "",
-            "phone": "",
-            "portable": "",
-            "car": "",
-            "default": ["", "", ""]
+	    "default": [" ", " ", " "],
+	    "hands-free": [" ", " ", " "],
+            "headset": [" ", " ", " "],
+            "phone": [" ", " ", " "],
+            "portable": [" ", " ", " "],
+            "car": [" ", " ", " "],
+            "headphone": [" ", " ", " "]
         },
         "on-click": "pavucontrol"
     },
-    "custom/media": {
-    	"format": "{icon} {}",
-	"return-type": "json",
-	"max-length": 40,
-	"format-icons": {
-		"spotify": "",
-		"default": "🎜"
-	},
-	"escape": true,
-	"on-click": "playerctl play-pause",
-	"on-click-right": "playerctl next",
-	"exec": "~/.config/waybar/modules/mediaplayer.py 2> /dev/null",
+    "backlight": {
+    	"device": "intel_backlight",
+        "format": "  {percent}%",
     },
-    "custom/scratchpad-indicator": {
+    "network": {
+        "format-wifi": "  {essid}",
+	"tooltip-format": "Connected to {ipaddr}/{cidr}",
+        "format-ethernet": " Ethernet",
+        "format-linked": "{ifname}",
+        "format-disconnected": "Disconnected",
+    },
+   "battery": {
+        "interval": 60,
+        "states": {
+            "warning": 30,
+            "critical": 15
+        },
+        "format": "{icon} {capacity}%",
+        "format-icons": {
+	    "default": [" ", " ", " ", " ", " "],
+	    "charging": "⚡"
+	}
+    },
+    "clock": {
         "interval": 1,
-	"return-type": "json",
-	"exec": "swaymsg -t get_tree | jq --unbuffered --compact-output '(recurse(.nodes[]) | select(.name == \"__i3_scratch\") | .focus) as $scratch_ids | [.. | (.nodes? + .floating_nodes?) // empty | .[] | select(.id|IN($scratch_ids[]))] as $scratch_nodes | if ($scratch_nodes|length) > 0 then { text: \"\\($scratch_nodes|length)\", tooltip: $scratch_nodes|map(.name)|join(\"\\n\") } else empty end'",
-	"format": "{}  ",
-	"on-click": "swaymsg scratchpad show",
-	"on-click-right": "swaymsg move window to scratchpad",
-	"tooltip": "true"
+        "format": "{:%a, %b %d - %I:%M}",
+	"tooltip-format": "<tt>{calendar}</tt>"
+    },
+    "tray": {
+        "icon-size": 20,
+        "spacing": 10,
     },
 }

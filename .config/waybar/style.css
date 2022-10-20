@@ -1,153 +1,138 @@
-@define-color bg #1d1f21;
-@define-color fg #c5c8c6;
-@define-color red #a54242;
-@define-color lightred #cc6666;
-@define-color green #8c9440;
-@define-color lightgreen #b5bd68;
-@define-color yellow #de935f;
-@define-color lightyellow #f0c674;
-@define-color blue #5f819d;
-@define-color lightblue #81a2be;
-@define-color purple #85678f;
-@define-color lightpurple #b294bb;
-@define-color aqua #5e8d87;
-@define-color lightaqua #8abeb7;
-@define-color gray #707880;
-@define-color lightgray #c5c8c6;
+@define-color fg #abb2bf;
+@define-color bg #1f2227;
+@define-color alt-fg #1f2227;
+@define-color alt-bg @282c34;
+@define-color black #282c34;
+@define-color red #e06c75;
+@define-color green #98c379;
+@define-color yellow #e5c07b;
+@define-color blue #81a1c1;
+@define-color magenta #c768dd;
+@define-color cyan #56b6c2;
+@define-color white #c8ccd4;
 
 * {
-    font-family: Hack Nerd Font, FontAwesome, Roboto, monospace;
-    font-size: 12pt;
+    border: 0px solid rgba(40, 44, 52, 0);
+    border-radius: 2px;
+    font-family: Iosevka Nerd Font, Font Awesome, Arial, sans-serif;
+    font-weight: 700;
+    font-size: 13pt;
+    padding: 1px;
 }
 
 window#waybar {
     background-color: @bg;
+    background: transparent;
     color: @fg;
     transition-property: background-color;
     transition-duration: .5s;
+    border-radius: 0;
+}
+
+window > box {
+    margin: 0;
+    background: @bg;
+    color: @fg;
 }
 
 window#waybar.hidden {
-    opacity: 0;
+    opacity: 0.2;
+}
+
+label:focus {
+    background-color: @black;
+}
+
+@keyframes blink {
+    to {
+        background-color: @white;
+        color: @black;
+    }
+}
+
+#battery,
+#backlight,
+#network,
+#pulseaudio,
+#workspaces,
+#clock,
+#tray,
+#mode,
+#idle_inhibitor,
+#custom-do-not-disturb {
+    padding: 0 10px;
+    margin: 4px 4px 4px 4px;
+    color: @fg;
+    background-color: @bg;
 }
 
 #workspaces button {
-    color: @blue;
-    padding: 0 8pt;
-    border: none;
-    border-radius: 0;
-    /* Use box-shadow instead of border so the text isn't offset */
-    box-shadow: inset 0 -3px transparent;
-    /* Avoid rounded borders under each workspace name */
-    border: none;
-    border-radius: 0;
+    padding: 5px 5px;
+    margin-left: 1px;
+    color: @white;
+    border: 2px solid transparent;
 }
 
-/* https://github.com/Alexays/Waybar/wiki/FAQ#the-workspace-buttons-have-a-strange-hover-effect */
 #workspaces button:hover {
-    background: rgba(0, 0, 0, 0.2);
-    box-shadow: inset 0 -3px #ffffff;
+    border-bottom: 2px solid @white;
 }
 
 #workspaces button.focused {
-    background-color: @blue;
-    color: @bg;
+    background-color: rgba(200, 204, 212, 0.1);
+    border-bottom: 2px solid @yellow;
 }
 
 #workspaces button.urgent {
     background-color: @red;
-    color: @bg;
-}
-
-#workspaces button:hover {
-    box-shadow: inherit;
-    text-shadow: inherit;
-}
-
-#mode {
-    background-color: @gray;
-    color: @fg;
-}
-
-#clock,
-#network,
-#pulseaudio,
-#custom-media,
-#battery,
-#tray,
-#mode,
-#idle_inhibitor {
-    padding: 0 10px;
-    background-color: transparent;
-    color: @fg;
-}
-
-/* Give worspaces special rules if it has nothing to either side */
-.modules-left > widget:first-child > workspaces {
-    margin-left: 0;
-}
-.modules-right > widget:first-child > workspaces {
-    margin-right: 0;
-}
-
-#clock {
-    color: @bg;
-    background-color: @purple;
-}
-
-#battery {
-    color: @lightgreen;
-}
-
-#battery.critical:not(.charging) {
-    background-color: @red;
-}
-
-#network {
-    color: @lightred;
-}
-
-#network.disconnected {
-    background-color: @red;
-    color: @fg;
-}
-
-#pulseaudio {
-    color: @yellow;
-}
-
-#pulseaudio.muted {
-    color: @gray;
 }
 
 #custom-media {
-    color: @lightyellow;
-    padding-left: 10px;
+    color: @yellow;
+    min-width: 40px;
 }
 
 #custom-media.custom-spotify {
-    color: @lightgreen;
+    color: @green;
+}
+
+#pulseaudio {
+    color: @red;
+}
+
+#pulseaudio.muted {
+    background-color: @blue;
+    color: @bg;
+}
+
+#backlight {
+    color: @yellow;
 }
 
 #custom-scratchpad-indicator {
-    color: @lightaqua; 
+    color: @magenta;
 }
 
-#tray > .passive {
-    -gtk-icon-effect: dim;
+#network {
+    color: @blue;
 }
 
-#tray > .needs-attention {
-    -gtk-icon-effect: highlight;
-    background-color: @red;
-    color: @fg;
+#battery {
+    color: @green;
 }
 
-#idle_inhibitor {
-    padding-left: 10px;
-    color: @purple;
+#battery.critical:not(.charging) {
+    color: @red;
+    animation-name: blink;
+    animation-duration: 0.5s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
 }
 
-#idle_inhibitor.activated {
-    color: @fg;
+#clock {
+    color: @cyan;
+}
+
+#idle-inhibitor.activated {
+    color: @yellow;
 }

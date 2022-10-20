@@ -1,3 +1,6 @@
+# Set $TERM
+export TERM=xterm-256color
+
 # Path to oh-my-zsh installation
 export ZSH="$HOME/.oh-my-zsh"
 
@@ -28,9 +31,10 @@ fi
 
 # Aliases I like with ls. They don't 100% make sense but I like them.
 alias ls="ls --color=auto"
-alias la="ls -a"
-alias ll="ls -lh"
-alias lt="ls -lht"
+alias la="ls -a"   # List all
+alias ll="ls -lh"  # List long
+alias lr="ls -lhr" # List reversed
+alias lt="ls -lht" # List time
 unalias l # Disable Fedora default where it's ls -la
 
 # Simple todo manager fom github todotxt/todo.txt-cli
@@ -43,7 +47,6 @@ fi
 # predetermined files within it
 if [ -d "$HOME/Todo" ]
 then
-	alias todo="$EDITOR ~/Todo/manual.txt"
 	alias timecard="$EDITOR ~/Todo/timecard.txt"
 fi
 
@@ -54,10 +57,9 @@ then
 fi
 
 # Function to mkdir and cd into it all at once 
-mkcd ()
+mkcd () 
 {
-	mkdir -p -- "$1" &&
-           cd -P -- "$1"
+	mkdir -p -- "$1" && cd -P -- "$1"
 }
 
 # Make man display with bat if we have it installed 
@@ -78,10 +80,10 @@ fi
 
 
 # It here, I like it.
-if command -v neofetch > /dev/null
-then
-	neofetch
-fi
+#if command -v neofetch > /dev/null
+#then
+#	neofetch
+#fi
 
 # Set up thefuck, which can correct commands
 if command -v thefuck > /dev/null

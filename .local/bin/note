@@ -1,0 +1,20 @@
+#!/bin/bash
+
+if [ -d "$HOME/Notes" ]
+then
+	if [ $# -eq 0 ] # no arguments? list notes chronologically
+	then
+
+		ls -lhr "$HOME/Notes/"
+	elif [ $# -eq 1 ] # one argument? make that the note title
+	then
+		$EDITOR "$HOME/Notes/$(date '+%Y-%m-%d')-$1.txt"
+	else # two or more arguments? freak out and die
+		echo "You can only supply one argument try using dashes."
+		exit 1
+	fi
+else # no notes directory? freak out and die
+	echo "No ~/Notes directory seems to exist."
+	exit 1
+fi
+

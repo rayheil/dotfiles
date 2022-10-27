@@ -38,19 +38,14 @@ alias lt="ls -lht" # List time
 unalias l # Disable Fedora default where it's ls -la
 
 # Simple todo manager fom github todotxt/todo.txt-cli
+# I sometimes use it more, sometimes less
 if command -v todo.sh > /dev/null
 then
 	alias t="todo.sh"
 fi
 
-# If we have a Todo directory, make some aliases to edit
-# predetermined files within it
-if [ -d "$HOME/Todo" ]
-then
-	alias timecard="$EDITOR ~/Todo/timecard.txt"
-fi
-
-# I use this to manage my dotfiles in a bare directory
+# I manage my dotfiles with a bare git repo 
+# stolen from https://www.atlassian.com/git/tutorials/dotfiles
 if command -v git > /dev/null
 then
 	alias config='git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
@@ -73,22 +68,22 @@ then
 fi
 
 # sl is funny and I want to use it
+# but you NEED the floating little train!
 if command -v sl > /dev/null
 then
 	alias sl="sl -Fl"
 fi
 
-
-# It here, I like it.
-#if command -v neofetch > /dev/null
-#then
-#	neofetch
-#fi
-
 # Set up thefuck, which can correct commands
 if command -v thefuck > /dev/null
 then
 	eval $(thefuck --alias)
+fi
+
+# I like me some neofetch! 
+if command -v neofetch > /dev/null
+then
+	neofetch
 fi
 
 # If we're not running tmux or screen and have tmux installed,

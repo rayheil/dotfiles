@@ -75,11 +75,12 @@ label:focus {
 
 #workspaces button:hover {
     border-bottom: 2px solid @white;
+    background-color: @black;
 }
 
 #workspaces button.focused {
     background-color: rgba(200, 204, 212, 0.1);
-    border-bottom: 2px solid @yellow;
+    border-bottom: 3px solid @yellow;
 }
 
 #workspaces button.urgent {

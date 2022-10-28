@@ -15,7 +15,6 @@ set $lock swaylock -c 1f2227
 set $menu rofi -show drun -run-shell-command 'zsh -e zsh -ic "{cmd} && read"'
 set $clip rofi -show drun # TODO get this
 set $resize_mode "Resize: Use arrow keys"
-set $screenshot_mode "Screenshot: 1 area clip; [2 area disk]; 3 full disk; 4 area draw"
 
 # Direction keys
 set $left left
@@ -26,6 +25,12 @@ set $right right
 ################################################################################
 ### STARTUP
 ################################################################################
+
+# Make systemd and Dbus aware of the env variables
+# that make flameshot (and maybe other important things) work
+exec systemctl --user import-environment DISPLAY WAYLAND_DISPLAY SWAYSOCK
+exec hash dbus-update-activation-environment 2>/dev/null && \
+     dbus-update-activation-environment --systemd DISPLAY WAYLAND_DISPLAY SWAYSOCK
 
 # Nextcloud
 exec sleep 3 && nextcloud --background
@@ -55,6 +60,9 @@ exec swayidle -w \
 
 # Notifications
 exec mako
+
+# Screenshot util
+exec flameshot
 
 ################################################################################
 ### KEYBINDINGS
@@ -148,7 +156,7 @@ exec mako
     bindsym $mod+minus scratchpad show
 
 ###############################################################################
-### MEDIA KEYS
+### FUNCTION KEYS
 ################################################################################
 
 ## Volume:
@@ -172,6 +180,11 @@ exec mako
     bindsym Shift+XF86MonBrightnessDown exec brightnessctl set 1%-
     bindsym XF86MonBrightnessUp exec brightnessctl set 5%+
     bindsym Shift+XF86MonBrightnessUp exec brightnessctl set 1%+
+
+## Screenshot:
+
+    bindsym Print exec flameshot gui
+
 
 ################################################################################
 ### DEVICES
@@ -205,26 +218,6 @@ mode $resize_mode {
     bindsym $mod+r mode "default"
 }
 bindsym $mod+r mode $resize_mode
-
-## Take screenshots
-mode $screenshot_mode {
-    # Select an area and copy it to clipboard
-    bindsym 1 exec 'grim -g "$(slurp -d)" - | wl-copy -t image/png', mode default"
-    # Select an area and save it to disk
-    bindsym 2 exec 'grim -g "$(slurp -d)" "$(~/.config/sway/scripts/screenshot_name.sh)"', mode "default"
-    # Save the entire screen to disk
-    bindsym 3 exec 'grim "$(~/.config/sway/scripts/screenshot_name.sh)"', mode "default"
-    # Select an area and draw on it. I don't know how to change the save location yet.
-    bindsym 4 exec 'grim -g "$(slurp -d)" - | swappy -f - -o "$(~/.config/sway/scripts/screenshot_name.sh)"', mode "default"
-    
-    # Button again to select area and save to disk 
-    bindsym Print exec 'grim -g "$(slurp -d)" "$(~/.config/sway/scripts/screenshot_name.sh)"', mode "default"
-
-    # Get back to normal with enter or escape
-    bindsym Return mode "default"
-    bindsym Escape mode "default"
-}
-bindsym Print mode $screenshot_mode
 
 ################################################################################
 ### WINDOW RULES

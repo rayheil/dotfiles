@@ -80,12 +80,6 @@ then
 	eval $(thefuck --alias)
 fi
 
-# I like me some neofetch! 
-if command -v neofetch > /dev/null
-then
-	neofetch
-fi
-
 # If we're not running tmux or screen and have tmux installed,
 # print out whether any sessions are running right now.
 if command -v tmux > /dev/null

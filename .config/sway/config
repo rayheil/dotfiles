@@ -8,12 +8,11 @@ set $mod Mod4
 # Preferred apps
 set $term alacritty
 set $browser firefox
-set $alt_browser flatpak run com.github.Eloston.UngoogledChromium
 
 # System utils
 set $lock swaylock -c 1f2227
 set $menu rofi -show drun -run-shell-command 'zsh -e zsh -ic "{cmd} && read"'
-set $clip rofi -show drun # TODO get this
+set $clip clipman pick -t rofi 
 set $resize_mode "Resize: Use arrow keys"
 
 # Direction keys
@@ -40,11 +39,11 @@ exec sleep 3 && nextcloud --background
 # exec export SSH_AUTH_SOCK
 
 # Clipboard history
-exec wl-paste -t text --watch clipman store --no-persist
+exec wl-paste -t text --watch clipman store 1>> /tmp/clipman.log 2>&1 &
 
 # Night shift (uncomment one)
 # santa fe
-exec wlsunset -l 35.7 -L -105.9
+#exec wlsunset -l 35.7 -L -105.9
 # grinnell
 exec wlsunset -l 41.7 -L -92.7
 
@@ -237,9 +236,7 @@ for_window [window_type="dialog"] floating enable
 ################################################################################
 
 # Do not show titles, just a pixel border
-#default_border pixel 2
-default_border none
-hide_edge_borders --i3 smart
+default_border pixel 2
 smart_borders smart
 
 # Colors depending on focus state of window

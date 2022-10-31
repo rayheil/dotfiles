@@ -47,12 +47,14 @@ set mouse=a
 " Copy to wl-clipboard from visual mode with C-@
 xnoremap <silent> <C-@> :w !wl-copy<CR><CR>
 
-" In *.txt files, set tw=80
+" Text Editing Options
 function SetPlaintextOptions()
   setf txt
   setlocal tw=80
 endfunction
 autocmd BufNewFile,BufRead *.txt call SetPlaintextOptions()
+autocmd BufNewFile,BufRead *.tex call SetPlaintextOptions()
+autocmd BufNewFile,BufRead *.md call SetPlaintextOptions()
 
 " Highlight the text TODO in all files.
 augroup HiglightTODO

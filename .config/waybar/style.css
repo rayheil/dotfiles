@@ -70,11 +70,11 @@ label:focus {
     padding: 5px 5px;
     margin-left: 1px;
     color: @white;
-    border: 2px solid transparent;
+    border: 3px solid transparent;
 }
 
 #workspaces button:hover {
-    border-bottom: 2px solid @white;
+    border-bottom: 3px solid @white;
     background-color: @black;
 }
 

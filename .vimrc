@@ -23,9 +23,10 @@ nmap <c-c><c-x> :%SlimeSend<cr>
 set number
 
 " Detect filetypes
-filetype on
-filetype plugin on
-filetype indent on
+filetype plugin indent on
+
+" Autoindent
+set autoindent
 
 " Show a line where our cursor is right now
 set cursorline
@@ -47,14 +48,18 @@ set mouse=a
 " Copy to wl-clipboard from visual mode with C-@
 xnoremap <silent> <C-@> :w !wl-copy<CR><CR>
 
-" Text Editing Options
+" Text Files (when I want text to wrap and stuff) 
 function SetPlaintextOptions()
-  setf txt
   setlocal tw=80
 endfunction
-autocmd BufNewFile,BufRead *.txt call SetPlaintextOptions()
-autocmd BufNewFile,BufRead *.tex call SetPlaintextOptions()
-autocmd BufNewFile,BufRead *.md call SetPlaintextOptions()
+autocmd BufNewFile,BufRead *.txt,*.tex,*.md call SetPlaintextOptions()
+
+" C files
+function SetCOptions()
+  set cindent
+endfunction
+autocmd BufNewFile,BufRead *.c,*.h call SetCOptions()
+
 
 " Highlight the text TODO in all files.
 augroup HiglightTODO
@@ -62,6 +67,7 @@ augroup HiglightTODO
     autocmd WinEnter,VimEnter * :silent! call matchadd('Todo', 'TODO', -1)
 augroup END
 
+" Make there be colors? Idk how I'll be honest
 if has('termguicolors')
     "" Turns on true terminal colors
     let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
@@ -81,6 +87,7 @@ let g:onedark_color_overrides = {
 \ "comment_grey": {"gui": "#61afef", "cterm": "170", "cterm16": "5"},
 \}
 
+" Dark mode good (revolutionary)
 colorscheme onedark 
 set bg=dark
 

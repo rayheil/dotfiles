@@ -8,9 +8,14 @@ I wouldn't reccommend anyone besides me use them, but if you're going to there's
 
 I keep this section here so I know what to do when I put everything on a new computer. Otherwise, I'm going to forget it all.
 
-I have everything set up to work through a bare git repo. You can create one like this.
+I have everything set up to work through a bare git repo. If you're me and have
+your SSH keys ready, you can do it with SSH:
 
-*(Future Ray, you can also use the SSH link instead, and it'll use your keys.)*
+```
+git clone --bare git@github.com:raymondheil/dotfiles.git $HOME/.cfg
+```
+
+otherwise, HTTPS is the option you'll want:
 
 ```
 git clone --bare https://github.com/raymondheil/dotfiles.git $HOME/.cfg

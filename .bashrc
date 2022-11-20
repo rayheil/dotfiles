@@ -25,12 +25,8 @@ export RANGER_LOAD_DEFAULT_RC=FALSE
 # Set config dir
 export XDG_CONFIG_HOME="$HOME/.config"
 
-# Simple ls aliases
-alias ls='ls --color=auto'
-alias la='ls -a'
-alias lt='ls -lht'
-alias ll='ls -lh'
-alias config='/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
+# Include cross-shell aliases
+source $HOME/.aliases
 
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!

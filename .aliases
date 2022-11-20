@@ -1,0 +1,18 @@
+alias ls="ls --color=auto"
+alias la="ls -a"   # All
+alias ll="ls -lh"  # Long (but human readable)
+alias lr="ls -lhr" # Reverse
+alias lt="ls -lht" # By time
+unalias l          # Fedora default I dislike
+
+alias t="todo.sh"  # Todo utility
+alias config="git --git-dir=$HOME/.cfg/ --work-tree=$HOME"
+
+mkcd ()
+{
+	mkdir -p -- "$1" && cd -P -- "$1"
+}
+
+alias sl="sl -Fl" # What, sl is funny?
+
+

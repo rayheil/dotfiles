@@ -1,9 +1,10 @@
 alias ls="ls --color=auto"
-alias la="ls -a"   # All
-alias ll="ls -lh"  # Long (but human readable)
-alias lr="ls -lhr" # Reverse
-alias lt="ls -lht" # By time
-unalias l          # Fedora default I dislike
+alias la="ls -a"       # All
+alias ll="ls -lh"      # Long (but human readable)
+alias lr="ls -lhr"     # Reverse
+alias lt="ls -lht"     # By time
+alias lld="ls -lhd */" # Only directories
+unalias l              # Fedora default I dislike
 
 alias t="todo.sh"  # Todo utility
 alias config="git --git-dir=$HOME/.cfg/ --work-tree=$HOME"

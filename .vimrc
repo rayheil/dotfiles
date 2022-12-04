@@ -1,10 +1,10 @@
 " Plugins (vim-plug because I'm wimpy)
 call plug#begin()
-  Plug 'joshdick/onedark.vim'
-  Plug 'tpope/vim-sensible'
-  Plug 'tpope/vim-sleuth'
-  Plug 'jpalardy/vim-slime'
-  Plug 'preservim/nerdcommenter'
+  Plug 'joshdick/onedark.vim'    " onedark colorscheme
+  Plug 'tpope/vim-sensible'      " sensible vim setup
+  Plug 'tpope/vim-sleuth'        " autodetect indentation
+  Plug 'jpalardy/vim-slime'      " run code in a REPL
+  Plug 'preservim/nerdcommenter' " comment tools
 call plug#end()
 
 " Syntax highlighting
@@ -80,9 +80,8 @@ if has('termguicolors')
     set t_Co=256
 endif
 
-" Override onedark's default comment color to purple for visibility
-" The cterm and cterm16 don't match, I can't figure them out. They mean
-" purple.
+" Override onedark's default comment color to blue for visibility
+" I don't know what cterm and cterm16 mean, those are set to purple (I think?)
 let g:onedark_color_overrides = {
 \ "comment_grey": {"gui": "#61afef", "cterm": "170", "cterm16": "5"},
 \}

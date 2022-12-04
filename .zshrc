@@ -4,6 +4,9 @@ export TERM=xterm-256color
 # Path to oh-my-zsh installation
 export ZSH="$HOME/.oh-my-zsh"
 
+# Make sure gpg works...? I didn't need this in the past
+export GPG_TTY=$(tty)
+
 # Oh my zsh theme
 ZSH_THEME="simple"
 

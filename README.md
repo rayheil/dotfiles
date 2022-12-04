@@ -2,7 +2,7 @@
 
 Hello there, random internet person! These are the configuration files I use on my laptop, at least the useful ones I want to keep.
 
-I wouldn't reccommend anyone besides me use them, but if you're going to there's no reason I should stop you. Beware, for here be (messy) code dragons! 
+I wouldn't recommend anyone besides me use them, but if you're going to there's no reason I should stop you. Beware, for here be (messy) code dragons! 
 
 # Installation
 

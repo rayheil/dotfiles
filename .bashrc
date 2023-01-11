@@ -11,9 +11,9 @@ if ! [[ "$PATH" =~ "$HOME/.bin:$HOME/.local/bin:$HOME/.cargo/bin" ]]; then
 fi
 export PATH
 
-# Preferred editor for local and remove sessions
+# Preferred editor for local and remote sessions
 if [[ -n $SSH_CONNECTION ]]; then
-    export EDITOR='vi'
+    export EDITOR='vim'
 else
     export EDITOR='vim'
     export GPG_TTY=$(tty)
@@ -42,3 +42,4 @@ else
 fi
 unset __conda_setup
 # <<< conda initialize <<<
+. "$HOME/.cargo/env"

@@ -8,7 +8,7 @@ export ZSH="$HOME/.oh-my-zsh"
 export GPG_TTY=$(tty)
 
 # Oh my zsh theme
-ZSH_THEME="simple"
+ZSH_THEME="sunrise" # set by `omz`
 
 # Remind on omz updates, but don't auto update
 zstyle ':omz:update' mode reminder
@@ -57,3 +57,5 @@ if command -v tmux > /dev/null
 then
 	[[ ! $TERM =~ screen ]] && [ -z $TMUX ] && tmux-status
 fi
+
+. "$HOME/.cargo/env"

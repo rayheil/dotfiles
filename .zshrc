@@ -57,5 +57,3 @@ if command -v tmux > /dev/null
 then
 	[[ ! $TERM =~ screen ]] && [ -z $TMUX ] && tmux-status
 fi
-
-. "$HOME/.cargo/env"

@@ -51,6 +51,7 @@ xnoremap <silent> <C-@> :w !wl-copy<CR><CR>
 " Text Files (when I want text to wrap and stuff) 
 function SetPlaintextOptions()
   setlocal tw=80
+  set spell spelllang=en_us
 endfunction
 autocmd BufNewFile,BufRead *.txt,*.tex,*.md call SetPlaintextOptions()
 
@@ -60,14 +61,13 @@ function SetCOptions()
 endfunction
 autocmd BufNewFile,BufRead *.c,*.h call SetCOptions()
 
-
 " Highlight the text TODO in all files.
 augroup HiglightTODO
     autocmd!
     autocmd WinEnter,VimEnter * :silent! call matchadd('Todo', 'TODO', -1)
 augroup END
 
-" Make there be colors? Idk how I'll be honest
+" Make there be colors?
 if has('termguicolors')
     "" Turns on true terminal colors
     let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
@@ -81,7 +81,9 @@ if has('termguicolors')
 endif
 
 " Override onedark's default comment color to blue for visibility
-" I don't know what cterm and cterm16 mean, those are set to purple (I think?)
+"
+" I don't know what cterm and cterm16 mean, those are set to purple because
+" IDK how to change them 
 let g:onedark_color_overrides = {
 \ "comment_grey": {"gui": "#61afef", "cterm": "170", "cterm16": "5"},
 \}
@@ -90,5 +92,5 @@ let g:onedark_color_overrides = {
 colorscheme onedark 
 set bg=dark
 
-" Syntax (everything else must be loaded already)
+" Syntax highlighting (must be at bottom of file) 
 syntax on

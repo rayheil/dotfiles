@@ -23,6 +23,9 @@ source $ZSH/oh-my-zsh.sh
 # Include cross-shell aliases
 source $HOME/.aliases
 
+# oh-my-zsh likes to set an alias I don't enjoy
+unalias l
+
 # Defaults for various terminal settings
 if command -v vim > /dev/null
 then

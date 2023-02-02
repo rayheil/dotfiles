@@ -51,7 +51,6 @@ xnoremap <silent> <C-@> :w !wl-copy<CR><CR>
 " Text Files (when I want text to wrap and stuff) 
 function SetPlaintextOptions()
   setlocal tw=80
-  set spell spelllang=en_us
 endfunction
 autocmd BufNewFile,BufRead *.txt,*.tex,*.md call SetPlaintextOptions()
 

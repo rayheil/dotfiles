@@ -16,7 +16,7 @@
     border-radius: 2px;
     font-family: Iosevka Nerd Font, Font Awesome, Arial, sans-serif;
     font-weight: 700;
-    font-size: 13pt;
+    font-size: 14pt;
     padding: 1px;
 }
 
@@ -67,7 +67,7 @@ label:focus {
 }
 
 #workspaces button {
-    padding: 5px 5px;
+    padding: 5px; 
     margin-left: 1px;
     color: @white;
     border: 3px solid transparent;

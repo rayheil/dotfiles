@@ -1,0 +1,4 @@
+#!/bin/bash
+
+# I do not know what this does but it somehow mounts it 
+sg_raw /dev/sr0 EA 00 00 00 00 00 01

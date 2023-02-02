@@ -10,7 +10,7 @@ then
 	then
 		$EDITOR "$HOME/Notes/$(date '+%Y-%m-%d')-$1.txt"
 	else # two or more arguments? freak out and die
-		echo "You can only supply one argument try using dashes."
+		echo "You can only supply one argument, try using dashes."
 		exit 1
 	fi
 else # no notes directory? freak out and die

@@ -33,9 +33,9 @@ then
 fi
 
 # Check that our PATH has what we want in it
-if ! [[ "$PATH" =~ "$HOME/.bin:$HOME/.local/bin:$HOME/.cargo/bin" ]]
+if ! [[ "$PATH" =~ "$HOME/.bin:$HOME/.local/bin:$HOME/.cargo/bin:$HOME/.local/script" ]]
 then
-	export PATH="$HOME/.bin:$HOME/.local/bin:$HOME/.cargo/bin:$PATH"
+	export PATH="$HOME/.bin:$HOME/.local/bin:$HOME/.cargo/bin:$PATH:$HOME/.local/script"
 fi
 
 # Make man display with bat if we have it installed 
@@ -60,3 +60,9 @@ if command -v tmux > /dev/null
 then
 	[[ ! $TERM =~ screen ]] && [ -z $TMUX ] && tmux-status
 fi
+
+# Link .ghcup environment
+[ -f "/home/ray/.ghcup/env" ] && source "/home/ray/.ghcup/env"
+
+# Do not cd into a directory by name in oh-my-zsh
+unsetopt autocd

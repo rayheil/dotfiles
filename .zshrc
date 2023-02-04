@@ -27,10 +27,7 @@ source $HOME/.aliases
 unalias l
 
 # Defaults for various terminal settings
-if command -v vim > /dev/null
-then
-	export EDITOR='vim'
-fi
+export EDITOR=nvim
 
 # Check that our PATH has what we want in it
 if ! [[ "$PATH" =~ "$HOME/.bin:$HOME/.local/bin:$HOME/.cargo/bin:$HOME/.local/script" ]]

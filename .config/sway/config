@@ -1,4 +1,12 @@
 ################################################################################
+### DBUS AND STUFF 
+################################################################################
+
+exec systemctl --user import-environment DISPLAY WAYLAND_DISPLAY SWAYSOCK
+exec hash dbus-update-activation-environment 2>/dev/null && \
+     dbus-update-activation-environment --systemd DISPLAY WAYLAND_DISPLAY SWAYSOCK
+
+################################################################################
 ### VARIABLES
 ################################################################################
 
@@ -11,8 +19,8 @@ set $browser firefox
 
 # System utils
 set $lock swaylock -c 1f2227
-set $menu dmenu_path | dmenu | xargs swaymsg exec -- 
-set $clip clipman pick -t dmenu 
+set $menu bemenu-run
+set $clip clipman pick -t bemenu 
 set $resize_mode "Resize: Use arrow keys"
 
 # Direction keys
@@ -24,12 +32,6 @@ set $right right
 ################################################################################
 ### STARTUP
 ################################################################################
-
-# Make systemd and Dbus aware of the env variables
-# that make flameshot (and maybe other important things) work
-exec systemctl --user import-environment DISPLAY WAYLAND_DISPLAY SWAYSOCK
-exec hash dbus-update-activation-environment 2>/dev/null && \
-     dbus-update-activation-environment --systemd DISPLAY WAYLAND_DISPLAY SWAYSOCK
 
 # Nextcloud
 exec sleep 3 && nextcloud --background

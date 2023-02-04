@@ -41,7 +41,8 @@ exec sleep 3 && nextcloud --background
 # exec export SSH_AUTH_SOCK
 
 # Clipboard history
-exec wl-paste -t text --watch clipman store 1>> /tmp/clipman.log 2>&1 &
+exec wl-paste -t text  --watch clipman store --no-persist
+exec wl-paste -t image --watch clipman store --no-persist
 
 # Night shift (uncomment one)
 # santa fe
@@ -57,9 +58,6 @@ exec swayidle -w \
 
 # Notifications
 exec swaync 
-
-# Screenshot util
-exec flameshot
 
 ################################################################################
 ### KEYBINDINGS
@@ -177,11 +175,6 @@ exec flameshot
     bindsym XF86MonBrightnessUp exec brightnessctl set 5%+
     bindsym Shift+XF86MonBrightnessUp exec brightnessctl set 1%+
 
-## Screenshot:
-
-    bindsym Print exec flameshot gui
-
-
 ################################################################################
 ### DEVICES
 ################################################################################
@@ -214,6 +207,21 @@ mode $resize_mode {
     bindsym $mod+r mode "default"
 }
 bindsym $mod+r mode $resize_mode
+
+mode $screenshot_mode {
+    # selection
+    bindsym 1 exec grim -g "$(slurp)" - | swappy -f -, mode "default"
+    # window
+    bindsym 2 exec "/home/ray/.local/script/sway-window-screenshot", mode "default" 
+    # full screen
+    bindsym 3 exec "grim - | swappy -f -", mode "default"
+    
+    # Exit
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+    bindsym Print  exec "grim - | swappy -f -", mode "default"
+}
+bindsym Print mode $screenshot_mode
 
 ################################################################################
 ### WINDOW RULES

@@ -50,11 +50,10 @@ exec wl-paste -t text --watch clipman store 1>> /tmp/clipman.log 2>&1 &
 exec wlsunset -l 41.7 -L -92.7
 
 # Idle config
-# Turn off screen after some time, then lock it afterwards
 exec swayidle -w \
-     timeout 420 'swaymsg "output * dpms off"' resume 'swaymsg "output * dpms on"' \
-     timeout 450 'systemctl suspend' \
-     before-sleep '$lock'
+    timeout 900 $lock \
+    timeout 1200 'swaymsg "output * dpms off"' resume 'swaymsg "output * dpms on"' \
+    before-sleep $lock
 
 # Notifications
 exec swaync 

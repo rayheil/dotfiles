@@ -21,7 +21,9 @@ set $browser firefox
 set $lock swaylock -c 1f2227
 set $menu bemenu-run
 set $clip clipman pick -t bemenu 
+set $wallpaper "/home/ray/Pictures/Wallpapers/hk-lake-of-unn.png"
 set $resize_mode "Resize: Use arrow keys"
+set $screenshot_mode
 
 # Direction keys
 set $left left
@@ -262,7 +264,7 @@ gaps inner 2
 gaps outer 2
 
 # Set wallpaper
-exec swaybg -m fill -i "/home/ray/Pictures/Wallpapers/andrew-mcintosh-jellies.jpg"
+exec swaybg -m fill -i $wallpaper
 
 ################################################################################
 ### BOILERPLATE

@@ -1,17 +1,9 @@
 #!/bin/bash
 
-if [[ $(pwd) = $HOME ]]
+if [ -d "$HOME/Todo" ]
 then
-	# If in $HOME, edit either ~/Todo/manual.txt or ~/todo.txt
-	# depending on whether we have a ~/Todo directory or not
-	if [ -d "Todo" ]
-	then
-		$EDITOR "$HOME/Todo/manual.txt"
-	else
-		$EDITOR "$HOME/todo.txt"
-	fi
+	$EDITOR "$HOME/Todo/manual.txt"
 else
-	# If not in $HOME, edit a todo.txt file in the current directory
-	$EDITOR todo.txt
+	$EDITOR "$HOME/todo.txt"
 fi
 

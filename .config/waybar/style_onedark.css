@@ -1,14 +1,15 @@
-@define-color fg #b5c3ac;
-@define-color bg #092931;
-
-@define-color clock #60c7b4;
-@define-color scratchpad-indicator #4c66a9;
-@define-color sound #296155;
-@define-color backlight #9bc186;
-@define-color network #3c6881;
-@define-color battery #83ca8e;
-@define-color idle-inhibitor-activated #1d4756;
-@define-color critical #e06c75;
+@define-color fg #abb2bf;
+@define-color bg #1f2227;
+@define-color alt-fg #1f2227;
+@define-color alt-bg @282c34;
+@define-color black #282c34;
+@define-color red #e06c75;
+@define-color green #98c379;
+@define-color yellow #e5c07b;
+@define-color blue #81a1c1;
+@define-color magenta #c768dd;
+@define-color cyan #56b6c2;
+@define-color white #c8ccd4;
 
 * {
     border: 0px solid rgba(40, 44, 52, 0);
@@ -39,13 +40,13 @@ window#waybar.hidden {
 }
 
 label:focus {
-    background-color: @bg;
+    background-color: @black;
 }
 
 @keyframes blink {
     to {
-        background-color: @fg;
-        color: @bg;
+        background-color: @white;
+        color: @black;
     }
 }
 
@@ -68,51 +69,60 @@ label:focus {
 #workspaces button {
     padding: 5px; 
     margin-left: 1px;
-    color: @fg;
+    color: @white;
     border: 3px solid transparent;
 }
 
 #workspaces button:hover {
-    border-bottom: 3px solid @fg;
-    background-color: @bg;
+    border-bottom: 3px solid @white;
+    background-color: @black;
 }
 
 #workspaces button.focused {
     background-color: rgba(200, 204, 212, 0.1);
-    border-bottom: 3px solid @fg;
+    border-bottom: 3px solid @yellow;
 }
 
 #workspaces button.urgent {
-    background-color: @critical;
+    background-color: @red;
+}
+
+#custom-media {
+    color: @yellow;
+    min-width: 40px;
+}
+
+#custom-media.custom-spotify {
+    color: @green;
 }
 
 #pulseaudio {
-    color: @sound;
+    color: @red;
 }
 
 #pulseaudio.muted {
-    background-color: @sound;
+    background-color: @blue;
     color: @bg;
 }
 
 #backlight {
-    color: @backlight;
+    color: @yellow;
 }
 
 #custom-scratchpad-indicator {
-    color: @scratchpad-indicator;
+    color: @magenta;
 }
 
 #network {
-    color: @network;
+    color: @blue;
 }
 
 #battery {
-    color: @battery;
+    color: @green;
 }
 
 #battery.critical:not(.charging) {
-    color: @critical;
+    color: @red;
     animation-name: blink;
     animation-duration: 0.5s;
     animation-timing-function: linear;
@@ -121,9 +131,9 @@ label:focus {
 }
 
 #clock {
-    color: @clock;
+    color: @cyan;
 }
 
 #idle-inhibitor.activated {
-    color: @idle-inhibitor-activated;
+    color: @yellow;
 }

@@ -43,8 +43,7 @@ exec sleep 3 && nextcloud --background
 # exec export SSH_AUTH_SOCK
 
 # Clipboard history
-exec wl-paste -t text  --watch clipman store --no-persist
-exec wl-paste -t image --watch clipman store --no-persist
+exec wl-paste --watch clipman store --no-persist
 
 # Night shift (uncomment one)
 # santa fe
@@ -254,14 +253,14 @@ smart_borders smart
 # 282c34
 # e06c75
 # 282c34
-client.focused          #e5c07b #81a1c1 #81a1c1 #81a1c1 #81a1c1
+client.focused          #83ca8e #518cae #518cae #518cae #518cae
 client.focused_inactive #282c34 #282c34 #282c34 #282c34 #282c34
 client.urgent           #e06c75 #e06c75 #e06c75 #e06c75 #e06c75
 client.unfocused        #282c34 #282c34 #282c34 #282c34 #282c34
 
 # Gaps around windows
-gaps inner 2
-gaps outer 2
+gaps inner 4
+gaps outer 4
 
 # Set wallpaper
 exec swaybg -m fill -i $wallpaper

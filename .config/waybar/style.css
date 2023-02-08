@@ -1,11 +1,11 @@
-@define-color fg #b5c3ac;
+@define-color fg #cad8c1;
 @define-color bg #092931;
 
-@define-color clock #60c7b4;
-@define-color scratchpad-indicator #4c66a9;
-@define-color sound #296155;
-@define-color backlight #9bc186;
-@define-color network #3c6881;
+@define-color clock #21a290;
+@define-color scratchpad-indicator #518cae; 
+@define-color sound #4c66a9;
+@define-color backlight #378171;
+@define-color network #6fab9f;
 @define-color battery #83ca8e;
 @define-color idle-inhibitor-activated #1d4756;
 @define-color critical #e06c75;

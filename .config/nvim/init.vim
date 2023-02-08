@@ -43,6 +43,13 @@ set ofu=syntaxcomplete#Complete
 set completeopt=noinsert,menuone,noselect
 
 " ------------------------------------------------------------------------------
+" Linting
+" ------------------------------------------------------------------------------
+
+" do not use ghc as a linter, it can't find cabal imports 
+let g:ale_linters = {'haskell': ['cabal_ghc', 'ghc-mod', 'hdevtools', 'hie', 'hlint', 'stack_build', 'stack_ghc']}
+
+" ------------------------------------------------------------------------------
 " General
 " ------------------------------------------------------------------------------
 

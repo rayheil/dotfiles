@@ -63,6 +63,7 @@ set cursorline            " horizontal line where the cursor is right now
 set mouse=a               " enable mouse
 set nowrap                " by default, don't wrap text
 filetype plugin indent on " enable all the nice indentation options
+set clipboard=unnamedplus " sync nvim and system clipboard
 
 " ------------------------------------------------------------------------------
 " Code folding
@@ -84,9 +85,6 @@ set smartcase " smart choose whether to be case-sensitive
 
 " Make statusline display some simple info
 set statusline="%f%m%r%h%w [%Y] [0x%02.2B]%< %F%=%4v,%4l %3p%% of %L"
-
-" Copy to wl-clipboard from visual mode with C-@ (C-S-2)
-xnoremap <silent> <C-@> :w !wl-copy<CR><CR>
 
 " Text Files (when I want text to wrap and stuff) 
 function SetPlaintextOptions()

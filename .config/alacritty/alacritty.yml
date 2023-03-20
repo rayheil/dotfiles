@@ -31,7 +31,7 @@ window:
 # Fonts, whee!
 font:
   normal:
-    family: Hack Nerd Font
+    family: Hack Nerd Font Mono
     style: Regular
   
   size: 14

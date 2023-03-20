@@ -1,89 +1,97 @@
 {
     "modules-left": [
-    	"sway/workspaces", 
-	"sway/mode",
+        "sway/workspaces", 
+        "sway/mode",
     ],
     "modules-center": [
-    	"clock",
-	"idle_inhibitor",
+        "clock",
+        "idle_inhibitor",
     ],
     "modules-right": [
-	"custom/scratchpad-indicator",
-    	"pulseaudio",
-	"backlight",
-	"network",
-	"battery",
-	"tray",
-     ],
-     "sway/workspaces": {
-     	"disable-scroll": true,
-	"all-outputs": true,
-	"format": " {icon} ",
-	"persistent_workspaces": {
-	    "1": [],
-	    "2": [],
-	    "3": [],
-	    "4": [],
-	    "5": [],
-	    "6": []
-	},
-	"format-icons": {
-	    "1": " ",
-	    "2": " ",
-	    "3": " ",
-	    "4": " ",
-	    "5": " ",
-	    "6": " ",
-	    "7": "7",
-	    "8": "8",
-	    "9": "9",
-	    "10": "0",
-	    "urgent": " ",
+        "custom/scratchpad-indicator",
+        "pulseaudio",
+        "backlight",
+        "network",
+        "battery",
+        "tray",
+        "custom/notification",
+    ],
+    "sway/workspaces": {
+        "disable-scroll": true,
+        "all-outputs": true,
+        "format": " {icon} ",
+        "persistent_workspaces": {
+            "1": [],
+            "2": [],
+            "3": [],
+            "4": [],
+            "5": [],
+            "6": []
+        },
+        "format-icons": {
+            "1": " ",
+            "2": " ",
+            "3": " ",
+            "4": " ",
+            "5": " ",
+            "6": " ",
+            "7": "7",
+            "8": "8",
+            "9": "9",
+            "10": "0",
+            "urgent": " ",
             "focused": " ",
-	"return-type": "json",
+            "return-type": "json",
             "default": " "
-	}
+        }
     },
     "sway/windows": {
-    	"max-length": 30
+        "max-length": 30
     },
     "sway/mode": {
         "format": "{}",
     },
     "custom/media": {
-    	"format": "{icon}",
-	"return-type": "json",
-	"max-length": 40,
-	"format-icons": {
-		"spotify": " ",
-		"default": " "
-	},
-	"escape": true,
-	"on-click": "playerctl play-pause",
-	"on-click-right": "playerctl next",
-	"exec": "~/.config/waybar/modules/mediaplayer.py 2> /dev/null",
+        "format": "{icon}",
+        "return-type": "json",
+        "max-length": 40,
+        "format-icons": {
+            "spotify": " ",
+            "default": " "
+        },
+        "escape": true,
+        "on-click": "playerctl play-pause",
+        "on-click-right": "playerctl next",
+        "exec": "~/.config/waybar/modules/mediaplayer.py 2> /dev/null",
     },
-    "custom/do-not-disturb": {
-    	"format": "{icon}",
-	"format-icons": {
-	    "activated": "A",
-	    "deactivated": "D"
-	},
-	"escape:": true,
-	"return-type": "json",
-	"interval": 30,
-	"on-click": "~/.config/waybar/modules/mako_toggle_dnd",
-	"exec": "~/.config/waybar/modules/mako_status.py 2> /dev/null",
-	"exec-if": "pgrep mako"
+    "custom/notification": {
+        "tooltip": false,
+        "format": "{icon}",
+        "format-icons": {
+            "notification": "<span foreground='red'><sup></sup></span>",
+            "none": "",
+            "dnd-notification": "<span foreground='red'><sup></sup></span>",
+            "dnd-none": "",
+            "inhibited-notification": "<span foreground='red'><sup></sup></span>",
+            "inhibited-none": "",
+            "dnd-inhibited-notification": "<span foreground='red'><sup></sup></span>",
+            "dnd-inhibited-none": ""
+        },
+        "return-type": "json",
+        "exec-if": "which swaync-client",
+        "exec": "swaync-client -swb",
+        "on-click": "swaync-client -t -sw",
+        "on-click-right": "swaync-client -d -sw",
+        "escape": true
     },
     "custom/scratchpad-indicator": {
         "interval": 1,
-	"return-type": "json",
-	"exec": "swaymsg -t get_tree | jq --unbuffered --compact-output '(recurse(.nodes[]) | select(.name == \"__i3_scratch\") | .focus) as $scratch_ids | [.. | (.nodes? + .floating_nodes?) // empty | .[] | select(.id|IN($scratch_ids[]))] as $scratch_nodes | if ($scratch_nodes|length) > 0 then { text: \"\\($scratch_nodes|length)\", tooltip: $scratch_nodes|map(.name)|join(\"\\n\") } else empty end'",
-	"format": "{}   ",
-	"on-click": "swaymsg scratchpad show",
-	"on-click-right": "swaymsg move window to scratchpad",
-	"tooltip": "true"
+        "return-type": "json",
+        "exec": "swaymsg -t get_tree | jq --unbuffered --compact-output '(recurse(.nodes[]) | select(.name == \"__i3_scratch\") | .focus) as $scratch_ids | [.. | (.nodes? + .floating_nodes?) // empty | .[] | select(.id|IN($scratch_ids[]))] as $scratch_nodes | if ($scratch_nodes|length) > 0 then { text: \"\\($scratch_nodes|length)\", tooltip: $scratch_nodes|map(.name)|join(\"\\n\") } else empty end'",
+        "format": "{}   ",
+        "on-click": "swaymsg scratchpad show",
+        "on-click-right": "swaymsg move window to scratchpad",
+        "tooltip": "true"
     },
     "idle_inhibitor": {
         "format": "{icon}",
@@ -98,8 +106,8 @@
         "format-bluetooth-muted": "{icon} muted",
         "format-muted": "muted",
         "format-icons": {
-	    "default": [" ", " ", " "],
-	    "hands-free": [" ", " ", " "],
+            "default": [" ", " ", " "],
+            "hands-free": [" ", " ", " "],
             "headset": [" ", " ", " "],
             "phone": [" ", " ", " "],
             "portable": [" ", " ", " "],
@@ -109,17 +117,17 @@
         "on-click": "pavucontrol"
     },
     "backlight": {
-    	"device": "intel_backlight",
+        "device": "intel_backlight",
         "format": "  {percent}%",
     },
     "network": {
         "format-wifi": "  {essid}",
-	"tooltip-format": "Connected to {ipaddr}/{cidr}",
+        "tooltip-format": "Connected to {ipaddr}/{cidr}",
         "format-ethernet": " Ethernet",
         "format-linked": "{ifname}",
         "format-disconnected": "Disconnected",
     },
-   "battery": {
+    "battery": {
         "interval": 60,
         "states": {
             "warning": 30,
@@ -127,14 +135,14 @@
         },
         "format": "{icon} {capacity}%",
         "format-icons": {
-	    "default": [" ", " ", " ", " ", " "],
-	    "charging": "⚡"
-	}
+            "default": [" ", " ", " ", " ", " "],
+            "charging": "⚡"
+        }
     },
     "clock": {
         "interval": 1,
-        "format": "{:%a, %b %d - %I:%M}",
-	"tooltip-format": "<tt>{calendar}</tt>"
+        "format": "{:%a, %b %d - %H:%M}",
+        "tooltip-format": "<tt>{calendar}</tt>"
     },
     "tray": {
         "icon-size": 20,

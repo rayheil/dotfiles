@@ -6,7 +6,6 @@ call plug#begin()
 
 " Sensible defaults
 Plug 'tpope/vim-sensible'
-" Plug 'tpope/vim-sleuth'
 
 " NERDTree
 Plug 'scrooloose/nerdtree'
@@ -66,10 +65,10 @@ filetype plugin indent on " enable all the nice indentation options
 set clipboard=unnamedplus " sync nvim and system clipboard
 
 " ------------------------------------------------------------------------------
-" Code folding
+" Code folding? No thank you
 " ------------------------------------------------------------------------------
 
-set foldmethod=manual " manually fold code
+set nofoldenable
 
 " ------------------------------------------------------------------------------
 " Search

@@ -69,12 +69,14 @@ label:focus {
     padding: 5px; 
     margin-left: 1px;
     color: @fg;
-    border: 3px solid transparent;
+    border: 2px solid transparent;
+    background: transparent;
 }
 
 #workspaces button:hover {
-    border-bottom: 3px solid @fg;
-    background-color: @bg;
+    box-shadow: inherit;
+    text-shadow: inherit;
+    border-bottom: 2px solid @fg;
 }
 
 #workspaces button.focused {

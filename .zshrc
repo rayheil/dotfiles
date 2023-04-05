@@ -28,7 +28,6 @@ unalias l
 
 # Defaults for various terminal settings
 export EDITOR=nvim
-export VISUAL=emacs
 
 # Check that our PATH has what we want in it
 if ! [[ "$PATH" =~ "$HOME/.bin:$HOME/.local/bin:$HOME/.cargo/bin:$HOME/.local/script:$HOME/.config/emacs/bin" ]]

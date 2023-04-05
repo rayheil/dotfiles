@@ -1,7 +1,7 @@
 [user]
-	email = 68617358+raymondheil@users.noreply.github.com
+	email = ray@rayheil.com 
 	name = Ray Heil
-	signingKey = 2B0B8891BE8A77E9 
+	signingKey = E8AA37A78E5561F0
 [color]
 	ui = auto
 [init]
@@ -12,6 +12,8 @@
 	process = git-lfs filter-process
 	required = true
 [gpg]
-	program = gpg2
+	program = gpg
 [commit]
 	gpgsign = true
+[core]
+	editor = nvim

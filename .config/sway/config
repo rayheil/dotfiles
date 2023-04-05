@@ -22,7 +22,7 @@ set $editor emacs
 set $lock swaylock -c 1f2227
 set $menu rofi -show drun
 set $clip clipman pick -t bemenu 
-set $wallpaper "/home/ray/pictures/Wallpapers/hk-lake-of-unn.png"
+set $wallpaper "/home/ray/pictures/wallpapers/hk-lake-of-unn.png"
 set $resize_mode "Resize: Use arrow keys"
 set $screenshot_mode "Screenshot: 1 select, 2 window, 3 fullscreen"
 

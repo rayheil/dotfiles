@@ -1,3 +1,14 @@
+import:
+  # uncomment the flavour you want below:
+- ~/.config/alacritty/catppuccin/catppuccin-mocha.yml
+# - ~/.config/alacritty/catppuccin/catppuccin-macchiato.yml
+# - ~/.config/alacritty/catppuccin/catppuccin-frappe.yml
+# - ~/.config/alacritty/catppuccin/catppuccin-latte.yml
+
+# Environment settings
+env:
+  TERM: xterm-256color
+
 # Window settings
 window:
   # Window dimensions (changes require restart)
@@ -42,38 +53,3 @@ scrolling:
 
   # Number of lines to move the viewport for every line scrolled
   multiplier: 3
-
-# Colors (Tomorrow Night)
-colors:
-  # Default colors
-  primary:
-    background: '#282c34'
-    foreground: '#abb2bf'
-
-  # Colors the cursor will be if 'custom_cursor_colors' is true
-  cursor:
-    text: '#282c34'
-    cursor: '#abb2bf'
-
-  # Normal colors
-  normal:
-    black:   '#000000'
-    red:     '#e06c75'
-    green:   '#98c379'
-    yellow:  '#e5c07b'
-    blue:    '#61afef'
-    magenta: '#c678dd'
-    cyan:    '#56b6c2'
-    white:   '#abb2bf'
-
-  # Bright colors
-  bright:
-    black:   '#000000'
-    red:     '#e06c75'
-    green:   '#98c379'
-    yellow:  '#e5c07b'
-    blue:    '#61afef'
-    magenta: '#c678dd'
-    cyan:    '#56b6c2'
-    white:   '#abb2bf'
-

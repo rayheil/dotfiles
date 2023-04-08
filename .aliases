@@ -4,6 +4,7 @@ alias ll="ls -lh"      # Long (but human readable)
 alias lr="ls -lhr"     # Reverse
 alias lt="ls -lht"     # By time
 alias lld="ls -lhd */" # Only directories
+alias vim="nvim"
 
 alias t="todo.sh"  # Todo utility
 alias config="git --git-dir=$HOME/.cfg/ --work-tree=$HOME"

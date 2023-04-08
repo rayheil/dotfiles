@@ -22,7 +22,7 @@ set $editor emacs
 set $lock swaylock -c 1f2227
 set $menu rofi -show drun
 set $clip clipman pick -t bemenu 
-set $wallpaper "/home/ray/pictures/wallpapers/hk-lake-of-unn.png"
+set $wallpaper "/home/ray/pictures/wallpapers/celeste-summit.png"
 set $resize_mode "Resize: Use arrow keys"
 set $screenshot_mode "Screenshot: 1 select, 2 window, 3 fullscreen"
 
@@ -269,19 +269,19 @@ for_window {
 default_border pixel 2
 smart_borders smart
 
-# Colors depending on focus state of window
-# 81a1c1
-# 282c34
-# e06c75
-# 282c34
-client.focused          #83ca8e #518cae #518cae #518cae #518cae
-client.focused_inactive #282c34 #282c34 #282c34 #282c34 #282c34
-client.urgent           #e06c75 #e06c75 #e06c75 #e06c75 #e06c75
-client.unfocused        #282c34 #282c34 #282c34 #282c34 #282c34
+# Catppuccin theming
+include catppuccin-mocha
+# target                 title     bg    text   indicator  border
+client.focused           $pink     $base $text  $rosewater $pink
+client.focused_inactive  $mauve    $base $text  $rosewater $mauve
+client.unfocused         $mauve    $base $text  $rosewater $mauve
+client.urgent            $peach    $base $peach $overlay0  $peach
+client.placeholder       $overlay0 $base $text  $overlay0  $overlay0
+client.background        $base
 
 # Gaps around windows
-#gaps inner 4
-#gaps outer 4
+gaps inner 4
+gaps outer 4
 
 # Set wallpaper
 exec swaybg -m fill -i $wallpaper

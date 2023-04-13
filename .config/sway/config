@@ -16,10 +16,11 @@ set $mod Mod4
 # Preferred apps
 set $term alacritty
 set $browser firefox
-set $editor emacs
+set $editor alacritty -e nvim
 
 # System utils
-set $lock swaylock -c 1f2227
+# lock is github mortie/swaylock-effects
+set $lock swaylock
 set $menu rofi -show drun
 set $clip clipman pick -t bemenu 
 set $wallpaper "/home/ray/pictures/wallpapers/celeste-summit.png"
@@ -54,9 +55,9 @@ exec wlsunset -l 41.7 -L -92.7
 
 # Idle config
 exec swayidle -w \
-    timeout 900 $lock \
+    timeout 900 "$lock" \
     timeout 1200 'swaymsg "output * dpms off"' resume 'swaymsg "output * dpms on"' \
-    before-sleep $lock
+    before-sleep "$lock"
 
 # Notifications
 exec swaync 

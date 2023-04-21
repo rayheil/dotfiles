@@ -186,13 +186,24 @@ exec thunderbird
 ### DEVICES
 ################################################################################
 
-# Touchpad
+# My preferred touchpad settings.
+# - dwt is disable while typing
+# - tap is tap to click
+# - natural-scroll does that, you know it
+# - middle_emulation is three finger click 
+# - click_method tells it to let me use 1 vs two fingers,
+#   not left vs right side of trackpage
 input type:touchpad {
     dwt disabled
     tap disabled
     natural_scroll enabled
     middle_emulation enabled
     click_method clickfinger
+}
+
+# Make the caps lock just another ctrl key  
+input type:keyboard {
+    xkb_options caps:ctrl_modifier
 }
 
 ################################################################################

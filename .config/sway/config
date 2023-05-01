@@ -23,7 +23,7 @@ set $editor alacritty -e nvim
 set $lock swaylock
 set $menu rofi -show drun
 set $clip clipman pick -t bemenu 
-set $wallpaper "/home/ray/pictures/wallpapers/celeste-summit.png"
+set $wallpaper "/home/ray/Pictures/Wallpapers/mandelbrot-gap-magenta.png"
 set $resize_mode "Resize: Use arrow keys"
 set $screenshot_mode "Screenshot: 1 select, 2 window, 3 fullscreen"
 
@@ -152,8 +152,7 @@ exec thunderbird
     bindsym $mod+a focus parent
 
 ## Scratchpad:
-
-    bindsym $mod+Shift+minus move scratchpad
+    bindsym $mod+Shift+minus floating enable, resize set width 1366 height 875, move scratchpad
     bindsym $mod+minus scratchpad show
 
 ###############################################################################
@@ -201,9 +200,9 @@ input type:touchpad {
     click_method clickfinger
 }
 
-# Make the caps lock just another ctrl key  
+# Make the caps lock just another escape key
 input type:keyboard {
-    xkb_options caps:ctrl_modifier
+    xkb_options caps:escape
 }
 
 ################################################################################

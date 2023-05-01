@@ -2,11 +2,12 @@
 *
 * Catppuccin Mocha palette
 * Maintainer: rubyowo
+* Also I edited it (me ray) because ugh
 *
 */
 
 @define-color base   #1e1e2e;
-@define-color mantle #181825;
+@define-color mantle #181826;
 @define-color crust  #11111b;
 
 @define-color text     #cdd6f4;
@@ -32,6 +33,6 @@
 @define-color maroon    #eba0ac;
 @define-color red       #f38ba8;
 @define-color mauve     #cba6f7;
-@define-color pink      #f5c2e7;
+@define-color pink      #f5bde6;
 @define-color flamingo  #f2cdcd;
 @define-color rosewater #f5e0dc;

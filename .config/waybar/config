@@ -25,7 +25,6 @@
             "3": [],
             "4": [],
             "5": [],
-            "6": []
         },
         "format-icons": {
             "1": " ",
@@ -33,7 +32,7 @@
             "3": " ",
             "4": " ",
             "5": " ",
-            "6": " ",
+            "6": "6",
             "7": "7",
             "8": "8",
             "9": "9",
@@ -67,13 +66,13 @@
         "tooltip": false,
         "format": "{icon}",
         "format-icons": {
-            "notification": "<span foreground='#f38ba8'><sup></sup></span>",
+            "notification": "<span foreground='red'><sup></sup></span>",
             "none": "",
-            "dnd-notification": "<span foreground='#f38ba8'><sup></sup></span>",
+            "dnd-notification": "<span foreground='red'><sup></sup></span>",
             "dnd-none": "",
-            "inhibited-notification": "<span foreground='#f38ba8'><sup></sup></span>",
+            "inhibited-notification": "<span foreground='red'><sup></sup></span>",
             "inhibited-none": "",
-            "dnd-inhibited-notification": "<span foreground='#f38ba8'><sup></sup></span>",
+            "dnd-inhibited-notification": "<span foreground='red'><sup></sup></span>",
             "dnd-inhibited-none": ""
         },
         "return-type": "json",

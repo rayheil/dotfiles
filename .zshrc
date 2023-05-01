@@ -51,6 +51,13 @@ then
 	eval $(thefuck --alias)
 fi
 
+# Print out a silly error from fortune
+if command -v fortune > /dev/null
+then
+	fortune bofh-excuses
+	echo ""
+fi
+
 # If we're not running tmux or screen and have tmux installed,
 # print out whether any sessions are running right now.
 if command -v tmux > /dev/null

@@ -1,5 +1,5 @@
 ignore-empty-password
-#grace=3
+grace=2
 font=Iosevka Nerd Font
 
 clock
@@ -42,8 +42,8 @@ text-clear-color=f9e2af00
 text-ver-color=cdd6f400
 text-wrong-color=f38ba800
 
-key-hl-color=585b70
-bs-hl-color=ee2e24FF
+key-hl-color=cba6f7
+bs-hl-color=f38ba8
 caps-lock-key-hl-color=ffd204FF
 caps-lock-bs-hl-color=ee2e24FF
 disable-caps-lock-text

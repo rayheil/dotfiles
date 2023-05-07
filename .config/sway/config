@@ -161,25 +161,25 @@ exec thunderbird
 
 ## Volume:
 
-    bindsym XF86AudioRaiseVolume exec pactl set-sink-volume @DEFAULT_SINK@ +5%
-    bindsym Shift+XF86AudioRaiseVolume exec pactl set-sink-volume @DEFAULT_SINK@ +1%
-    bindsym XF86AudioLowerVolume exec pactl set-sink-volume @DEFAULT_SINK@ -5%
-    bindsym Shift+XF86AudioLowerVolume exec pactl set-sink-volume @DEFAULT_SINK@ -1%
+    bindsym --locked XF86AudioRaiseVolume exec pactl set-sink-volume @DEFAULT_SINK@ +5%
+    bindsym --locked Shift+XF86AudioRaiseVolume exec pactl set-sink-volume @DEFAULT_SINK@ +1%
+    bindsym --locked XF86AudioLowerVolume exec pactl set-sink-volume @DEFAULT_SINK@ -5%
+    bindsym --locked Shift+XF86AudioLowerVolume exec pactl set-sink-volume @DEFAULT_SINK@ -1%
 
-    bindsym XF86AudioMute exec pactl set-sink-mute @DEFAULT_SINK@ toggle
-    bindsym XF86AudioMicMute exec pactl set-source-mute @DEFAULT_SOURCE@ toggle
+    bindsym --locked XF86AudioMute exec pactl set-sink-mute @DEFAULT_SINK@ toggle
+    bindsym --locked XF86AudioMicMute exec pactl set-source-mute @DEFAULT_SOURCE@ toggle
 
 ## Media player:
 
-    bindsym XF86AudioPlay exec playerctl play-pause
-    bindsym Shift+XF86AudioPlay exec playerctl next 
+    bindsym --locked XF86AudioPlay exec playerctl play-pause
+    bindsym --locked Shift+XF86AudioPlay exec playerctl next 
 
 ## Screen brightness:
 
-    bindsym XF86MonBrightnessDown exec brightnessctl set 5%-
-    bindsym Shift+XF86MonBrightnessDown exec brightnessctl set 1%-
-    bindsym XF86MonBrightnessUp exec brightnessctl set 5%+
-    bindsym Shift+XF86MonBrightnessUp exec brightnessctl set 1%+
+    bindsym --locked XF86MonBrightnessDown exec brightnessctl set 5%-
+    bindsym --locked Shift+XF86MonBrightnessDown exec brightnessctl set 1%-
+    bindsym --locked XF86MonBrightnessUp exec brightnessctl set 5%+
+    bindsym --locked Shift+XF86MonBrightnessUp exec brightnessctl set 1%+
 
 ################################################################################
 ### DEVICES

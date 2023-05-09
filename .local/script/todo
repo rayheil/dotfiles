@@ -1,9 +1,9 @@
 #!/bin/bash
 
-if [ -d "$HOME/todo" ]
+if [ -d "$HOME/Todo" ]
 then
-	$EDITOR "$HOME/todo/manual.txt"
+	$EDITOR "$HOME/Todo/manual.txt"
 else
-	$EDITOR "$HOME/todo.txt"
+	$EDITOR "$HOME/Todo.txt"
 fi
 

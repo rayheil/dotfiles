@@ -14,7 +14,7 @@ exec hash dbus-update-activation-environment 2>/dev/null && \
 set $mod Mod4
 
 # Preferred apps
-set $term foot 
+set $term alacritty
 set $browser firefox
 set $editor $term -e nvim
 

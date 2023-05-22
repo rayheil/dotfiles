@@ -14,9 +14,9 @@ exec hash dbus-update-activation-environment 2>/dev/null && \
 set $mod Mod4
 
 # Preferred apps
-set $term alacritty
+set $term foot 
 set $browser firefox
-set $editor alacritty -e nvim
+set $editor $term -e nvim
 
 # System utils
 # lock is github mortie/swaylock-effects

@@ -4,7 +4,6 @@ alias ll="ls -lh"      # Long (but human readable)
 alias lr="ls -lhr"     # Reverse
 alias lt="ls -lht"     # By time
 alias lld="ls -lhd */" # Only directories
-alias vim="nvim"
 alias fuckbitches="speak-ng 'get money'"
 alias update="sudo dnf update && flatpak update"
 

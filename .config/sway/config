@@ -22,7 +22,7 @@ set $editor $term -e nvim
 # lock is github mortie/swaylock-effects
 set $lock swaylock
 set $menu rofi -show drun
-set $clip clipman pick -t bemenu 
+set $clip clipman pick -t rofi 
 set $wallpaper "/home/ray/Pictures/Wallpapers/mandelbrot-gap-magenta.png"
 set $resize_mode "Resize: Use arrow keys"
 set $screenshot_mode "Screenshot: 1 select, 2 window, 3 fullscreen"

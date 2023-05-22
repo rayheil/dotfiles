@@ -19,7 +19,6 @@ set $browser firefox
 set $editor $term -e nvim
 
 # System utils
-# lock is github mortie/swaylock-effects
 set $lock swaylock
 set $menu rofi -show drun
 set $clip clipman pick -t rofi 

@@ -1,16 +1,7 @@
 ignore-empty-password
-grace=2
 font=Iosevka Nerd Font
 
-clock
-timestr=%R
-
-screenshots
-
-fade-in=0.2
-
-effect-blur=20x2
-effect-scale=0.3
+color=1e1e2ed9
 
 indicator-idle-visible
 indicator-radius=200

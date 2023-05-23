@@ -22,7 +22,7 @@ set $editor $term -e nvim
 set $lock swaylock
 set $menu rofi -show drun
 set $clip clipman pick -t rofi 
-set $wallpaper "/home/ray/Pictures/Wallpapers/mandelbrot-gap-magenta.png"
+set $wallpaper "/home/ray/Pictures/Wallpapers/Alien Worlds I.png"
 set $resize_mode "Resize: Use arrow keys"
 set $screenshot_mode "Screenshot: 1 select, 2 window, 3 fullscreen"
 

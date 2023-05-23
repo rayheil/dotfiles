@@ -78,25 +78,25 @@ label:focus {
     background-color: @red;
 }
 
+#custom-scratchpad-indicator {
+    color: @lavender;
+}
+
 #pulseaudio {
-    color: @peach;
+    color: @blue;
 }
 
 #pulseaudio.muted {
-    background-color: @peach;
+    background-color: @blue;
     color: @base;
 }
 
 #backlight {
-    color: @yellow;
-}
-
-#custom-scratchpad-indicator {
-    color: @maroon;
+    color: @sapphire;
 }
 
 #network {
-    color: @green;
+    color: @sky;
 }
 
 #battery {
@@ -113,7 +113,7 @@ label:focus {
 }
 
 #clock {
-    color: @pink;
+    color: @green;
 }
 
 #custom-notification {

@@ -48,7 +48,8 @@ label:focus {
 #tray,
 #mode,
 #idle_inhibitor,
-#custom-do-not-disturb {
+#custom-notification,
+#language {
     padding: 0 10px;
     margin: 4px 4px 4px 4px;
     color: @text;
@@ -78,29 +79,28 @@ label:focus {
     background-color: @red;
 }
 
+#language {
+    color: @red;
+}
+
 #custom-scratchpad-indicator {
-    color: @lavender;
+    color: @peach;
 }
 
 #pulseaudio {
-    color: @blue;
-}
-
-#pulseaudio.muted {
-    background-color: @blue;
-    color: @base;
+    color: @yellow;
 }
 
 #backlight {
-    color: @sapphire;
+    color: @green;
 }
 
 #network {
-    color: @sky;
+    color: @blue;
 }
 
 #battery {
-    color: @teal;
+    color: @mauve;
 }
 
 #battery.critical:not(.charging) {
@@ -112,10 +112,25 @@ label:focus {
     animation-direction: alternate;
 }
 
+#custom-notification {
+    color: @overlay2;
+}
+
+#custom-notification.notification,
+#custom-notification.dnd-notification, 
+#custom-notification.inhibited-notification, 
+#custom-notification.dnd-inhibited-notification {
+    color: @teal;
+}
+
 #clock {
     color: @green;
 }
 
-#custom-notification {
-   padding: 0px 20px 0px 0px;
+#idle_inhibitor {
+    color: @overlay2;
+}
+
+#idle_inhibitor.activated {
+    color: @yellow;
 }

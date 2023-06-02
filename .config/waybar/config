@@ -4,16 +4,18 @@
         "sway/mode",
     ],
     "modules-center": [
+        "custom/notification",
         "clock",
+        "idle_inhibitor",
     ],
     "modules-right": [
+        "sway/language",
         "custom/scratchpad-indicator",
         "pulseaudio",
         "backlight",
         "network",
         "battery",
         "tray",
-        "custom/notification",
     ],
     "sway/workspaces": {
         "disable-scroll": true,
@@ -49,6 +51,9 @@
     "sway/mode": {
         "format": "{}",
     },
+    "sway/language": {
+        "format": "{short} {variant}"
+    },
     "custom/media": {
         "format": "{icon}",
         "return-type": "json",
@@ -66,13 +71,13 @@
         "tooltip": false,
         "format": "{icon}",
         "format-icons": {
-            "notification": "<span foreground='red'><sup></sup></span>",
+            "notification": "",
             "none": "",
-            "dnd-notification": "<span foreground='red'><sup></sup></span>",
+            "dnd-notification": "",
             "dnd-none": "",
-            "inhibited-notification": "<span foreground='red'><sup></sup></span>",
+            "inhibited-notification": "",
             "inhibited-none": "",
-            "dnd-inhibited-notification": "<span foreground='red'><sup></sup></span>",
+            "dnd-inhibited-notification": "",
             "dnd-inhibited-none": ""
         },
         "return-type": "json",
@@ -119,9 +124,9 @@
         "format": "  {percent}%",
     },
     "network": {
-        "format-wifi": "  {essid}",
+        "format-wifi": "{essid}",
         "tooltip-format": "Connected to {ipaddr}/{cidr}",
-        "format-ethernet": " Ethernet",
+        "format-ethernet": "Ethernet",
         "format-linked": "{ifname}",
         "format-disconnected": "Disconnected",
     },
@@ -138,9 +143,10 @@
         }
     },
     "clock": {
-        "interval": 1,
         "format": "{:%a, %b %d - %H:%M}",
-        "tooltip-format": "<tt>{calendar}</tt>"
+        "exec-if": "which swaync-client",
+        "exec": "swaync-client -swb",
+        "on-click": "swaync-client -t -sw",
     },
     "tray": {
         "icon-size": 20,

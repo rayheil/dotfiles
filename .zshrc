@@ -70,3 +70,5 @@ fi
 
 # Do not cd into a directory by name in oh-my-zsh
 unsetopt autocd
+
+[ -f "/home/ray/.ghcup/env" ] && source "/home/ray/.ghcup/env" # ghcup-env

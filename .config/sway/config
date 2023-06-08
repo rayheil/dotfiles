@@ -1,10 +1,17 @@
 ################################################################################
-### DBUS AND STUFF 
+### SYSTEM
 ################################################################################
 
-exec systemctl --user import-environment DISPLAY WAYLAND_DISPLAY SWAYSOCK
+# sway does not set DISPLAY/WAYLAND_DISPLAY in the systemd user environment
+# See FS#63021
+# Adapted from xorg's 50-systemd-user.sh, which achieves a similar goal.
+# (stolen from /etc/sway/config.d/50-systemd-user.conf)
+exec systemctl --user import-environment DISPLAY WAYLAND_DISPLAY SWAYSOCK XDG_CURRENT_DESKTOP
 exec hash dbus-update-activation-environment 2>/dev/null && \
-     dbus-update-activation-environment --systemd DISPLAY WAYLAND_DISPLAY SWAYSOCK
+     dbus-update-activation-environment --systemd DISPLAY WAYLAND_DISPLAY SWAYSOCK XDG_CURRENT_DESKTOP
+
+# Polkit
+exec /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
 
 ################################################################################
 ### VARIABLES
@@ -23,7 +30,7 @@ set $lock swaylock
 set $menu rofi -show drun
 set $clip clipman pick -t rofi 
 set $clear_clip clipman clear --all 
-set $wallpaper "/home/ray/Pictures/Wallpapers/Alien Worlds I.png"
+set $wallpaper "/home/ray/Pictures/Wallpapers/Catppuccin Confused Cat Rainbow.png"
 set $resize_mode "Resize: Use arrow keys"
 set $screenshot_mode "Screenshot: 1 select, 2 window, 3 fullscreen"
 
@@ -89,7 +96,7 @@ exec thunderbird
     # Reload sway config
     bindsym $mod+Shift+c reload
 
-    # Idk what this actuall does -- resizing floating windows?
+    # Idk what this actually does -- resizing floating windows?
     floating_modifier $mod normal
 
     # Exit shortcut
@@ -270,6 +277,7 @@ for_window {
   [window_type="dialog"] {
     floating enable
   }
+  # thunderbird
   [app_id="thunderbird"] {
     floating enable
   }
@@ -287,10 +295,10 @@ smart_borders smart
 # Catppuccin theming
 include catppuccin-mocha
 # target                 title     bg    text   indicator  border
-client.focused           $pink     $base $text  $blue      $green
-client.focused_inactive  $mauve    $base $text  $base      $base
-client.unfocused         $mauve    $base $text  $base      $base
-client.urgent            $peach    $base $green $overlay0  $red 
+client.focused           $green    $base $text  $blue      $green
+client.focused_inactive  $base     $base $text  $base      $base
+client.unfocused         $base     $base $text  $base      $base
+client.urgent            $red      $base $green $overlay0  $red 
 client.placeholder       $overlay0 $base $text  $overlay0  $overlay0
 client.background        $base
 

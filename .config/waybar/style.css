@@ -109,6 +109,7 @@ label:focus {
     animation-direction: alternate;
 }
 
+#idle_inhibitor,
 #custom-notification {
     color: @overlay2;
 }
@@ -117,15 +118,11 @@ label:focus {
 #custom-notification.dnd-notification, 
 #custom-notification.inhibited-notification, 
 #custom-notification.dnd-inhibited-notification {
-    color: @teal;
+    color: @peach;
 }
 
 #clock {
-    color: @green;
-}
-
-#idle_inhibitor {
-    color: @overlay2;
+    color: @sky;
 }
 
 #idle_inhibitor.activated {

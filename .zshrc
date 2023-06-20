@@ -8,7 +8,7 @@ export ZSH="$HOME/.oh-my-zsh"
 export GPG_TTY=$(tty)
 
 # Oh my zsh theme
-ZSH_THEME="sunrise" # set by `omz`
+ZSH_THEME="tjkirch" # set by `omz`
 
 # Remind on omz updates, but don't auto update
 zstyle ':omz:update' mode reminder
@@ -66,9 +66,7 @@ then
 fi
 
 # Link .ghcup environment
-[ -f "/home/ray/.ghcup/env" ] && source "/home/ray/.ghcup/env"
+[ -f "$HOME/.ghcup/env" ] && source "$HOME/.ghcup/env"
 
 # Do not cd into a directory by name in oh-my-zsh
 unsetopt autocd
-
-[ -f "/home/ray/.ghcup/env" ] && source "/home/ray/.ghcup/env" # ghcup-env

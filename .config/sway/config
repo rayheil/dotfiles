@@ -30,7 +30,7 @@ set $lock swaylock
 set $menu rofi -show drun
 set $clip clipman pick -t rofi 
 set $clear_clip clipman clear --all 
-set $wallpaper "/home/ray/Pictures/Wallpapers/Catppuccin Confused Cat Rainbow.png"
+set $wallpaper "/home/almond/Pictures/Wallpapers/Catppuccin Confused Cat Rainbow.png"
 set $resize_mode "Resize: Use arrow keys"
 set $screenshot_mode "Screenshot: 1 select, 2 window, 3 fullscreen"
 
@@ -240,7 +240,7 @@ mode $screenshot_mode {
     # selection
     bindsym 1 exec grim -g "$(slurp)" - | swappy -f -, mode "default"
     # window
-    bindsym 2 exec "/home/ray/.local/script/sway-window-screenshot", mode "default" 
+    bindsym 2 exec "/home/almond/.local/script/sway-window-screenshot", mode "default" 
     # full screen
     bindsym 3 exec "grim - | swappy -f -", mode "default"
     

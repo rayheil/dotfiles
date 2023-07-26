@@ -29,7 +29,7 @@ set $editor $term -e nvim
 set $lock swaylock
 set $menu rofi -show drun
 set $clip clipman pick -t rofi 
-set $clear_clip clipman clear --all 
+set $clear_clip clipman clear -t rofi
 set $wallpaper "/home/almond/Pictures/Wallpapers/Catppuccin Confused Cat Rainbow.png"
 set $resize_mode "Resize: Use arrow keys"
 set $screenshot_mode "Screenshot: 1 select, 2 window, 3 fullscreen"
@@ -54,7 +54,7 @@ exec export SSH_AUTH_SOCK
 # Clipboard history
 exec wl-paste --watch clipman store --no-persist
 
-# Night shift (uncomment one)
+# Night shift (uncomment one, I don't know the smart way to do it)
 # santa fe
 exec wlsunset -l 35.7 -L -105.9
 # grinnell
@@ -200,11 +200,11 @@ exec thunderbird
 # - click_method tells it to let me use 1 vs two fingers,
 #   not left vs right side of trackpad
 input type:touchpad {
-    dwt disabled
+    dwt disabled             
     tap disabled
     natural_scroll enabled
-    middle_emulation enabled
     click_method clickfinger
+    middle_emulation enabled
 }
 
 # My preferred keyboard settings
@@ -240,7 +240,7 @@ mode $screenshot_mode {
     # selection
     bindsym 1 exec grim -g "$(slurp)" - | swappy -f -, mode "default"
     # window
-    bindsym 2 exec "/home/almond/.local/script/sway-window-screenshot", mode "default" 
+    bindsym 2 exec "$HOME/.local/script/sway-window-screenshot", mode "default" 
     # full screen
     bindsym 3 exec "grim - | swappy -f -", mode "default"
     
@@ -256,15 +256,6 @@ bindsym Print mode $screenshot_mode
 ################################################################################
 
 for_window {
-  # xwayland apps
-  [shell="xwayland"] {
-    title_format "%title [XWayland]"
-  }
-  # nextcloud status dialog
-  [app_id="com.nextcloud.desktopclient.nextcloud"] {
-    floating enable
-  }
-  # general floating windows
   [window_role="pop-up"] {
     floating enable
   }
@@ -277,8 +268,12 @@ for_window {
   [window_type="dialog"] {
     floating enable
   }
-  # thunderbird
-  [app_id="thunderbird"] {
+
+  [class="thunderbird"] {
+    floating enable
+  }
+
+  [app_id="com.nextcloud.desktopclient.nextcloud"] {
     floating enable
   }
 }
@@ -303,8 +298,8 @@ client.placeholder       $overlay0 $base $text  $overlay0  $overlay0
 client.background        $base
 
 # Gaps around windows
-gaps inner 4
-gaps outer 4
+gaps inner 6
+gaps outer 6
 
 # Set wallpaper
 exec swaybg -m fill -i $wallpaper

@@ -1,20 +1,27 @@
-alias ls="ls --color=auto"
-alias la="ls -a"       # All
-alias ll="ls -lh"      # Long (but human readable)
-alias lr="ls -lhr"     # Reverse
-alias lt="ls -lht"     # By time
-alias lld="ls -lhd */" # Only directories
-alias fuckbitches="speak-ng 'get money'"
-alias update="sudo dnf update && flatpak update"
+#!/bin/sh
 
-alias t="todo.sh"  # Todo utility
+# ls
+alias ls="ls --color=auto" # Pretty colors!
+alias la="ls -a"           # All files
+alias ll="ls -lh"          # Long listing
+alias lr="ls -lhr"         # Reverse alphabetical
+alias lt="ls -lht"         # Most recent first
+alias lld="ls -lhd */"     # Only directories
+
+# Utils
 alias config="git --git-dir=$HOME/.cfg/ --work-tree=$HOME"
 
-mkcd ()
-{
-	mkdir -p -- "$1" && cd -P -- "$1"
+# Navigation
+mkcd () {
+	mkdir -p -- "$1" && cd -P -- "$1" 
+}
+cdl () {
+	cd "$1" && ls
+}
+pwf () {
+	echo $(pwd)/$1
 }
 
-alias sl="sl -Fl" # What, sl is funny?
-
-
+# Dumb
+alias sl="sl -Fl"
+alias fuckbitches="speak-ng 'get money'"

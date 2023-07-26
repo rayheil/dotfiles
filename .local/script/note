@@ -1,20 +1,30 @@
-#!/bin/bash
+#!/bin/sh
 
-if [ -d "$HOME/Notes" ]
-then
-	if [ $# -eq 0 ] # no arguments? list notes chronologically
-	then
+NOTEDIR=$HOME/Notes/
 
-		ls -lhr "$HOME/Notes/"
-	elif [ $# -eq 1 ] # one argument? make that the note title
-	then
-		$EDITOR "$HOME/Notes/$(date '+%Y-%m-%d')-$1.txt"
-	else # two or more arguments? freak out and die
-		echo "You can only supply one argument, try using dashes."
-		exit 1
-	fi
-else # no notes directory? freak out and die
-	echo "No ~/Notes directory seems to exist."
+if [ -z $EDITOR ]; then
+	EDITOR=vim
+fi
+
+if [ ! -d $NOTEDIR ]; then
+	echo "Directory ~/Notes does not exist, create it? [y/N]"
+	# TODO do input n stuff, good shit
+	echo "But I haven't implemented this yet lol."
 	exit 1
 fi
 
+if [ $# -eq 0 ]; then
+	# Escaped version for sed
+	NOTEDIRESC=$(echo $NOTEDIR | sed 's/\//\\\//g')
+	result=$(fd . $NOTEDIR | sed "s/$NOTEDIRESC//" | fzf)
+
+	# Only open editor if they selected an option
+	if [ -z $result ]; then
+		exit 0
+	fi
+	$EDITOR "$NOTEDIR$result"
+else
+	$EDITOR "$NOTEDIR$(date '+%Y-%m-%d')-$1.txt"
+fi
+
+exit 0

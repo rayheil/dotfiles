@@ -40,7 +40,6 @@
             "9": "9",
             "10": "0",
             "urgent": " ",
-            "focused": " ",
             "return-type": "json",
             "default": " "
         }

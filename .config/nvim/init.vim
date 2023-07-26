@@ -61,7 +61,6 @@ set cursorline            " horizontal line where the cursor is right now
 set mouse=a               " enable mouse
 set nowrap                " by default, don't wrap text
 set clipboard=unnamedplus " sync nvim and system clipboard
-set relativenumber
 
 " ------------------------------------------------------------------------------
 " Code folding? No thank you
@@ -96,13 +95,8 @@ function SetCOptions()
 endfunction
 autocmd BufNewFile,BufRead *.c,*.h call SetCOptions()
 
-:set number
-
-:augroup numbertoggle
-:  autocmd!
-:  autocmd BufEnter,FocusGained,InsertLeave,WinEnter * if &nu && mode() != "i" | set rnu   | endif
-:  autocmd BufLeave,FocusLost,InsertEnter,WinLeave   * if &nu                  | set nornu | endif
-:augroup END
+" Hybrid line numbering -- current like and relative numbers
+:set nu rnu
 
 " Colorscheme
 colorscheme catppuccin

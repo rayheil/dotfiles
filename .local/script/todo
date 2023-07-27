@@ -1,9 +1,0 @@
-#!/bin/bash
-
-if [ -d "$HOME/Todo" ]
-then
-	$EDITOR "$HOME/Todo/TODO.txt"
-else
-	$EDITOR "$HOME/TODO.txt"
-fi
-

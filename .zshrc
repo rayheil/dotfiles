@@ -8,7 +8,7 @@ export ZSH="$HOME/.oh-my-zsh"
 export GPG_TTY=$(tty)
 
 # Oh my zsh theme
-ZSH_THEME="tjkirch" # set by `omz`
+ZSH_THEME="suvash" # set by `omz`
 
 # Remind on omz updates, but don't auto update
 zstyle ':omz:update' mode reminder

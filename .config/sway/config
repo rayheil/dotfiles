@@ -64,7 +64,7 @@ exec wlsunset -l 35.7 -L -105.9
 exec swayidle -w \
     timeout 545 "brightnessctl -s && brightnessctl s 1" resume "brightnessctl -r" \
     timeout 600 "systemctl suspend" \
-    before-sleep "$lock"
+    before-sleep "brightnessctl -r && $lock"
 
 # Notifications
 exec swaync 

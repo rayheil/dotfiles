@@ -6,59 +6,54 @@ my laptop, at least the useful ones I want to keep.
 I wouldn't recommend anyone besides me use them, but if you're going to there's
 no reason I should stop you. Beware, for here be (messy) code dragons! 
 
-# Installation
+# Cloning this repo
 
-I keep this section here so I know what to do when I put everything on a new
-computer. Otherwise, I'm going to forget it all.
+This repo is best managed as a bare git repository, with the actual git files
+somewhere in your home directory. Below you'll find the instructions I use to
+get them onto a new computer. 
 
-I have everything set up to work through a bare git repo. If you're me and have
-your SSH keys ready, you can do it with SSH:
+If you aren't me the bare git repo might matter less (by which I mean you can
+clone the repo normally and just move the files into their correct directories
+yourself.) After all, you probably don't care about getting the ~latest updates~
+on these dotfiles.
+
+First, clone the bare repo into `~/.cfg`:
 
 ```
-git clone --bare git@github.com:raymondheil/dotfiles.git $HOME/.cfg
+git clone --bare git@github.com:almondheil/dotfiles.git $HOME/.cfg
 ```
 
-otherwise, HTTPS is the option you'll want:
-
-```
-git clone --bare https://github.com/raymondheil/dotfiles.git $HOME/.cfg
-```
-
-Then, I think it's useful to alias everything so it's easier to work with the
-files. I call my alias `config`.
-
-Of course, it's also nice to put this in the relevant \*.rc file in your home
-directory.
+Then, alias access to that repo to something like `config`. You don't need to
+make this change persistent, in my actual dotfiles it gets set as well.
 
 ```
 alias config='git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
 ```
 
-It's also really nice to have `config status` only show you explicitly tracked
-files, because otherwise it'll show your *entire* home profile as untracked,
-making the output almost useless.
-
-This will also mean you can't see new files unless you add them by name, but
-it's a decent tradeoff in my opinion.
+While you're at it, tell this repo not to warn you about untracked files
+because...well, your entire home directory is technically untracked now.
 
 ```
 config config status.showUntrackedFiles no
 ```
 
-To get the actual files, you then need to check out. 
-
-Odds are you'll get warning message that some file cannot be overridden. In
-this case, you need to get rid of it (deleting it, renaming it, etc.) before
-continuing.
+At this point, you don't actually have any files from the repo. To get them,
+just do a checkout.
 
 ```
 config checkout
 ```
 
-Then, everything should be set up! If you're me and have push access to the
-repo, you also should probably change the repo origin to your local branch if
-you plan to update things from this computer.
+Odds are you'll get a warning at this point, complaining that there are files
+that would be overwritten. But any files that are already here are vastly
+inferior to the ones in the repo, so you can just delete them and try again ;)
+
+At this point, it's also good to tell git which branch we're on. The simplest
+way to do this (don't worry, it won't create a commit on the repo) is just to
+pretend you're doing a push and set the upstream there.
 
 ```
 config push -u origin main
 ```
+
+All set, Happy configuration!

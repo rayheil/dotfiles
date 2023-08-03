@@ -14,7 +14,7 @@ get them onto a new computer.
 
 If you aren't me the bare git repo might matter less (by which I mean you can
 clone the repo normally and just move the files into their correct directories
-yourself.) After all, you probably don't care about getting the ~latest updates~
+yourself.) After all, you probably don't care about getting the \~latest updates\~
 on these dotfiles.
 
 First, clone the bare repo into `~/.cfg`:
@@ -56,4 +56,4 @@ pretend you're doing a push and set the upstream there.
 config push -u origin main
 ```
 
-All set, Happy configuration!
+All set, happy configuration!

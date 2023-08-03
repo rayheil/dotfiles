@@ -6,21 +6,26 @@ alias la="ls -a"           # All files
 alias ll="ls -lh"          # Long listing
 alias lr="ls -lhr"         # Reverse alphabetical
 alias lt="ls -lht"         # Most recent first
-alias lld="ls -lhd */"     # Only directories
+alias l.="ls -ad .*"
 
 # Utils
 alias config="git --git-dir=$HOME/.cfg/ --work-tree=$HOME"
 
-# Navigation
+# cd into new dir
 mkcd () {
 	mkdir -p -- "$1" && cd -P -- "$1" 
 }
+# cd and list
 cdl () {
 	cd "$1" && ls
 }
+# print full path to file
 pwf () {
 	echo $(pwd)/$1
 }
+
+# Find files older than the date you provide on the commandline
+alias older="find . ! -newermt"
 
 # Dumb
 alias sl="sl -Fl"

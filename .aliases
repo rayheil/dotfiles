@@ -8,6 +8,20 @@ alias lr="ls -lhr"         # Reverse alphabetical
 alias lt="ls -lht"         # Most recent first
 alias l.="ls -ad .*"
 
+# update whatever you might want to
+alias update="paru -Syu && flatpak update"
+
+# flatpak aliases
+alias chromium="flatpak run org.chromium.Chromium"
+alias firefox="flatpak run org.mozilla.firefox"
+alias minecraft="flatpak run com.mojang.Minecraft"
+alias nextcloud="flatpak run com.nextcloud.desktopclient.nextcloud"
+alias prismlauncher="flatpak run org.prismlauncher.PrismLauncher"
+alias steam="flatpak run com.valvesoftware.Steam"
+alias thunderbird="flatpak run org.mozilla.Thunderbird"
+alias tor="flatpak run com.github.micahflee.torbrowser-launcher"
+alias webcord="flatpak run io.github.spacingbat3.webcord"
+
 # Utils
 alias config="git --git-dir=$HOME/.cfg/ --work-tree=$HOME"
 

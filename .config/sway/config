@@ -10,7 +10,7 @@ exec systemctl --user import-environment DISPLAY WAYLAND_DISPLAY SWAYSOCK XDG_CU
 exec hash dbus-update-activation-environment 2>/dev/null && \
      dbus-update-activation-environment --systemd DISPLAY WAYLAND_DISPLAY SWAYSOCK XDG_CURRENT_DESKTOP
 
-# Polkit
+# Polkit for gnome
 exec /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
 
 ################################################################################
@@ -21,18 +21,19 @@ exec /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
 set $mod Mod4
 
 # Preferred apps
-set $term alacritty
-set $browser firefox
+set $browser "flatpak run org.mozilla.firefox"
 set $editor $term -e nvim
+set $mail "flatpak run org.mozilla.Thunderbird"
+set $term alacritty
 
 # System utils
+set $clip clipman pick -t rofi 
+set $clip_clear clipman clear --all
 set $lock swaylock
 set $menu rofi -show drun
-set $clip clipman pick -t rofi 
-set $clear_clip clipman clear -t rofi
-set $wallpaper "/home/almond/Pictures/Wallpapers/Catppuccin Confused Cat Rainbow.png"
 set $resize_mode "Resize: Use arrow keys"
 set $screenshot_mode "Screenshot: 1 select, 2 window, 3 fullscreen"
+set $wallpaper "/home/almond/Pictures/Wallpapers/Catppuccin Confused Cat Rainbow.png"
 
 # Direction keys
 set $left left
@@ -45,7 +46,7 @@ set $right right
 ################################################################################
 
 # Nextcloud
-exec sleep 3 && nextcloud --background
+exec sleep 3 && flatpak run com.nextcloud.desktopclient.nextcloud --background
 
 # Gnome keyring
 exec eval $(gnome-keyring-daemon --start)
@@ -62,7 +63,7 @@ exec wlsunset -l 35.7 -L -105.9
 
 # Idle config
 exec swayidle -w \
-    timeout 545 "brightnessctl -s && brightnessctl s 1" resume "brightnessctl -r" \
+    timeout 530 "brightnessctl -s && brightnessctl s 1" resume "brightnessctl -r" \
     timeout 600 "systemctl suspend" \
     before-sleep "brightnessctl -r && $lock"
 
@@ -70,7 +71,7 @@ exec swayidle -w \
 exec swaync 
 
 # Mail
-exec thunderbird
+exec $mail 
 
 ################################################################################
 ### KEYBINDINGS
@@ -82,7 +83,7 @@ exec thunderbird
     bindsym $mod+Shift+Return exec $editor
     bindsym $mod+d exec $menu
     bindsym $mod+p exec $clip
-    bindsym $mod+Shift+P exec $clear_clip
+    bindsym $mod+Shift+P exec $clip_clear
     bindsym $mod+Tab exec $browser
 
 ## Sway:
@@ -209,11 +210,13 @@ input type:touchpad {
 
 # My preferred keyboard settings
 # - the two layouts are one for English, and one that I like for Spanish
-# - grp:win_space_toggle lets me toggle my keymap with $mod+Space
 # - caps:swapescape makes my caps key escape, and vice versa
+# - grp:win_space_toggle lets me toggle my keymap with $mod+Space
 input type:keyboard {
-    xkb_layout us,us(intl)
-    xkb_options grp:win_space_toggle,caps:swapescape
+    xkb_layout us
+    #, us(intl)
+    xkb_options caps:swapescape
+    #, grp:win_space_toggle
 }
 
 ################################################################################

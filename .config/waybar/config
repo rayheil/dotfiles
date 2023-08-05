@@ -9,7 +9,6 @@
         "idle_inhibitor",
     ],
     "modules-right": [
-        "sway/language",
         "custom/scratchpad-indicator",
         "pulseaudio",
         "backlight",

@@ -2,6 +2,8 @@
 for file in $HOME/.zshrc.d/*.zsh; do
 	source "$file"
 done
-# Include cross-shell aliases
-source $HOME/.aliases
 
+# Source files from aliases dir
+for file in $HOME/.alias.d/*.sh; do
+	source "$file"
+done

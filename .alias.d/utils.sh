@@ -4,9 +4,6 @@
 # Utils
 alias config="git --git-dir=$HOME/.cfg/ --work-tree=$HOME"
 
-# update whatever you might want to
-alias update="paru -Syu && flatpak update"
-
 # cd and list
 cdl () {
 	cd "$1" && ls

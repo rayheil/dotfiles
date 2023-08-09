@@ -14,7 +14,7 @@ export EDITOR=nvim
 [ -f "$HOME/.ghcup/env" ] && source "$HOME/.ghcup/env"
 
 # Set PATH to include important stuff
-DESIRED_PATH="$HOME/.local/bin:$HOME/.cargo/bin:$HOME/.local/script"
+DESIRED_PATH="$HOME/.local/bin:$HOME/.cargo/bin:$HOME/.local/script:$HOME/.ghcup/bin"
 if ! [[ "$PATH" =~ $DESIRED_PATH ]]; then
 	export PATH="$PATH:$DESIRED_PATH"
 fi

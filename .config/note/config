@@ -1,3 +1,2 @@
-note_dir = /home/almond/Notes
+note_dir = $HOME/Notes
 extension = .md
-# editor = nvim

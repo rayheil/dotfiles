@@ -5,6 +5,7 @@ call plug#begin()
   Plug 'tpope/vim-sleuth'        " autodetect indentation
   Plug 'jpalardy/vim-slime'      " run code in a REPL
   Plug 'preservim/nerdcommenter' " comment tools
+  Plug 'preservim/nerdtree'      " directory tree
 call plug#end()
 
 " Syntax highlighting

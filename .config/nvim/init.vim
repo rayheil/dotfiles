@@ -28,9 +28,6 @@ Plug 'ctrlpvim/ctrlp.vim'
 Plug 'sheerun/vim-polyglot'
 Plug 'matthewbdaly/vim-filetype-settings'
 
-" Themes
-Plug 'catppuccin/nvim', { 'as': 'catppuccin' }
-
 call plug#end()
 
 " ------------------------------------------------------------------------------
@@ -97,9 +94,6 @@ autocmd BufNewFile,BufRead *.c,*.h call SetCOptions()
 
 " Hybrid line numbering -- current like and relative numbers
 :set nu rnu
-
-" Colorscheme
-colorscheme catppuccin
 
 " Syntax highlighting (must be at bottom of file) 
 syntax on

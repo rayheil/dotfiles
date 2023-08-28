@@ -101,9 +101,4 @@ for file in $HOME/.alias.d/*.sh; do
 done
 
 export EDITOR=nvim
-
-# Display tmux info if it is installed and we're not in screen or tmux
-if command -v tmux > /dev/null
-then
-	[[ ! $TERM =~ screen ]] && [ -z $TMUX ] && tmux-status
-fi
+alias vim=nvim # to stop me from goofing up

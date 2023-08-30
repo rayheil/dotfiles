@@ -95,8 +95,7 @@ function SetCOptions()
 endfunction
 autocmd BufNewFile,BufRead *.c,*.h call SetCOptions()
 
-" Hybrid line numbering -- current like and relative numbers
-:set nu rnu
+set nu
 
 " Colorscheme
 colorscheme catppuccin

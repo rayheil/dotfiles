@@ -28,9 +28,6 @@ Plug 'ctrlpvim/ctrlp.vim'
 Plug 'sheerun/vim-polyglot'
 Plug 'matthewbdaly/vim-filetype-settings'
 
-" Themes
-Plug 'catppuccin/nvim', { 'as': 'catppuccin' }
-
 call plug#end()
 
 " ------------------------------------------------------------------------------
@@ -96,9 +93,6 @@ endfunction
 autocmd BufNewFile,BufRead *.c,*.h call SetCOptions()
 
 set nu
-
-" Colorscheme
-colorscheme catppuccin
 
 " Syntax highlighting (must be at bottom of file) 
 syntax on

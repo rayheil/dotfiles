@@ -1,7 +1,6 @@
 [user]
-	email = almond@almendra.dev
+	email = heilalmond@grinnell.edu
 	name = Almond Heil
-	signingKey = E8AA37A78E5561F0
 [color]
 	ui = auto
 [init]
@@ -11,10 +10,6 @@
 	smudge = git-lfs smudge -- %f
 	process = git-lfs filter-process
 	required = true
-[gpg]
-	program = gpg
-[commit]
-	gpgsign = true
 [core]
 	editor = nvim
 	excludesFile = ~/.gitignore

@@ -14,9 +14,9 @@
 
 [ -z "$PS1" ] && return
 
-# Set the prompt to machine name, dollar sign, space.
-
-PS1="\u@\h:\W\$ "
+# Set the prompt to a concoction of ~great evil~
+. ~/.git-prompt.sh
+PS1='\[\e[32m\][\t] \[\e[95m\]\h \[\e[96m\]\w\[\e[94m\]$(__git_ps1 " (%s)") \[\e[91m\]\\$ \[\e[0m\]'; PROMPT_DIRTRIM=2
 
 # Notify the user as soon as a background job is completed.
 
@@ -102,3 +102,6 @@ done
 
 export EDITOR=nvim
 alias vim=nvim # to stop me from goofing up
+
+# z - jump around
+. $HOME/.z.sh

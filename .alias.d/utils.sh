@@ -4,6 +4,9 @@
 # Utils
 alias config="git --git-dir=$HOME/.cfg/ --work-tree=$HOME"
 
+# a two-letter alias for jobs, like bg and fg
+alias jb="jobs"
+
 # cd and list
 cdl () {
 	cd "$1" && ls

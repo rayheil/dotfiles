@@ -45,7 +45,7 @@ font:
     family: Hack Nerd Font
     style: Regular
   
-  size: 15
+  size: 14
 
 scrolling:
   # Max lines in the scrollback buffer

@@ -2,6 +2,7 @@
 # flatpak run aliases
 
 # sort with !sort in visual line mode
+alias audacity="flatpak run org.audacityteam.Audacity"
 alias chrome="flatpak run com.google.Chrome"
 alias discord="flatpak run con.discordapp.Discord"
 alias firefox="flatpak run org.mozilla.firefox"

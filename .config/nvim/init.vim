@@ -15,14 +15,13 @@ Plug 'tpope/vim-fugitive'
 Plug 'airblade/vim-gitgutter'
 
 " Linting
-Plug 'neomake/neomake'
 Plug 'dense-analysis/ale'
 
 " Comments
 Plug 'tpope/vim-commentary'
 
-" Search
-Plug 'ctrlpvim/ctrlp.vim'
+" Tab autocomplete pretty much everywhere
+Plug 'ervandew/supertab'
 
 " Syntax
 Plug 'sheerun/vim-polyglot'
@@ -34,7 +33,7 @@ Plug 'catppuccin/nvim', { 'as': 'catppuccin' }
 call plug#end()
 
 " ------------------------------------------------------------------------------
-" Completion 
+" Completion
 " ------------------------------------------------------------------------------
 
 autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
@@ -45,8 +44,47 @@ set completeopt=noinsert,menuone,noselect
 " Linting
 " ------------------------------------------------------------------------------
 
-" do not use ghc as a linter, it can't find cabal imports 
-let g:ale_linters = {'haskell': ['cabal_ghc', 'ghc-mod', 'hdevtools', 'hie', 'hlint', 'stack_build', 'stack_ghc']}
+let g:ale_sign_error                  = '✘'
+let g:ale_sign_warning                = '⚠'
+highlight ALEErrorSign ctermbg        =NONE ctermfg=red
+highlight ALEWarningSign ctermbg      =NONE ctermfg=yellow
+let g:ale_linters_explicit            = 1
+let g:ale_lint_on_text_changed        = 'never'
+let g:ale_lint_on_enter               = 0
+let g:ale_lint_on_save                = 1
+let g:ale_fix_on_save                 = 1
+
+" customize which linters are used
+" haskell: meant to work with ghcup
+" markdown: meant to help with formatting
+"   from https://www.rockyourcode.com/lint-your-markdown-files-in-vim/
+let g:ale_linters = {
+\   'haskell':  ['cabal_ghc', 'ghc-mod', 'hdevtools', 'hie', 'hlint', 'stack_build', 'stack_ghc'],
+\   'markdown': ['mdl', 'writegood'],
+\}
+
+" set what is fixed on save or :ALEFix
+let g:ale_fixers = {
+\   '*':          ['remove_trailing_lines', 'trim_whitespace'],
+\}
+
+" ------------------------------------------------------------------------------
+" NERDTree
+" ------------------------------------------------------------------------------
+
+" open or focus with C-n
+map <silent> <C-n> :NERDTreeFocus<CR>
+
+" ------------------------------------------------------------------------------
+" Autocomplete
+" ------------------------------------------------------------------------------
+
+" autocomplete vim menus on tab
+"   longest : complete longest common string
+"   list    : list all matches
+"   full    : complete the next full match
+set wildmode=longest,list,full
+set wildmenu
 
 " ------------------------------------------------------------------------------
 " General
@@ -83,7 +121,7 @@ set smartcase " smart choose whether to be case-sensitive
 " Make statusline display some simple info
 set statusline="%f%m%r%h%w [%Y] [0x%02.2B]%< %F%=%4v,%4l %3p%% of %L"
 
-" Text Files (when I want text to wrap and stuff) 
+" Text Files (when I want text to wrap and stuff)
 function SetPlaintextOptions()
   setlocal tw=80
 endfunction
@@ -100,6 +138,5 @@ set nu
 " Colorscheme
 colorscheme catppuccin
 
-" Syntax highlighting (must be at bottom of file) 
+" Syntax highlighting (must be at bottom of file)
 syntax on
-

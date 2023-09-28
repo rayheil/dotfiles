@@ -4,13 +4,13 @@ Hello there, random internet person! These are the configuration files I use on
 my laptop, at least the useful ones I want to keep.
 
 I wouldn't recommend anyone besides me use them, but if you're going to there's
-no reason I should stop you. Beware, for here be (messy) code dragons! 
+no reason I should stop you. Beware, for here be (messy) code dragons!
 
 # Cloning this repo
 
 This repo is best managed as a bare git repository, with the actual git files
 somewhere in your home directory. Below you'll find the instructions I use to
-get them onto a new computer. 
+get them onto a new computer.
 
 If you aren't me the bare git repo might matter less (by which I mean you can
 clone the repo normally and just move the files into their correct directories
@@ -57,3 +57,11 @@ config push -u origin main
 ```
 
 All set, happy configuration!
+
+# License
+
+This repo isn't really *software* in any way, so the content is licensed under
+the [Creative Commons BY-SA 4.0
+License](https://creativecommons.org/licenses/by-sa/4.0/) except where otherwise
+mentioned. This is particularly true for code I have adapted from other authors,
+where licenses will be noted at the top of the relevant file.

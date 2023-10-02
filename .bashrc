@@ -46,7 +46,7 @@ alias unshare="/bin/chmod go-rwx"
 if [ -x /usr/bin/dircolors ]; then
     test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
     alias ls='ls --color=auto'
-    
+
     alias grep='grep --color=auto'
     #alias fgrep='fgrep --color=auto'
     #alias egrep='egrep --color=auto'
@@ -94,6 +94,10 @@ export LD_LIBRARY_PATH
 ######################################################################
 ######### --- Place all other customizations below this --- ##########
 ######################################################################
+
+# Set umask to make new files not be globally readable
+# 077 means "take no permissions away from user. take all away from group and other"
+umask 077
 
 # Include cross-shell aliases
 for file in $HOME/.alias.d/*.sh; do

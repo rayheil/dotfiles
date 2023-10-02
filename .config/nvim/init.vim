@@ -17,9 +17,6 @@ Plug 'airblade/vim-gitgutter'
 " Linting
 Plug 'dense-analysis/ale'
 
-" Comments
-Plug 'tpope/vim-commentary'
-
 " Tab autocomplete pretty much everywhere
 Plug 'ervandew/supertab'
 

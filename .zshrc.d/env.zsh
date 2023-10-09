@@ -13,6 +13,9 @@ export GPG_TTY=$(tty)
 # Defaults for various terminal settings
 export EDITOR=nvim
 
+# Don't initialize less if there's less than a screen
+export LESS="--no-init --quit-if-one-screen -R"
+
 # Link .ghcup environment if installed
 [ -f "$HOME/.ghcup/env" ] && source "$HOME/.ghcup/env"
 
@@ -22,7 +25,7 @@ if ! [[ "$PATH" =~ $DESIRED_PATH ]]; then
 	export PATH="$PATH:$DESIRED_PATH"
 fi
 
-# Make man display with bat if we have it installed 
+# Make man display with bat if we have it installed
 if command -v bat > /dev/null
 then
 	export MANPAGER="sh -c 'col -bx | bat -p -l man'"
@@ -52,4 +55,3 @@ else
 fi
 unset __conda_setup
 # <<< conda initialize <<<
-

@@ -14,7 +14,7 @@ cdl () {
 
 # cd into new dir
 mkcd () {
-	mkdir -p -- "$1" && cd -P -- "$1" 
+	mkdir -p -- "$1" && cd -P -- "$1"
 }
 
 # print full path to file
@@ -25,4 +25,13 @@ pwf () {
 # auto attach or create tmux session
 tm() {
 	tmux attach -t $1 || tmux new -s $1
+}
+
+# repeat a command N times
+repeat() {
+	number = $1
+	shift
+	for n in $(seq $number); do
+		$@
+	done
 }

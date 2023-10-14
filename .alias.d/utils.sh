@@ -28,7 +28,7 @@ tm() {
 }
 
 # repeat a command N times
-repeat() {
+function repeat() {
 	number = $1
 	shift
 	for n in $(seq $number); do

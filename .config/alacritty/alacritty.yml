@@ -11,12 +11,12 @@ window:
   # Window dimensions (changes require restart)
   dimensions:
     columns: 120
-    lines: 36
+    lines: 30
 
   # Padding on the sides of the window (in pixels)
   padding:
-    x: 0
-    y: 0
+    x: 5
+    y: 5
 
   # Spread additional padding evenly around the terminal content
   dynamic_padding: true
@@ -39,10 +39,10 @@ window:
 # Fonts, whee!
 font:
   normal:
-    family: Hack Nerd Font
+    family: Noto Sans Mono
     style: Regular
 
-  size: 13
+  size: 14
 
 scrolling:
   # Max lines in the scrollback buffer

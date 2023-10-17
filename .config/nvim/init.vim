@@ -4,6 +4,9 @@
 
 call plug#begin()
 
+" Ayu theme
+Plug 'Luxed/ayu-vim'
+
 " Sensible defaults
 Plug 'tpope/vim-sensible'
 
@@ -23,9 +26,6 @@ Plug 'ervandew/supertab'
 " Syntax
 Plug 'sheerun/vim-polyglot'
 Plug 'matthewbdaly/vim-filetype-settings'
-
-" Themes
-Plug 'catppuccin/nvim', { 'as': 'catppuccin' }
 
 call plug#end()
 
@@ -132,8 +132,11 @@ autocmd BufNewFile,BufRead *.c,*.h call SetCOptions()
 
 set nu
 
-" Colorscheme
-colorscheme catppuccin
+" Enable and set up ayu theme
+set termguicolors
+set background=dark " covers both dark and mirage versions
+let g:ayucolor="dark"
+colorscheme ayu
 
 " Syntax highlighting (must be at bottom of file)
 syntax on

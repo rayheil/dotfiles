@@ -4,6 +4,9 @@
 
 call plug#begin()
 
+" Theme
+Plug 'ayu-theme/ayu-vim'
+
 " Sensible defaults
 Plug 'tpope/vim-sensible'
 
@@ -84,7 +87,6 @@ set wildmenu
 " General
 " ------------------------------------------------------------------------------
 
-set bg=dark               " dark background for theme
 set nocp                  " nocompatible, always on for nvim but good to set
 set ruler                 " show document progress
 set number                " enable line numbers
@@ -128,6 +130,12 @@ endfunction
 autocmd BufNewFile,BufRead *.c,*.h call SetCOptions()
 
 set nu
+
+" Enable and set up theme
+set background=dark
+set termguicolors     " enable true colors support
+let ayucolor="dark"   " for dark version of theme
+colorscheme ayu
 
 " Syntax highlighting (must be at bottom of file)
 syntax on

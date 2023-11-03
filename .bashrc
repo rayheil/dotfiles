@@ -107,5 +107,8 @@ done
 export EDITOR=nvim
 alias vim=nvim # to stop me from goofing up
 
+# set PATH appropriately on mathLAN
+export PATH="$PATH:$HOME/.local/bin:$HOME/.local/scripts:/usr/local/cuda/bin"
+
 # z - jump around
 . $HOME/.z.sh

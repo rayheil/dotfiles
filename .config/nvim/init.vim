@@ -4,8 +4,8 @@
 
 call plug#begin()
 
-" Ayu theme
-Plug 'Luxed/ayu-vim'
+" Dracula theme
+Plug 'dracula/vim', { 'as': 'dracula' }
 
 " Sensible defaults
 Plug 'tpope/vim-sensible'
@@ -132,11 +132,12 @@ autocmd BufNewFile,BufRead *.c,*.h call SetCOptions()
 
 set nu
 
-" Enable and set up ayu theme
+" Set up terminal background
 set termguicolors
-set background=dark " covers both dark and mirage versions
-let g:ayucolor="dark"
-colorscheme ayu
+set background=dark
+
+" Turn on dracula theme
+colorscheme dracula
 
 " Syntax highlighting (must be at bottom of file)
 syntax on

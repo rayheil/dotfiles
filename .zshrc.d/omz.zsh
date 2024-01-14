@@ -5,7 +5,7 @@
 export ZSH="$HOME/.oh-my-zsh"
 
 # Oh my zsh theme
-ZSH_THEME="oldgallois"
+ZSH_THEME="robbyrussell"
 
 # Remind on omz updates, but don't auto update
 zstyle ':omz:update' mode reminder

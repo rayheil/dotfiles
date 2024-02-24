@@ -118,12 +118,6 @@ set smartcase " smart choose whether to be case-sensitive
 " Make statusline display some simple info
 set statusline="%f%m%r%h%w [%Y] [0x%02.2B]%< %F%=%4v,%4l %3p%% of %L"
 
-" Text Files (when I want text to wrap and stuff)
-function SetPlaintextOptions()
-  setlocal tw=80
-endfunction
-autocmd BufNewFile,BufRead *.txt,*.tex,*.md call SetPlaintextOptions()
-
 " C files
 function SetCOptions()
   set cindent

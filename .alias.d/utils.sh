@@ -38,3 +38,5 @@ function repeat() {
 
 # I can't break this bad habit
 alias vim="nvim"
+
+alias open="xdg-open"

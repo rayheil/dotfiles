@@ -22,3 +22,6 @@
 	slog = log --oneline
 [pull]
 	rebase = false
+[gui]
+	fontui = -family helvetica -size 19 -weight normal -slant roman -underline 0 -overstrike 0
+	fontdiff = -family \"liberation mono\" -size 18 -weight normal -slant roman -underline 0 -overstrike 0

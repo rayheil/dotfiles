@@ -27,6 +27,14 @@ tm() {
 	tmux attach -t $1 || tmux new -s $1
 }
 
+# swap two files, renaming one to the other
+swap() {
+	tmp=`mktemp`
+	mv $1 $tmp
+	mv $2 $1
+	mv $tmp $2
+}
+
 # repeat a command N times
 function repeat() {
 	number = $1

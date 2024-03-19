@@ -7,6 +7,9 @@ alias config="git --git-dir=$HOME/.cfg/ --work-tree=$HOME"
 # a two-letter alias for jobs, like bg and fg
 alias jb="jobs"
 
+# using todo.txt-cli (https://github.com/todotxt/todo.txt-cli), I like a 1-letter alias
+alias t="todo.sh"
+
 # cd and list
 cdl () {
 	cd "$1" && ls

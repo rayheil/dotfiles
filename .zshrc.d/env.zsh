@@ -1,6 +1,9 @@
 # env.zsh
 # environment config
 
+# tell zsh to look for zfunc directory (completions)
+fpath+=~/.zfunc
+
 # Set XDG config home for programs to find
 export XDG_CONFIG_HOME=$HOME/.config
 

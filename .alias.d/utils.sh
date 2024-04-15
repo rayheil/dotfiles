@@ -47,6 +47,18 @@ function repeat() {
 	done
 }
 
+# fuzzy open file
+# press C-o to use `xdg-open`, or C-e to use `$EDITOR`
+# from https://github.com/junegunn/fzf/wiki/examples#opening-files
+fo() {
+  IFS=$'\n' out=("$(fzf-tmux --query="$1" --exit-0 --expect=ctrl-o,ctrl-e)")
+  key=$(head -1 <<< "$out")
+  file=$(head -2 <<< "$out" | tail -1)
+  if [ -n "$file" ]; then
+    [ "$key" = ctrl-o ] && xdg-open "$file" || ${EDITOR:-vim} "$file"
+  fi
+}
+
 # I can't break this bad habit
 alias vim="nvim"
 

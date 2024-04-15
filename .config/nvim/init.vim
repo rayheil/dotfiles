@@ -4,9 +4,6 @@
 
 call plug#begin()
 
-" Dracula theme
-Plug 'dracula/vim', { 'as': 'dracula' }
-
 " Sensible defaults
 Plug 'tpope/vim-sensible'
 
@@ -125,13 +122,6 @@ endfunction
 autocmd BufNewFile,BufRead *.c,*.h call SetCOptions()
 
 set nu
-
-" Set up terminal background
-set termguicolors
-set background=dark
-
-" Turn on dracula theme
-colorscheme dracula
 
 " Syntax highlighting (must be at bottom of file)
 syntax on

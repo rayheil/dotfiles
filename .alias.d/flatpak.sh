@@ -4,6 +4,4 @@
 # sort with !sort in visual line mode
 alias chrome="flatpak run com.google.Chrome"
 alias firefox="flatpak run org.mozilla.firefox"
-alias marktext="flatpak run com.github.marktext.marktext"
-alias nextcloud="flatpak run com.nextcloud.desktopclient.nextcloud"
-alias tor="flatpak run com.github.micahflee.torbrowser-launcher"
+alias tor="flatpak run org.torproject.torbrowser-launcher"

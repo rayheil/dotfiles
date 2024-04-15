@@ -1,107 +1,66 @@
-@import "mocha.css";
-
 * {
-    border: 0px solid rgba(40, 44, 52, 0);
-    border-radius: 2px;
-    font-family: Iosevka Nerd Font, Font Awesome, Arial, sans-serif;
-    font-weight: 700;
-    font-size: 14pt;
-    padding: 1px;
+    border: none;
+    border-radius: 0;
+    font-family: "Hack Nerd Font Mono";
+    font-size: 13px;
+    min-height: 0;
 }
 
 window#waybar {
-    background-color: rgba(30, 30, 46, 0.8);
-    color: @text;
-    transition-property: background-color;
-    transition-duration: .5s;
-    border-radius: 0;
+    background: transparent;
+    color: white;
 }
 
-window > box {
-    margin: 0;
-    color: @text;
+#window {
+    font-weight: bold;
+    font-family: "Hack Nerd Font Mono";
+}
+/*
+#workspaces {
+    padding: 0 5px;
+}
+*/
+
+#workspaces button {
+    padding: 0 5px;
+    background: transparent;
+    color: white;
 }
 
-window#waybar.hidden {
-    opacity: 0.2;
+#workspaces button:hover {
+  box-shadow: inherit;
+  text-shadow: inherit;
 }
 
-label:focus {
-    background-color: @base;
+#mode {
+    background: #64727D;
+    border-bottom: 3px solid white;
+}
+
+#clock, #battery, #cpu, #memory, #network, #pulseaudio, #custom-spotify, #tray, #mode {
+    padding: 0 3px;
+    margin: 0 2px;
+}
+
+#battery {
+}
+
+#battery icon {
+    color: red;
+}
+
+#battery.charging {
 }
 
 @keyframes blink {
     to {
-        background-color: @text;
-        color: @base;
+        background-color: #ffffff;
+        color: black;
     }
 }
 
-#battery,
-#backlight,
-#network,
-#pulseaudio,
-#workspaces,
-#clock,
-#tray,
-#mode,
-#idle_inhibitor,
-#custom-notification,
-#language {
-    padding: 0 10px;
-    margin: 4px 4px 4px 4px;
-    color: @text;
-}
-
-#workspaces button {
-    padding: 5px; 
-    margin-left: 1px;
-    color: @text;
-    border: 2px solid transparent;
-    background: transparent;
-}
-
-#workspaces button:hover {
-    box-shadow: inherit;
-    text-shadow: inherit;
-    border-bottom: 2px solid @text;
-}
-
-#workspaces button.focused {
-    background-color: rgba(200, 204, 212, 0.1);
-    border-bottom: 3px solid @text;
-}
-
-#workspaces button.urgent {
-    background-color: @red;
-}
-
-#language {
-    color: @red;
-}
-
-#custom-scratchpad-indicator {
-    color: @peach;
-}
-
-#pulseaudio {
-    color: @yellow;
-}
-
-#backlight {
-    color: @green;
-}
-
-#network {
-    color: @blue;
-}
-
-#battery {
-    color: @mauve;
-}
-
-#battery.critical:not(.charging) {
-    color: @red;
+#battery.warning:not(.charging) {
+    color: white;
     animation-name: blink;
     animation-duration: 0.5s;
     animation-timing-function: linear;
@@ -109,22 +68,29 @@ label:focus {
     animation-direction: alternate;
 }
 
-#idle_inhibitor,
-#custom-notification {
-    color: @overlay2;
+#cpu {
 }
 
-#custom-notification.notification,
-#custom-notification.dnd-notification, 
-#custom-notification.inhibited-notification, 
-#custom-notification.dnd-inhibited-notification {
-    color: @peach;
+#memory {
 }
 
-#clock {
-    color: @sky;
+#network {
 }
 
-#idle_inhibitor.activated {
-    color: @yellow;
+#network.disconnected {
+    background: #f53c3c;
 }
+
+#pulseaudio {
+}
+
+#pulseaudio.muted {
+}
+
+#custom-spotify {
+    color: rgb(102, 220, 105);
+}
+
+#tray {
+}
+

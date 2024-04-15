@@ -1,153 +1,77 @@
 {
-    "modules-left": [
-        "sway/workspaces", 
-        "sway/mode",
-    ],
-    "modules-center": [
-        "custom/notification",
-        "clock",
-        "idle_inhibitor",
-    ],
-    "modules-right": [
-        "custom/scratchpad-indicator",
-        "pulseaudio",
-        "backlight",
-        "network",
-        "battery",
-        "tray",
-    ],
-    "sway/workspaces": {
+    "layer": "top", // Waybar at top layer
+    "position": "top", // Waybar at the bottom of your screen
+    "height": 24, // Waybar height
+    // "width": 1366, // Waybar width
+    // Choose the order of the modules
+    "modules-left": ["hyprland/workspaces", "hyprland/submap", "custom/spotify"],
+    "modules-center": [],
+    "modules-right": ["pulseaudio", "custom/separator", "network", "custom/separator", "battery", "custom/separator", "tray", "custom/separator", "clock"],
+    "hyprland/workspaces": {
         "disable-scroll": true,
-        "all-outputs": true,
-        "format": " {icon} ",
-        "persistent_workspaces": {
-            "1": [],
-            "2": [],
-            "3": [],
-            "4": [],
-            "5": [],
-        },
+        "all-outputs": false,
+        "format": "{icon}{id}",
         "format-icons": {
-            "1": " ",
-            "2": " ",
-            "3": " ",
-            "4": " ",
-            "5": " ",
-            "6": "6",
-            "7": "7",
-            "8": "8",
-            "9": "9",
-            "10": "0",
-            "urgent": " ",
-            "return-type": "json",
-            "default": " "
+	    "active": "*",
+	    "urgent": "!",
+            "default": "",
         }
     },
-    "sway/windows": {
-        "max-length": 30
+    "tray": {
+        // "icon-size": 21,
+        "spacing": 10,
     },
-    "sway/mode": {
-        "format": "{}",
+    "clock": {
+        "format-alt": "{:%Y-%m-%d}"
     },
-    "sway/language": {
-        "format": "{short} {variant}"
+    "cpu": {
+        "format": "cpu: {usage}%"
     },
-    "custom/media": {
-        "format": "{icon}",
-        "return-type": "json",
-        "max-length": 40,
-        "format-icons": {
-            "spotify": " ",
-            "default": " "
-        },
-        "escape": true,
-        "on-click": "playerctl play-pause",
-        "on-click-right": "playerctl next",
-        "exec": "~/.config/waybar/modules/mediaplayer.py 2> /dev/null",
-    },
-    "custom/notification": {
-        "tooltip": false,
-        "format": "{icon}",
-        "format-icons": {
-            "notification": "",
-            "none": "",
-            "dnd-notification": "",
-            "dnd-none": "",
-            "inhibited-notification": "",
-            "inhibited-none": "",
-            "dnd-inhibited-notification": "",
-            "dnd-inhibited-none": ""
-        },
-        "return-type": "json",
-        "exec-if": "which swaync-client",
-        "exec": "swaync-client -swb",
-        "on-click": "swaync-client -t -sw",
-        "on-click-right": "swaync-client -d -sw",
-        "escape": true
-    },
-    "custom/scratchpad-indicator": {
-        "interval": 1,
-        "return-type": "json",
-        "exec": "swaymsg -t get_tree | jq --unbuffered --compact-output '(recurse(.nodes[]) | select(.name == \"__i3_scratch\") | .focus) as $scratch_ids | [.. | (.nodes? + .floating_nodes?) // empty | .[] | select(.id|IN($scratch_ids[]))] as $scratch_nodes | if ($scratch_nodes|length) > 0 then { text: \"\\($scratch_nodes|length)\", tooltip: $scratch_nodes|map(.name)|join(\"\\n\") } else empty end'",
-        "format": "{}   ",
-        "on-click": "swaymsg scratchpad show",
-        "on-click-right": "swaymsg move window to scratchpad",
-        "tooltip": "true"
-    },
-    "idle_inhibitor": {
-        "format": "{icon}",
-        "format-icons": {
-            "activated": " ",
-            "deactivated": " "
-        },
-    },
-    "pulseaudio": {
-        "format": "{icon} {volume}%",
-        "format-bluetooth": " {format_source} {icon} {volume}%",
-        "format-bluetooth-muted": "{icon} muted",
-        "format-muted": "muted",
-        "format-icons": {
-            "default": [" ", " ", " "],
-            "hands-free": [" ", " ", " "],
-            "headset": [" ", " ", " "],
-            "phone": [" ", " ", " "],
-            "portable": [" ", " ", " "],
-            "car": [" ", " ", " "],
-            "headphone": [" ", " ", " "]
-        },
-        "on-click": "pavucontrol"
-    },
-    "backlight": {
-        "device": "intel_backlight",
-        "format": "  {percent}%",
-    },
-    "network": {
-        "format-wifi": "{essid}",
-        "tooltip-format": "Connected to {ipaddr}/{cidr}",
-        "format-ethernet": "Ethernet",
-        "format-linked": "{ifname}",
-        "format-disconnected": "Disconnected",
+    "memory": {
+        "format": "mem: {}%"
     },
     "battery": {
-        "interval": 60,
         "states": {
+            // "good": 95,
             "warning": 30,
             "critical": 15
         },
-        "format": "{icon} {capacity}%",
+        "format": "bat: {capacity}%",
+        // "format-good": "", // An empty format will hide the module
+        // "format-full": "",
+        "format-icons": ["", "", "", "", ""]
+    },
+    "network": {
+        // "interface": "wlp2s0", // (Optional) To force the use of this interface
+        "format-wifi": "net: {essid}",
+        "format-ethernet": "net: {ifname}: {ipaddr}/{cidr} ",
+        "format-disconnected": "net: DISCONNECT"
+    },
+    "pulseaudio": {
+        //"scroll-step": 1,
+        "format": "vol: {volume}%",
+        "format-muted": "vol: MUT",
         "format-icons": {
-            "default": [" ", " ", " ", " ", " "],
-            "charging": "⚡"
-        }
+            "headphones": "",
+            "handsfree": "",
+            "headset": "",
+            "phone": "",
+            "portable": "",
+            "car": "",
+            "default": ["", ""]
+        },
+        "on-click": "pavucontrol"
     },
-    "clock": {
-        "format": "{:%a, %b %d - %H:%M}",
-        "exec-if": "which swaync-client",
-        "exec": "swaync-client -swb",
-        "on-click": "swaync-client -t -sw",
+    "custom/spotify": {
+        "format": " {}",
+        "max-length": 40,
+        "interval": 30, // Remove this if your script is endless and write in loop
+        "exec": "$HOME/.config/waybar/mediaplayer.sh 2> /dev/null", // Script in resources folder
+        "exec-if": "pgrep spotify"
     },
-    "tray": {
-        "icon-size": 20,
-        "spacing": 10,
+    "custom/separator": {
+        "format": "|",
+        "interval": "once",
+        "tooltip": false
     },
 }

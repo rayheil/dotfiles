@@ -6,7 +6,7 @@
     // Choose the order of the modules
     "modules-left": ["hyprland/workspaces", "hyprland/submap", "custom/spotify"],
     "modules-center": [],
-    "modules-right": ["pulseaudio", "custom/separator", "network", "custom/separator", "battery", "custom/separator", "tray", "custom/separator", "clock"],
+    "modules-right": ["pulseaudio", "custom/separator", "network", "custom/separator", "battery", "custom/separator", "tray", "custom/separator", "clock", "custom/separator", "custom/notification"],
     "hyprland/workspaces": {
         "disable-scroll": true,
         "all-outputs": false,
@@ -37,15 +37,17 @@
             "critical": 15
         },
         "format": "bat: {capacity}%",
+        "format-charging": "bat: {capacity}% (chg)",
+        "format-plugged": "bat: plug",
         // "format-good": "", // An empty format will hide the module
         // "format-full": "",
-        "format-icons": ["", "", "", "", ""]
+        //"format-icons": ["", "", "", "", ""]
     },
     "network": {
         // "interface": "wlp2s0", // (Optional) To force the use of this interface
-        "format-wifi": "net: {essid}",
-        "format-ethernet": "net: {ifname}: {ipaddr}/{cidr} ",
-        "format-disconnected": "net: DISCONNECT"
+        "format-wifi": "wifi: {essid}",
+        "format-ethernet": "eth: {ifname}: {ipaddr}/{cidr}",
+        "format-disconnected": "DISCONNECT"
     },
     "pulseaudio": {
         //"scroll-step": 1,
@@ -73,5 +75,19 @@
         "format": "|",
         "interval": "once",
         "tooltip": false
+    },
+    "custom/notification": {
+        "tooltip": false,
+        "format": "notif: {}{icon}",
+        "format-icons": {
+            "dnd-notification": " (dnd)",
+            "dnd-none": " (dnd)",
+        },
+        "return-type": "json",
+        "exec-if": "which swaync-client",
+        "exec": "swaync-client -swb",
+        "on-click": "swaync-client -t -sw",
+        "on-click-right": "swaync-client -d -sw",
+        "escape": true,
     },
 }
